@@ -1,1966 +1,2573 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Verum Crypto — Nova Infraestrutura Financeira da América Latina</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-<style>
-:root {
-  --gold: #C9A84C;
-  --gold-light: #E8C96A;
-  --gold-dim: #8B6914;
-  --black: #080808;
-  --dark: #0F0F0F;
-  --dark2: #141414;
-  --dark3: #1A1A1A;
-  --dark4: #222222;
-  --white: #F0ECE0;
-  --white-dim: #A09880;
-  --accent-teal: #1FD6B4;
-  --accent-red: #E84040;
-  --border: rgba(201,168,76,0.15);
-  --border-bright: rgba(201,168,76,0.4);
-}
-
-*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-
-html { scroll-behavior: smooth; }
-
-body {
-  background: var(--black);
-  color: var(--white);
-  font-family: 'Rajdhani', sans-serif;
-  font-size: 17px;
-  line-height: 1.6;
-  overflow-x: hidden;
-}
-
-/* ===== NOISE OVERLAY ===== */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-  pointer-events: none;
-  z-index: 1000;
-  opacity: 0.4;
-}
-
-/* ===== NAV ===== */
-nav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 900;
-  padding: 16.5px 40px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: linear-gradient(180deg, rgba(8,8,8,0.95) 0%, transparent 100%);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border);
-}
-
-.nav-logo {
-  font-family: 'Cinzel', serif;
-  font-size: 22px;
-  font-weight: 700;
-  letter-spacing: 4px;
-  color: var(--gold);
-  text-decoration: none;
-}
-.nav-logo span { color: var(--white-dim); font-size: 10px; display: block; letter-spacing: 6px; font-weight: 400; margin-top: -2px; }
-
-.nav-links {
-  display: flex;
-  gap: 36px;
-  list-style: none;
-}
-.nav-links a {
-  color: var(--white-dim);
-  text-decoration: none;
-  font-family: 'Rajdhani', sans-serif;
-  font-weight: 600;
-  font-size: 13px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  transition: color 0.3s;
-}
-.nav-links a:hover { color: var(--gold); }
-
-.nav-cta {
-  background: transparent;
-  border: 1px solid var(--gold);
-  color: var(--gold);
-  font-family: 'Rajdhani', sans-serif;
-  font-weight: 700;
-  font-size: 13px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  padding: 10px 24px;
-  cursor: pointer;
-  transition: all 0.3s;
-  text-decoration: none;
-}
-.nav-cta:hover { background: var(--gold); color: var(--black); }
-
-/* ===== HERO ===== */
-#hero {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  position: relative;
-  overflow: hidden;
-  padding: 120px 40px 80px;
-}
-
-.hero-bg {
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 60% 80% at 80% 50%, rgba(201,168,76,0.06) 0%, transparent 70%),
-    radial-gradient(ellipse 40% 60% at 20% 80%, rgba(31,214,180,0.04) 0%, transparent 60%),
-    linear-gradient(180deg, #080808 0%, #0A0A0A 100%);
-}
-
-.hero-grid {
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
-  background-size: 60px 60px;
-  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
-}
-
-.hero-corner {
-  position: absolute;
-  width: 200px; height: 200px;
-  border: 1px solid var(--border-bright);
-}
-.hero-corner.tl { top: 80px; left: 40px; border-right: none; border-bottom: none; }
-.hero-corner.br { bottom: 40px; right: 40px; border-left: none; border-top: none; }
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-  max-width: 700px;
-}
-
-.hero-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  border: 1px solid var(--border-bright);
-  padding: 6px 16px;
-  margin-bottom: 32px;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: var(--gold);
-  animation: fadeUp 0.8s ease both;
-}
-.hero-tag::before {
-  content: '';
-  width: 6px; height: 6px;
-  background: var(--accent-teal);
-  border-radius: 50%;
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(0.8); }
-}
-
-.hero-headline {
-  font-family: 'Cinzel', serif;
-  font-size: clamp(36px, 6vw, 68px);
-  font-weight: 900;
-  line-height: 1.05;
-  margin-bottom: 12px;
-  animation: fadeUp 0.8s 0.1s ease both;
-  color: var(--white);
-}
-.hero-headline .gold { color: var(--gold); }
-
-.hero-sub {
-  font-family: 'Cinzel', serif;
-  font-size: clamp(14px, 2vw, 18px);
-  font-weight: 400;
-  color: var(--gold-dim);
-  letter-spacing: 2px;
-  margin-bottom: 28px;
-  animation: fadeUp 0.8s 0.2s ease both;
-}
-
-.hero-body {
-  font-size: 18px;
-  color: var(--white-dim);
-  max-width: 520px;
-  margin-bottom: 48px;
-  animation: fadeUp 0.8s 0.3s ease both;
-  font-weight: 400;
-  line-height: 1.7;
-}
-
-.hero-ctas {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-  animation: fadeUp 0.8s 0.4s ease both;
-}
-
-.btn-primary {
-  background: linear-gradient(135deg, var(--gold), var(--gold-dim));
-  color: var(--black);
-  font-family: 'Rajdhani', sans-serif;
-  font-weight: 800;
-  font-size: 14px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  padding: 16px 36px;
-  border: none;
-  cursor: pointer;
-  transition: all 0.3s;
-  text-decoration: none;
-  display: inline-block;
-  position: relative;
-  overflow: hidden;
-}
-.btn-primary::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(255,255,255,0.2), transparent);
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-.btn-primary:hover::after { opacity: 1; }
-.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(201,168,76,0.3); }
-
-.btn-secondary {
-  background: transparent;
-  border: 1px solid var(--border-bright);
-  color: var(--white);
-  font-family: 'Rajdhani', sans-serif;
-  font-weight: 700;
-  font-size: 14px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  padding: 16px 36px;
-  cursor: pointer;
-  transition: all 0.3s;
-  text-decoration: none;
-  display: inline-block;
-}
-.btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
-
-/* Hero right panel - mockup */
-.hero-visual {
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 380px;
-  animation: fadeLeft 1s 0.5s ease both;
-  opacity: 0.85;
-}
-
-.app-image {
-  width: 100%;
-  height: auto;
-  border-radius: 28px;
-  box-shadow: 0 40px 120px rgba(0,0,0,0.8), 0 0 0 1px rgba(201,168,76,0.1);
-  display: block;
-}
-.app-mockup::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
-}
-
-.mock-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-}
-.mock-logo { font-family: 'Cinzel', serif; font-size: 16px; color: var(--gold); font-weight: 700; letter-spacing: 3px; }
-.mock-icons { display: flex; gap: 8px; }
-.mock-icon { width: 36px; height: 36px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 14px; border-radius: 8px; }
-
-.mock-welcome { font-size: 11px; color: var(--white-dim); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
-.mock-name { font-family: 'Cinzel', serif; font-size: 20px; color: var(--white); font-weight: 700; }
-
-.mock-balance-card {
-  background: linear-gradient(135deg, var(--dark3), var(--dark4));
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 20px;
-  margin: 16px 0;
-  position: relative;
-  overflow: hidden;
-}
-.mock-balance-card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse at 80% 20%, rgba(201,168,76,0.08), transparent);
-}
-.mock-bal-label { font-size: 10px; color: var(--gold); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
-.mock-bal-value { font-family: 'Cinzel', serif; font-size: 28px; font-weight: 900; color: var(--white); }
-.mock-bal-change { display: inline-flex; align-items: center; gap: 4px; background: rgba(31,214,180,0.15); color: var(--accent-teal); font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 20px; margin-top: 8px; }
-
-.mock-actions { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin: 16px 0; }
-.mock-action { background: var(--dark3); border: 1px solid var(--border); border-radius: 10px; padding: 10px 4px; text-align: center; font-size: 9px; color: var(--white-dim); letter-spacing: 1px; text-transform: uppercase; }
-.mock-action .icon { font-size: 16px; display: block; margin-bottom: 4px; color: var(--gold); }
-
-
-.mock-assets-label { font-size: 10px; color: var(--gold); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; }
-.mock-asset { display: flex; align-items: center; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--border); }
-.mock-asset:last-child { border-bottom: none; }
-.mock-asset-icon { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
-.mock-asset-icon.usdt { background: #26A17B; }
-.mock-asset-icon.sol { background: linear-gradient(135deg, #9945FF, #14F195); }
-.mock-asset-icon.bdc { background: linear-gradient(135deg, #8B6914, #C9A84C); }
-.mock-asset-name { font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 13px; flex: 1; }
-.mock-asset-ticker { font-size: 10px; color: var(--white-dim); }
-.mock-asset-value { text-align: right; font-weight: 700; font-size: 13px; }
-.mock-asset-usd { font-size: 10px; color: var(--white-dim); }
-
-/* ===== STATS BAND ===== */
-#stats {
-  background: var(--dark2);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  padding: 40px;
-  overflow: hidden;
-}
-
-.stats-track {
-  display: flex;
-  gap: 60px;
-  animation: ticker 20s linear infinite;
-  white-space: nowrap;
-}
-
-@keyframes ticker {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
-
-.stat-item {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  flex-shrink: 0;
-}
-.stat-divider { color: var(--gold-dim); opacity: 0.3; }
-.stat-label { font-size: 11px; color: var(--white-dim); letter-spacing: 2px; text-transform: uppercase; }
-.stat-value { font-family: 'Cinzel', serif; font-size: 20px; font-weight: 700; color: var(--gold); }
-
-/* ===== SECTION BASE ===== */
-section { padding: 120px 40px; }
-
-.section-tag {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 16px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-.section-tag::before {
-  content: '';
-  width: 30px; height: 1px;
-  background: var(--gold);
-}
-
-.section-title {
-  font-family: 'Cinzel', serif;
-  font-size: clamp(28px, 4vw, 48px);
-  font-weight: 700;
-  line-height: 1.1;
-  margin-bottom: 20px;
-  color: var(--white);
-}
-
-.section-title .gold { color: var(--gold); }
-
-.section-body {
-  font-size: 17px;
-  color: var(--white-dim);
-  line-height: 1.8;
-  max-width: 560px;
-}
-
-/* ===== PROBLEM ===== */
-#problem {
-  background: var(--dark);
-  position: relative;
-  overflow: hidden;
-}
-
-#problem::before {
-  content: '';
-  position: absolute;
-  left: -200px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(232,64,64,0.05) 0%, transparent 70%);
-  pointer-events: none;
-}
-
-.problem-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: center;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.pain-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
-
-.pain-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 20px;
-  padding: 24px 0;
-  border-bottom: 1px solid var(--border);
-  opacity: 0;
-  transform: translateX(30px);
-  transition: all 0.6s ease;
-}
-.pain-item.visible { opacity: 1; transform: translateX(0); }
-
-.pain-num {
-  font-family: 'Space Mono', monospace;
-  font-size: 11px;
-  color: var(--accent-red);
-  opacity: 0.6;
-  padding-top: 3px;
-  flex-shrink: 0;
-}
-.pain-title { font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 18px; color: var(--white); margin-bottom: 4px; }
-.pain-desc { font-size: 14px; color: var(--white-dim); }
-
-/* ===== SOLUTION ===== */
-#solution {
-  position: relative;
-  overflow: hidden;
-}
-#solution::after {
-  content: '';
-  position: absolute;
-  right: -100px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(201,168,76,0.06) 0%, transparent 70%);
-  pointer-events: none;
-}
-
-.solution-header { max-width: 1200px; margin: 0 auto 60px; }
-
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1px;
-  background: var(--border);
-  max-width: 1200px;
-  margin: 0 auto;
-  border: 1px solid var(--border);
-}
-
-.feature-card {
-  background: var(--dark);
-  padding: 48px 40px;
-  position: relative;
-  overflow: hidden;
-  transition: background 0.3s;
-}
-.feature-card:hover { background: var(--dark2); }
-.feature-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0;
-  width: 3px;
-  height: 0;
-  background: var(--gold);
-  transition: height 0.4s ease;
-}
-.feature-card:hover::before { height: 100%; }
-
-.feature-icon {
-  font-size: 36px;
-  margin-bottom: 20px;
-  display: block;
-}
-.feature-title {
-  font-family: 'Cinzel', serif;
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--gold);
-  margin-bottom: 12px;
-  letter-spacing: 1px;
-}
-.feature-desc {
-  font-size: 15px;
-  color: var(--white-dim);
-  line-height: 1.7;
-}
-
-/* ===== HOW IT WORKS ===== */
-#how {
-  background: var(--dark2);
-  position: relative;
-}
-
-.how-content { max-width: 1200px; margin: 0 auto; }
-.how-header { margin-bottom: 80px; }
-
-.steps {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0;
-  position: relative;
-}
-
-.steps::before {
-  content: '';
-  position: absolute;
-  top: 40px; left: 0; right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--border-bright), transparent);
-}
-
-.step {
-  padding: 0 40px 0 0;
-  position: relative;
-}
-.step:last-child { padding-right: 0; }
-
-.step-num {
-  font-family: 'Space Mono', monospace;
-  font-size: 12px;
-  color: var(--gold-dim);
-  letter-spacing: 2px;
-  margin-bottom: 16px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-.step-num::before {
-  content: '';
-  width: 12px; height: 12px;
-  border: 1px solid var(--gold);
-  background: var(--black);
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-
-.step-title {
-  font-family: 'Cinzel', serif;
-  font-size: 20px;
-  font-weight: 700;
-  color: var(--white);
-  margin-bottom: 12px;
-}
-.step-desc { font-size: 15px; color: var(--white-dim); line-height: 1.7; }
-
-/* ===== DIFFERENTIALS ===== */
-#diff {
-  background: var(--black);
-  overflow: hidden;
-  position: relative;
-}
-
-.diff-content { max-width: 1200px; margin: 0 auto; }
-
-.diff-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: center;
-  margin-top: 80px;
-}
-
-.diff-list { display: flex; flex-direction: column; gap: 0; }
-
-.diff-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 24px;
-  padding: 24px 0;
-  border-bottom: 1px solid var(--border);
-}
-
-.diff-check {
-  width: 24px; height: 24px;
-  border: 1px solid var(--gold);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 12px;
-  color: var(--gold);
-  flex-shrink: 0;
-  margin-top: 2px;
-}
-
-.diff-title { font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 18px; color: var(--white); margin-bottom: 4px; }
-.diff-desc { font-size: 14px; color: var(--white-dim); }
-
-.diff-visual {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.tech-badge {
-  background: var(--dark2);
-  border: 1px solid var(--border);
-  padding: 20px 24px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  transition: border-color 0.3s;
-}
-.tech-badge:hover { border-color: var(--gold-dim); }
-.tech-badge-name { font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 16px; color: var(--white); }
-.tech-badge-detail { font-size: 12px; color: var(--white-dim); margin-top: 2px; }
-.tech-badge-tag { font-family: 'Space Mono', monospace; font-size: 10px; color: var(--gold); border: 1px solid var(--border-bright); padding: 4px 10px; }
-
-/* ===== ECOSYSTEM ===== */
-#ecosystem {
-  background: var(--dark);
-  position: relative;
-  overflow: hidden;
-}
-
-.eco-content { max-width: 1200px; margin: 0 auto; }
-
-.tokens-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  margin-top: 60px;
-}
-
-.token-card {
-  background: var(--dark2);
-  border: 1px solid var(--border);
-  padding: 36px 28px;
-  position: relative;
-  overflow: hidden;
-  transition: transform 0.3s, border-color 0.3s;
-}
-.token-card:hover { transform: translateY(-6px); border-color: var(--gold-dim); }
-.token-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-.token-card:hover::before { opacity: 1; }
-
-.token-icon-img {
-  width: 56px;
-  height: 56px;
-  object-fit: contain;
-  margin-bottom: 24px;
-}
-
-.token-symbol {
-  font-family: 'Space Mono', monospace;
-  font-size: 11px;
-  color: var(--gold);
-  letter-spacing: 3px;
-  margin-bottom: 8px;
-}
-.token-name {
-  font-family: 'Cinzel', serif;
-  font-size: 22px;
-  font-weight: 700;
-  color: var(--white);
-  margin-bottom: 16px;
-}
-.token-desc {
-  font-size: 14px;
-  color: var(--white-dim);
-  line-height: 1.7;
-  margin-bottom: 20px;
-}
-.token-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-.token-tag {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  padding: 3px 10px;
-  border: 1px solid var(--border);
-  color: var(--white-dim);
-}
-
-/* ===== PROGRAM ===== */
-#program {
-  background: linear-gradient(135deg, #0A0A0A, #0F0C06);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  position: relative;
-  overflow: hidden;
-}
-
-.program-bg {
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 60% 80% at 50% 50%, rgba(201,168,76,0.04) 0%, transparent 70%);
-}
-
-.program-content { max-width: 800px; margin: 0 auto; text-align: center; position: relative; z-index: 2; }
-
-.program-notice {
-  background: rgba(201,168,76,0.06);
-  border: 1px solid var(--border-bright);
-  padding: 20px 24px;
-  margin-top: 48px;
-  font-size: 13px;
-  color: var(--white-dim);
-  line-height: 1.7;
-}
-.program-notice strong { color: var(--gold); }
-
-.program-metrics {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  background: var(--border);
-  border: 1px solid var(--border);
-  margin: 48px 0;
-}
-.program-metric {
-  background: var(--dark2);
-  padding: 32px 20px;
-  text-align: center;
-}
-.program-metric-value {
-  font-family: 'Cinzel', serif;
-  font-size: 32px;
-  font-weight: 900;
-  color: var(--gold);
-  margin-bottom: 8px;
-}
-.program-metric-label {
-  font-size: 11px;
-  color: var(--white-dim);
-  letter-spacing: 2px;
-  text-transform: uppercase;
-}
-
-/* ===== SECURITY ===== */
-#security {
-  background: var(--dark2);
-}
-
-.security-content { max-width: 1200px; margin: 0 auto; }
-
-.security-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1px;
-  background: var(--border);
-  border: 1px solid var(--border);
-  margin-top: 60px;
-}
-
-.security-item {
-  background: var(--dark);
-  padding: 36px 28px;
-  text-align: center;
-}
-.security-icon { font-size: 32px; display: block; margin-bottom: 16px; }
-.security-title { font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 16px; color: var(--white); margin-bottom: 8px; }
-.security-desc { font-size: 13px; color: var(--white-dim); line-height: 1.6; }
-
-/* ===== GLOBAL ===== */
-#global {
-  background: var(--black);
-  text-align: center;
-}
-
-.global-content { max-width: 800px; margin: 0 auto; }
-
-.markets {
-  display: flex;
-  justify-content: center;
-  gap: 48px;
-  margin: 60px 0;
-  flex-wrap: wrap;
-}
-
-.market-item {
-  text-align: center;
-}
-.market-flag { font-size: 40px; display: block; margin-bottom: 8px; }
-.market-name { font-family: 'Cinzel', serif; font-size: 14px; font-weight: 700; color: var(--gold); letter-spacing: 2px; }
-.market-sub { font-size: 12px; color: var(--white-dim); }
-
-.global-bar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  background: var(--dark2);
-  border: 1px solid var(--border);
-  padding: 16px 24px;
-  font-size: 13px;
-  color: var(--white-dim);
-  max-width: 600px;
-  margin: 0 auto;
-}
-.global-bar strong { color: var(--gold); }
-
-/* ===== DISCLAIMER ===== */
-#disclaimer {
-  background: var(--dark2);
-  border-top: 1px solid var(--border);
-  padding: 60px 40px;
-}
-
-.disclaimer-content { max-width: 900px; margin: 0 auto; }
-
-.disclaimer-box {
-  border: 1px solid rgba(232,64,64,0.2);
-  background: rgba(232,64,64,0.03);
-  padding: 32px;
-}
-
-.disclaimer-title {
-  font-family: 'Space Mono', monospace;
-  font-size: 11px;
-  color: var(--accent-red);
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  margin-bottom: 16px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.disclaimer-title::before { content: '⚠'; font-size: 14px; }
-
-.disclaimer-text {
-  font-size: 13px;
-  color: var(--white-dim);
-  line-height: 1.8;
-}
-
-/* ===== CTA FINAL ===== */
-#cta-final {
-  background: var(--black);
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-
-#cta-final::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse 60% 80% at 50% 0%, rgba(201,168,76,0.08) 0%, transparent 60%);
-}
-
-.cta-final-content { position: relative; z-index: 2; max-width: 700px; margin: 0 auto; }
-
-.cta-final-title {
-  font-family: 'Cinzel', serif;
-  font-size: clamp(28px, 5vw, 52px);
-  font-weight: 900;
-  line-height: 1.1;
-  margin-bottom: 20px;
-}
-
-.cta-final-sub {
-  font-size: 18px;
-  color: var(--white-dim);
-  margin-bottom: 48px;
-}
-
-.cta-final-btns {
-  display: flex;
-  gap: 16px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-/* ===== FOOTER ===== */
-footer {
-  background: var(--dark);
-  border-top: 1px solid var(--border);
-  padding: 60px 40px 40px;
-}
-
-.footer-grid {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: 60px;
-  max-width: 1200px;
-  margin: 0 auto 60px;
-}
-
-
-.footer-logo { font-family: 'Cinzel', serif; font-size: 24px; font-weight: 700; color: var(--gold); letter-spacing: 4px; margin-bottom: 16px; }
-.footer-tagline { font-size: 14px; color: var(--white-dim); line-height: 1.7; margin-bottom: 24px; }
-
-.footer-col-title { font-family: 'Rajdhani', sans-serif; font-weight: 800; font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
-.footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-.footer-links a { color: var(--white-dim); text-decoration: none; font-size: 14px; transition: color 0.3s; }
-.footer-links a:hover { color: var(--white); }
-
-.footer-bottom {
-  border-top: 1px solid var(--border);
-  padding-top: 32px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1200px;
-  margin: 0 auto;
-  font-size: 12px;
-  color: var(--white-dim);
-  letter-spacing: 1px;
-}
-
-/* ===== ANIMATIONS ===== */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes fadeLeft {
-  from { opacity: 0; transform: translate(60px, -50%); }
-  to { opacity: 0.85; transform: translate(0, -50%); }
-}
-
-.reveal {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
-}
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* ===== SCROLLBAR ===== */
-::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: var(--black); }
-::-webkit-scrollbar-thumb { background: var(--gold-dim); }
-
-.nav-right {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-.menu-toggle {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  cursor: pointer;
-}
-.menu-toggle span {
-  width: 25px;
-  height: 2px;
-  background: var(--gold);
-  transition: all 0.3s;
-}
-
-/* ===== RESPONSIVE ===== */
-@media (max-width: 1100px) {
-  .hero-visual { display: none; }
-  .problem-grid, .diff-grid { grid-template-columns: 1fr; gap: 40px; }
-  .features-grid, .tokens-grid { grid-template-columns: 1fr; }
-  .steps { grid-template-columns: 1fr; gap: 40px; }
-  .steps::before { display: none; }
-  .security-grid { grid-template-columns: repeat(2, 1fr); }
-  .program-metrics { grid-template-columns: 1fr; }
-  .footer-grid { grid-template-columns: 1fr 1fr; }
-}
-
-@media (max-width: 800px) {
-  .menu-toggle { display: flex; }
-  .nav-links {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    flex-direction: column;
-    background: rgba(8,8,8,0.98);
-    padding: 24px;
-    border-bottom: 1px solid var(--border);
-    display: none;
-    text-align: center;
-    gap: 20px;
-  }
-  .nav-links.active {
-    display: flex;
-  }
-}
-
-@media (max-width: 600px) {
-  nav { padding: 12.5px 20px; }
-  section { padding: 80px 24px; }
-  #hero { padding: 100px 24px 60px; }
-  .hero-corner { display: none; }
-  .security-grid { grid-template-columns: 1fr; }
-  .footer-grid { grid-template-columns: 1fr; }
-  .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
-}
-
-/* ===== CAROUSEL ===== */
-.carousel-container {
-  position: relative;
-  width: 100%;
-  max-width: 400px;
-  margin: 0 auto;
-  display: grid;
-  overflow: hidden;
-  border-radius: 20px;
-  border: 1px solid var(--border-bright);
-  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-  background: var(--dark2);
-}
-.carousel-slide {
-  grid-area: 1 / 1;
-  opacity: 0;
-  transition: opacity 0.8s ease-in-out;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1;
-}
-.carousel-slide.active {
-  opacity: 1;
-  z-index: 2;
-}
-.carousel-slide img {
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-  border-radius: 20px;
-}
-.carousel-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(8,8,8,0.7);
-  color: var(--gold);
-  border: 1px solid var(--gold);
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  font-size: 20px;
-  cursor: pointer;
-  z-index: 10;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.carousel-btn:hover {
-  background: var(--gold);
-  color: var(--black);
-}
-.prev-btn { left: 20px; }
-.next-btn { right: 20px; }
-.carousel-dots {
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 12px;
-  z-index: 10;
-}
-.carousel-dots .dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.3);
-  cursor: pointer;
-  transition: background 0.3s;
-}
-.carousel-dots .dot.active {
-  background: var(--gold);
-}
-
-/* ===== MODAL ===== */
-#terms-modal {
-  display: none;
-  position: fixed;
-  z-index: 2000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.9);
-  backdrop-filter: blur(10px);
-  overflow-y: auto;
-  padding: 40px 20px;
-}
-
-.modal-content {
-  background: var(--dark2);
-  margin: auto;
-  padding: 48px;
-  border: 1px solid var(--border-bright);
-  width: 100%;
-  max-width: 800px;
-  border-radius: 16px;
-  position: relative;
-  box-shadow: 0 40px 100px rgba(0,0,0,0.8);
-  animation: modalFadeIn 0.4s ease-out;
-}
-
-@keyframes modalFadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.modal-close {
-  position: absolute;
-  top: 24px;
-  right: 24px;
-  color: var(--white-dim);
-  font-size: 24px;
-  cursor: pointer;
-  transition: color 0.3s;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid var(--border);
-  border-radius: 50%;
-}
-
-.modal-close:hover {
-  color: var(--gold);
-  border-color: var(--gold);
-}
-
-.modal-title {
-  font-family: 'Cinzel', serif;
-  color: var(--gold);
-  font-size: clamp(20px, 4vw, 24px);
-  margin-bottom: 8px;
-  line-height: 1.2;
-  font-weight: 700;
-  letter-spacing: 1px;
-}
-
-.modal-update {
-  font-size: 13px;
-  color: var(--gold-dim);
-  margin-bottom: 32px;
-  font-family: 'Space Mono', monospace;
-  letter-spacing: 1px;
-}
-
-.modal-body {
-  color: var(--white-dim);
-  font-size: 15px;
-  line-height: 1.8;
-}
-
-.modal-body h3 {
-  color: var(--white);
-  margin-top: 32px;
-  margin-bottom: 12px;
-  font-family: 'Cinzel', serif;
-  font-size: 16px;
-  letter-spacing: 1px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.modal-body h3::after {
-  content: '';
-  height: 1px;
-  flex: 1;
-  background: var(--border);
-}
-
-.modal-body strong {
-  color: var(--white);
-}
-
-.modal-footer {
-  margin-top: 48px;
-  text-align: center;
-}
-
-.close-btn {
-  background: var(--gold);
-  color: var(--black);
-  border: none;
-  padding: 12px 32px;
-  font-family: 'Rajdhani', sans-serif;
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: all 0.3s;
-}
-
-.close-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(201,168,76,0.3);
-}
-
-#terms-modal::-webkit-scrollbar {
-  width: 6px;
-}
-#terms-modal::-webkit-scrollbar-track {
-  background: var(--black);
-}
-#terms-modal::-webkit-scrollbar-thumb {
-  background: var(--gold-dim);
-  border-radius: 3px;
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verum Crypto — Nova Infraestrutura Financeira da América Latina</title>
+  <link rel="icon" type="image/png" href="./vc-favicon-lp.png">
+  <link rel="shortcut icon" type="image/png" href="./vc-favicon-lp.png">
+  <link rel="apple-touch-icon" href="./vc-favicon-lp.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --gold: #C9A84C;
+      --gold-light: #E8C96A;
+      --gold-dim: #8B6914;
+      --black: #080808;
+      --dark: #0F0F0F;
+      --dark2: #141414;
+      --dark3: #1A1A1A;
+      --dark4: #222222;
+      --white: #F0ECE0;
+      --white-dim: #A09880;
+      --accent-teal: #1FD6B4;
+      --accent-red: #E84040;
+      --border: rgba(201, 168, 76, 0.15);
+      --border-bright: rgba(201, 168, 76, 0.4);
+    }
+
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 17px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ===== NOISE OVERLAY ===== */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 1000;
+      opacity: 0.4;
+    }
+
+    /* ===== NAV ===== */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 900;
+      padding: 16.5px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(180deg, rgba(8, 8, 8, 0.95) 0%, transparent 100%);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'Cinzel', serif;
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    .nav-logo span {
+      color: var(--white-dim);
+      font-size: 10px;
+      display: block;
+      letter-spacing: 6px;
+      font-weight: 400;
+      margin-top: -2px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--white-dim);
+      text-decoration: none;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--gold);
+    }
+
+    .nav-cta {
+      background: transparent;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 10px 24px;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-decoration: none;
+    }
+
+    .nav-cta:hover {
+      background: var(--gold);
+      color: var(--black);
+    }
+
+    /* ===== HERO ===== */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: 120px 40px 80px;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 80% at 80% 50%, rgba(201, 168, 76, 0.06) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 60% at 20% 80%, rgba(31, 214, 180, 0.04) 0%, transparent 60%),
+        linear-gradient(180deg, #080808 0%, #0A0A0A 100%);
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(201, 168, 76, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201, 168, 76, 0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+    }
+
+    .hero-corner {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      border: 1px solid var(--border-bright);
+    }
+
+    .hero-corner.tl {
+      top: 80px;
+      left: 40px;
+      border-right: none;
+      border-bottom: none;
+    }
+
+    .hero-corner.br {
+      bottom: 40px;
+      right: 40px;
+      border-left: none;
+      border-top: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--border-bright);
+      padding: 6px 16px;
+      margin-bottom: 32px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      animation: fadeUp 0.8s ease both;
+    }
+
+    .hero-tag::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--accent-teal);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 0.5;
+        transform: scale(0.8);
+      }
+    }
+
+    .hero-headline {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(36px, 6vw, 68px);
+      font-weight: 900;
+      line-height: 1.05;
+      margin-bottom: 12px;
+      animation: fadeUp 0.8s 0.1s ease both;
+      color: var(--white);
+    }
+
+    .hero-headline .gold {
+      color: var(--gold);
+    }
+
+    .hero-sub {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(14px, 2vw, 18px);
+      font-weight: 400;
+      color: var(--gold-dim);
+      letter-spacing: 2px;
+      margin-bottom: 28px;
+      animation: fadeUp 0.8s 0.2s ease both;
+    }
+
+    .hero-body {
+      font-size: 18px;
+      color: var(--white-dim);
+      max-width: 520px;
+      margin-bottom: 48px;
+      animation: fadeUp 0.8s 0.3s ease both;
+      font-weight: 400;
+      line-height: 1.7;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      animation: fadeUp 0.8s 0.4s ease both;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--gold), var(--gold-dim));
+      color: var(--black);
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 800;
+      font-size: 14px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 16px 36px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-decoration: none;
+      display: inline-block;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .btn-primary:hover::after {
+      opacity: 1;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(201, 168, 76, 0.3);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 1px solid var(--border-bright);
+      color: var(--white);
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 16px 36px;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    /* Hero right panel - mockup */
+    .hero-visual {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 380px;
+      animation: fadeLeft 1s 0.5s ease both;
+      opacity: 0.85;
+    }
+
+    .app-image {
+      width: 100%;
+      height: auto;
+      border-radius: 28px;
+      box-shadow: 0 40px 120px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(201, 168, 76, 0.1);
+      display: block;
+    }
+
+    .app-mockup::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+
+    .mock-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .mock-logo {
+      font-family: 'Cinzel', serif;
+      font-size: 16px;
+      color: var(--gold);
+      font-weight: 700;
+      letter-spacing: 3px;
+    }
+
+    .mock-icons {
+      display: flex;
+      gap: 8px;
+    }
+
+    .mock-icon {
+      width: 36px;
+      height: 36px;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      border-radius: 8px;
+    }
+
+    .mock-welcome {
+      font-size: 11px;
+      color: var(--white-dim);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .mock-name {
+      font-family: 'Cinzel', serif;
+      font-size: 20px;
+      color: var(--white);
+      font-weight: 700;
+    }
+
+    .mock-balance-card {
+      background: linear-gradient(135deg, var(--dark3), var(--dark4));
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px;
+      margin: 16px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mock-balance-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 80% 20%, rgba(201, 168, 76, 0.08), transparent);
+    }
+
+    .mock-bal-label {
+      font-size: 10px;
+      color: var(--gold);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .mock-bal-value {
+      font-family: 'Cinzel', serif;
+      font-size: 28px;
+      font-weight: 900;
+      color: var(--white);
+    }
+
+    .mock-bal-change {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: rgba(31, 214, 180, 0.15);
+      color: var(--accent-teal);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 20px;
+      margin-top: 8px;
+    }
+
+    .mock-actions {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+      margin: 16px 0;
+    }
+
+    .mock-action {
+      background: var(--dark3);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 10px 4px;
+      text-align: center;
+      font-size: 9px;
+      color: var(--white-dim);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .mock-action .icon {
+      font-size: 16px;
+      display: block;
+      margin-bottom: 4px;
+      color: var(--gold);
+    }
+
+
+    .mock-assets-label {
+      font-size: 10px;
+      color: var(--gold);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .mock-asset {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .mock-asset:last-child {
+      border-bottom: none;
+    }
+
+    .mock-asset-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+
+    .mock-asset-icon.usdt {
+      background: #26A17B;
+    }
+
+    .mock-asset-icon.sol {
+      background: linear-gradient(135deg, #9945FF, #14F195);
+    }
+
+    .mock-asset-icon.bdc {
+      background: linear-gradient(135deg, #8B6914, #C9A84C);
+    }
+
+    .mock-asset-name {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      flex: 1;
+    }
+
+    .mock-asset-ticker {
+      font-size: 10px;
+      color: var(--white-dim);
+    }
+
+    .mock-asset-value {
+      text-align: right;
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    .mock-asset-usd {
+      font-size: 10px;
+      color: var(--white-dim);
+    }
+
+    /* ===== STATS BAND ===== */
+    #stats {
+      background: var(--dark2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 40px;
+      overflow: hidden;
+    }
+
+    .stats-track {
+      display: flex;
+      gap: 60px;
+      animation: ticker 20s linear infinite;
+      white-space: nowrap;
+    }
+
+    @keyframes ticker {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    .stat-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-shrink: 0;
+    }
+
+    .stat-divider {
+      color: var(--gold-dim);
+      opacity: 0.3;
+    }
+
+    .stat-label {
+      font-size: 11px;
+      color: var(--white-dim);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .stat-value {
+      font-family: 'Cinzel', serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--gold);
+    }
+
+    /* ===== SECTION BASE ===== */
+    section {
+      padding: 120px 40px;
+    }
+
+    .section-tag {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-tag::before {
+      content: '';
+      width: 30px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .section-title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(28px, 4vw, 48px);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      color: var(--white);
+    }
+
+    .section-title .gold {
+      color: var(--gold);
+    }
+
+    .section-body {
+      font-size: 17px;
+      color: var(--white-dim);
+      line-height: 1.8;
+      max-width: 560px;
+    }
+
+    /* ===== PROBLEM ===== */
+    #problem {
+      background: var(--dark);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #problem::before {
+      content: '';
+      position: absolute;
+      left: -200px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(232, 64, 64, 0.05) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .problem-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .pain-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .pain-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--border);
+      opacity: 0;
+      transform: translateX(30px);
+      transition: all 0.6s ease;
+    }
+
+    .pain-item.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .pain-num {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      color: var(--accent-red);
+      opacity: 0.6;
+      padding-top: 3px;
+      flex-shrink: 0;
+    }
+
+    .pain-title {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 18px;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+
+    .pain-desc {
+      font-size: 14px;
+      color: var(--white-dim);
+    }
+
+    /* ===== SOLUTION ===== */
+    #solution {
+      position: relative;
+      overflow: hidden;
+    }
+
+    #solution::after {
+      content: '';
+      position: absolute;
+      right: -100px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(201, 168, 76, 0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .solution-header {
+      max-width: 1200px;
+      margin: 0 auto 60px;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: var(--border);
+      max-width: 1200px;
+      margin: 0 auto;
+      border: 1px solid var(--border);
+    }
+
+    .feature-card {
+      background: var(--dark);
+      padding: 48px 40px;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s;
+    }
+
+    .feature-card:hover {
+      background: var(--dark2);
+    }
+
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 3px;
+      height: 0;
+      background: var(--gold);
+      transition: height 0.4s ease;
+    }
+
+    .feature-card:hover::before {
+      height: 100%;
+    }
+
+    .feature-icon {
+      font-size: 36px;
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .feature-title {
+      font-family: 'Cinzel', serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 12px;
+      letter-spacing: 1px;
+    }
+
+    .feature-desc {
+      font-size: 15px;
+      color: var(--white-dim);
+      line-height: 1.7;
+    }
+
+    /* ===== HOW IT WORKS ===== */
+    #how {
+      background: var(--dark2);
+      position: relative;
+    }
+
+    .how-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .how-header {
+      margin-bottom: 80px;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      position: relative;
+    }
+
+    .steps::before {
+      content: '';
+      position: absolute;
+      top: 40px;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border-bright), transparent);
+    }
+
+    .step {
+      padding: 0 40px 0 0;
+      position: relative;
+    }
+
+    .step:last-child {
+      padding-right: 0;
+    }
+
+    .step-num {
+      font-family: 'Space Mono', monospace;
+      font-size: 12px;
+      color: var(--gold-dim);
+      letter-spacing: 2px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .step-num::before {
+      content: '';
+      width: 12px;
+      height: 12px;
+      border: 1px solid var(--gold);
+      background: var(--black);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .step-title {
+      font-family: 'Cinzel', serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+
+    .step-desc {
+      font-size: 15px;
+      color: var(--white-dim);
+      line-height: 1.7;
+    }
+
+    /* ===== DIFFERENTIALS ===== */
+    #diff {
+      background: var(--black);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .diff-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .diff-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      margin-top: 80px;
+    }
+
+    .diff-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .diff-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 24px;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .diff-check {
+      width: 24px;
+      height: 24px;
+      border: 1px solid var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      color: var(--gold);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .diff-title {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 18px;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+
+    .diff-desc {
+      font-size: 14px;
+      color: var(--white-dim);
+    }
+
+    .diff-visual {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .tech-badge {
+      background: var(--dark2);
+      border: 1px solid var(--border);
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: border-color 0.3s;
+    }
+
+    .tech-badge:hover {
+      border-color: var(--gold-dim);
+    }
+
+    .tech-badge-name {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--white);
+    }
+
+    .tech-badge-detail {
+      font-size: 12px;
+      color: var(--white-dim);
+      margin-top: 2px;
+    }
+
+    .tech-badge-tag {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      color: var(--gold);
+      border: 1px solid var(--border-bright);
+      padding: 4px 10px;
+    }
+
+    /* ===== ECOSYSTEM ===== */
+    #ecosystem {
+      background: var(--dark);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .eco-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .tokens-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 60px;
+    }
+
+    .token-card {
+      background: var(--dark2);
+      border: 1px solid var(--border);
+      padding: 36px 28px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+
+    .token-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--gold-dim);
+    }
+
+    .token-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .token-card:hover::before {
+      opacity: 1;
+    }
+
+    .token-icon-img {
+      width: 56px;
+      height: 56px;
+      object-fit: contain;
+      margin-bottom: 24px;
+    }
+
+    .token-symbol {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      color: var(--gold);
+      letter-spacing: 3px;
+      margin-bottom: 8px;
+    }
+
+    .token-name {
+      font-family: 'Cinzel', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+
+    .token-desc {
+      font-size: 14px;
+      color: var(--white-dim);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .token-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .token-tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border: 1px solid var(--border);
+      color: var(--white-dim);
+    }
+
+    /* ===== PROGRAM ===== */
+    #program {
+      background: linear-gradient(135deg, #0A0A0A, #0F0C06);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .program-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 80% at 50% 50%, rgba(201, 168, 76, 0.04) 0%, transparent 70%);
+    }
+
+    .program-content {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .program-notice {
+      background: rgba(201, 168, 76, 0.06);
+      border: 1px solid var(--border-bright);
+      padding: 20px 24px;
+      margin-top: 48px;
+      font-size: 13px;
+      color: var(--white-dim);
+      line-height: 1.7;
+    }
+
+    .program-notice strong {
+      color: var(--gold);
+    }
+
+    .program-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      margin: 48px 0;
+    }
+
+    .program-metric {
+      background: var(--dark2);
+      padding: 32px 20px;
+      text-align: center;
+    }
+
+    .program-metric-value {
+      font-family: 'Cinzel', serif;
+      font-size: 32px;
+      font-weight: 900;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    .program-metric-label {
+      font-size: 11px;
+      color: var(--white-dim);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    /* ===== SECURITY ===== */
+    #security {
+      background: var(--dark2);
+    }
+
+    .security-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .security-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      margin-top: 60px;
+    }
+
+    .security-item {
+      background: var(--dark);
+      padding: 36px 28px;
+      text-align: center;
+    }
+
+    .security-icon {
+      font-size: 32px;
+      display: block;
+      margin-bottom: 16px;
+    }
+
+    .security-title {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+
+    .security-desc {
+      font-size: 13px;
+      color: var(--white-dim);
+      line-height: 1.6;
+    }
+
+    /* ===== GLOBAL ===== */
+    #global {
+      background: var(--black);
+      text-align: center;
+    }
+
+    .global-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .markets {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      margin: 60px 0;
+      flex-wrap: wrap;
+    }
+
+    .market-item {
+      text-align: center;
+    }
+
+    .market-flag {
+      font-size: 40px;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .market-name {
+      font-family: 'Cinzel', serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 2px;
+    }
+
+    .market-sub {
+      font-size: 12px;
+      color: var(--white-dim);
+    }
+
+    .global-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      background: var(--dark2);
+      border: 1px solid var(--border);
+      padding: 16px 24px;
+      font-size: 13px;
+      color: var(--white-dim);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .global-bar strong {
+      color: var(--gold);
+    }
+
+    /* ===== DISCLAIMER ===== */
+    #disclaimer {
+      background: var(--dark2);
+      border-top: 1px solid var(--border);
+      padding: 60px 40px;
+    }
+
+    .disclaimer-content {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .disclaimer-box {
+      border: 1px solid rgba(232, 64, 64, 0.2);
+      background: rgba(232, 64, 64, 0.03);
+      padding: 32px;
+    }
+
+    .disclaimer-title {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      color: var(--accent-red);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .disclaimer-title::before {
+      content: '⚠';
+      font-size: 14px;
+    }
+
+    .disclaimer-text {
+      font-size: 13px;
+      color: var(--white-dim);
+      line-height: 1.8;
+    }
+
+    /* ===== CTA FINAL ===== */
+    #cta-final {
+      background: var(--black);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #cta-final::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 80% at 50% 0%, rgba(201, 168, 76, 0.08) 0%, transparent 60%);
+    }
+
+    .cta-final-content {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .cta-final-title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(28px, 5vw, 52px);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    .cta-final-sub {
+      font-size: 18px;
+      color: var(--white-dim);
+      margin-bottom: 48px;
+    }
+
+    .cta-final-btns {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--dark);
+      border-top: 1px solid var(--border);
+      padding: 60px 40px 40px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 60px;
+      max-width: 1200px;
+      margin: 0 auto 60px;
+    }
+
+
+    .footer-logo {
+      font-family: 'Cinzel', serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 4px;
+      margin-bottom: 16px;
+    }
+
+    .footer-tagline {
+      font-size: 14px;
+      color: var(--white-dim);
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .footer-col-title {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 800;
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-links a {
+      color: var(--white-dim);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.3s;
+    }
+
+    .footer-links a:hover {
+      color: var(--white);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding-top: 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      font-size: 12px;
+      color: var(--white-dim);
+      letter-spacing: 1px;
+    }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeLeft {
+      from {
+        opacity: 0;
+        transform: translate(60px, -50%);
+      }
+
+      to {
+        opacity: 0.85;
+        transform: translate(0, -50%);
+      }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===== SCROLLBAR ===== */
+    ::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--black);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--gold-dim);
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      width: 25px;
+      height: 2px;
+      background: var(--gold);
+      transition: all 0.3s;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1100px) {
+      .hero-visual {
+        display: none;
+      }
+
+      .problem-grid,
+      .diff-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .features-grid,
+      .tokens-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .steps {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .steps::before {
+        display: none;
+      }
+
+      .security-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .program-metrics {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 800px) {
+      .menu-toggle {
+        display: flex;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background: rgba(8, 8, 8, 0.98);
+        padding: 24px;
+        border-bottom: 1px solid var(--border);
+        display: none;
+        text-align: center;
+        gap: 20px;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+    }
+
+    @media (max-width: 600px) {
+      nav {
+        padding: 12.5px 20px;
+      }
+
+      section {
+        padding: 80px 24px;
+      }
+
+      #hero {
+        padding: 100px 24px 60px;
+      }
+
+      .hero-corner {
+        display: none;
+      }
+
+      .security-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+      }
+    }
+
+    /* ===== CAROUSEL ===== */
+    .carousel-container {
+      position: relative;
+      width: 100%;
+      max-width: 400px;
+      margin: 0 auto;
+      display: grid;
+      overflow: hidden;
+      border-radius: 20px;
+      border: 1px solid var(--border-bright);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+      background: var(--dark2);
+    }
+
+    .carousel-slide {
+      grid-area: 1 / 1;
+      opacity: 0;
+      transition: opacity 0.8s ease-in-out;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1;
+    }
+
+    .carousel-slide.active {
+      opacity: 1;
+      z-index: 2;
+    }
+
+    .carousel-slide img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      border-radius: 20px;
+    }
+
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(8, 8, 8, 0.7);
+      color: var(--gold);
+      border: 1px solid var(--gold);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      font-size: 20px;
+      cursor: pointer;
+      z-index: 10;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .carousel-btn:hover {
+      background: var(--gold);
+      color: var(--black);
+    }
+
+    .prev-btn {
+      left: 20px;
+    }
+
+    .next-btn {
+      right: 20px;
+    }
+
+    .carousel-dots {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 12px;
+      z-index: 10;
+    }
+
+    .carousel-dots .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .carousel-dots .dot.active {
+      background: var(--gold);
+    }
+
+    /* ===== MODAL ===== */
+    #terms-modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      backdrop-filter: blur(10px);
+      overflow-y: auto;
+      padding: 40px 20px;
+    }
+
+    .modal-content {
+      background: var(--dark2);
+      margin: auto;
+      padding: 48px;
+      border: 1px solid var(--border-bright);
+      width: 100%;
+      max-width: 800px;
+      border-radius: 16px;
+      position: relative;
+      box-shadow: 0 40px 100px rgba(0, 0, 0, 0.8);
+      animation: modalFadeIn 0.4s ease-out;
+    }
+
+    @keyframes modalFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      color: var(--white-dim);
+      font-size: 24px;
+      cursor: pointer;
+      transition: color 0.3s;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+    }
+
+    .modal-close:hover {
+      color: var(--gold);
+      border-color: var(--gold);
+    }
+
+    .modal-title {
+      font-family: 'Cinzel', serif;
+      color: var(--gold);
+      font-size: clamp(20px, 4vw, 24px);
+      margin-bottom: 8px;
+      line-height: 1.2;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .modal-update {
+      font-size: 13px;
+      color: var(--gold-dim);
+      margin-bottom: 32px;
+      font-family: 'Space Mono', monospace;
+      letter-spacing: 1px;
+    }
+
+    .modal-body {
+      color: var(--white-dim);
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    .modal-body h3 {
+      color: var(--white);
+      margin-top: 32px;
+      margin-bottom: 12px;
+      font-family: 'Cinzel', serif;
+      font-size: 16px;
+      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .modal-body h3::after {
+      content: '';
+      height: 1px;
+      flex: 1;
+      background: var(--border);
+    }
+
+    .modal-body strong {
+      color: var(--white);
+    }
+
+    .modal-footer {
+      margin-top: 48px;
+      text-align: center;
+    }
+
+    .close-btn {
+      background: var(--gold);
+      color: var(--black);
+      border: none;
+      padding: 12px 32px;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .close-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(201, 168, 76, 0.3);
+    }
+
+    #terms-modal::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    #terms-modal::-webkit-scrollbar-track {
+      background: var(--black);
+    }
+
+    #terms-modal::-webkit-scrollbar-thumb {
+      background: var(--gold-dim);
+      border-radius: 3px;
+    }
+  </style>
 </head>
+
 <body>
 
-<!-- NAV -->
-<nav>
-  <a href="#" class="nav-logo">VERUM<span>CRYPTO</span></a>
-  <ul class="nav-links" id="nav-menu">
-    <li><a href="#solution">Solução</a></li>
-    <li><a href="#how">Como Funciona</a></li>
-    <li><a href="#ecosystem">Ecossistema</a></li>
-    <li><a href="#security">Segurança</a></li>
-  </ul>
-  <div class="nav-right">
-    <a href="https://verumcrypto.com" class="nav-cta">Baixe Agora</a>
-    <div class="menu-toggle" id="mobile-menu">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-  </div>
-</nav>
-
-<!-- HERO -->
-<section id="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-grid"></div>
-  <div class="hero-corner tl"></div>
-  <div class="hero-corner br"></div>
-
-  <div class="hero-content">
-    <div class="hero-tag">Powered by Solana · América Latina</div>
-    <h1 class="hero-headline">
-      A Nova<br>
-      <span class="gold">Infraestrutura</span><br>
-      Financeira
-    </h1>
-    <p class="hero-sub">Para o Comércio Digital na América Latina</p>
-    <p class="hero-body">
-      Compre, venda e movimente ativos digitais com liquidez real, câmbio inteligente e integração direta com o comércio.
-    </p>
-    <div class="hero-ctas">
-      <a href="#cta-final" class="btn-primary">Começar Agora</a>
-      <a href="#how" class="btn-secondary">Solicitar Acesso</a>
-    </div>
-  </div>
-
-  <!-- App Mockup -->
-  <div class="hero-visual">
-    <img src="./home.jpeg" alt="Verum Crypto App" class="app-image">
-  </div>
-</section>
-
-<!-- STATS TICKER -->
-<div id="stats">
-  <div class="stats-track">
-    <div class="stat-item">
-      <span class="stat-label">Rede</span>
-      <span class="stat-value">Solana</span>
-    </div>
-    <div class="stat-item stat-divider">◆</div>
-    <div class="stat-item">
-      <span class="stat-label">Velocidade</span>
-      <span class="stat-value">65,000 TPS</span>
-    </div>
-    <div class="stat-item stat-divider">◆</div>
-    <div class="stat-item">
-      <span class="stat-label">Custo por tx</span>
-      <span class="stat-value">2%</span>
-    </div>
-    <div class="stat-item stat-divider">◆</div>
-    <div class="stat-item">
-      <span class="stat-label">Mercados</span>
-      <span class="stat-value">BR · PY · PA</span>
-    </div>
-    <div class="stat-item stat-divider">◆</div>
-    <div class="stat-item">
-      <span class="stat-label">Self-Custody</span>
-      <span class="stat-value">100%</span>
-    </div>
-    <div class="stat-item stat-divider">◆</div>
-    <div class="stat-item">
-      <span class="stat-label">Tokens Nativos</span>
-      <span class="stat-value">ESCT · BDC · BRUTOS</span>
-    </div>
-    <div class="stat-item stat-divider">◆</div>
-    <!-- repeat for seamless loop -->
-    <div class="stat-item">
-      <span class="stat-label">Rede</span>
-      <span class="stat-value">Solana</span>
-    </div>
-    <div class="stat-item stat-divider">◆</div>
-    <div class="stat-item">
-      <span class="stat-label">Velocidade</span>
-      <span class="stat-value">65,000 TPS</span>
-    </div>
-    <div class="stat-item stat-divider">◆</div>
-    <div class="stat-item">
-      <span class="stat-label">Custo por tx</span>
-      <span class="stat-value">2%</span>
-    </div>
-    <div class="stat-item stat-divider">◆</div>
-    <div class="stat-item">
-      <span class="stat-label">Mercados</span>
-      <span class="stat-value">BR · PY · PA</span>
-    </div>
-    <div class="stat-item stat-divider">◆</div>
-    <div class="stat-item">
-      <span class="stat-label">Self-Custody</span>
-      <span class="stat-value">100%</span>
-    </div>
-    <div class="stat-item stat-divider">◆</div>
-    <div class="stat-item">
-      <span class="stat-label">Tokens Nativos</span>
-      <span class="stat-value">ESCT · BDC · BRUTOS</span>
-    </div>
-  </div>
-</div>
-
-<!-- PROBLEM -->
-<section id="problem">
-  <div class="problem-grid">
-    <div class="reveal">
-      <div class="section-tag">O Problema</div>
-      <h2 class="section-title">O sistema financeiro <span class="gold">não foi feito</span> para você</h2>
-      <p class="section-body">O sistema tradicional é lento, caro e limitado para quem vive entre múltiplas moedas e mercados na América Latina.</p>
-    </div>
-    <ul class="pain-list">
-      <li class="pain-item">
-        <span class="pain-num">01</span>
-        <div>
-          <div class="pain-title">Taxas Abusivas</div>
-          <div class="pain-desc">Câmbio com spread de 3-8%, remessas internacionais custando até 15% do valor.</div>
-        </div>
-      </li>
-      <li class="pain-item">
-        <span class="pain-num">02</span>
-        <div>
-          <div class="pain-title">Burocracia Excessiva</div>
-          <div class="pain-desc">Processos lentos, exigências documentais e barreiras que excluem a maioria.</div>
-        </div>
-      </li>
-      <li class="pain-item">
-        <span class="pain-num">03</span>
-        <div>
-          <div class="pain-title">Fronteiras Fragmentadas</div>
-          <div class="pain-desc">Sem integração real entre Brasil, Paraguai e Panamá para comércio digital.</div>
-        </div>
-      </li>
-      <li class="pain-item">
-        <span class="pain-num">04</span>
-        <div>
-          <div class="pain-title">Inflação Silenciosa</div>
-          <div class="pain-desc">Dinheiro desvalorizando enquanto alternativas reais de proteção eram inacessíveis.</div>
-        </div>
-      </li>
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">VERUM<span>CRYPTO</span></a>
+    <ul class="nav-links" id="nav-menu">
+      <li><a href="#solution">Solução</a></li>
+      <li><a href="#how">Como Funciona</a></li>
+      <li><a href="#ecosystem">Ecossistema</a></li>
+      <li><a href="#security">Segurança</a></li>
     </ul>
-  </div>
-</section>
-
-
-
-<!-- SOLUTION -->
-<section id="solution">
-  <div class="solution-header reveal">
-    <div class="section-tag">A Solução</div>
-    <h2 class="section-title">Tecnologia que <span class="gold">conecta</span> você ao futuro</h2>
-    <p class="section-body">Com infraestrutura baseada em Solana, a Verum oferece velocidade, segurança e integração real com o comércio local.</p>
-  </div>
-  <div class="features-grid">
-    <div class="feature-card reveal">
-      <span class="feature-icon">⚡</span>
-      <div class="feature-title">Conversão Instantânea</div>
-      <p class="feature-desc">Troque entre ativos digitais em segundos com liquidez real e taxas transparentes. Sem espera, sem burocracia.</p>
-    </div>
-    <div class="feature-card reveal">
-      <span class="feature-icon">⊞</span>
-      <div class="feature-title">Pagamentos via QR Code</div>
-      <p class="feature-desc">Pague produtos e serviços diretamente com QR Code dinâmico. Integração com comércio físico e digital.</p>
-    </div>
-    <div class="feature-card reveal">
-      <span class="feature-icon">📊</span>
-      <div class="feature-title">Dashboard em Tempo Real</div>
-      <p class="feature-desc">Visualize movimentações, conversões e evolução dos seus ativos com interface clara e profissional.</p>
-    </div>
-    <div class="feature-card reveal">
-      <span class="feature-icon">🔐</span>
-      <div class="feature-title">Self-Custody Total</div>
-      <p class="feature-desc">Suas chaves, seus ativos. Controle total sobre seu patrimônio digital sem intermediários.</p>
-    </div>
-  </div>
-  <div style="text-align: center; margin-top: 60px;" class="reveal">
-    <a href="#cta-final" class="btn-primary">Baixe Agora</a>
-  </div>
-</section>
-
-<!-- HOW IT WORKS -->
-<section id="how">
-  <div class="how-content">
-    <div class="how-header reveal">
-      <div class="section-tag">Como Funciona</div>
-      <h2 class="section-title">Três passos para a <span class="gold">nova economia</span></h2>
-    </div>
-    <div class="steps">
-      <div class="step reveal">
-        <div class="step-num">01 — ADQUIRIR</div>
-        <div class="step-title">Comprar e Vender</div>
-        <p class="step-desc">Adquira USDT, USDC, SOL e tokens nativos do ecossistema Verum com poucos cliques. Câmbio inteligente com melhor cotação disponível.</p>
-      </div>
-      <div class="step reveal">
-        <div class="step-num">02 — USAR</div>
-        <div class="step-title">Usar no Dia a Dia</div>
-        <p class="step-desc">Pague produtos e serviços com QR Code. Envie para qualquer carteira Solana. Integração com a rede de parceiros comerciais Verum.</p>
-      </div>
-      <div class="step reveal">
-        <div class="step-num">03 — CRESCER</div>
-        <div class="step-title">Acompanhar e Crescer</div>
-        <p class="step-desc">Monitore em tempo real a evolução do seu patrimônio digital. Acesse funcionalidades avançadas conforme você cresce no ecossistema.</p>
+    <div class="nav-right">
+      <a href="https://verumcrypto.com" class="nav-cta">Baixe Agora</a>
+      <div class="menu-toggle" id="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
       </div>
     </div>
-  </div>
-</section>
+  </nav>
 
-<!-- CAROUSEL -->
-<section id="carousel-section" style="background: var(--dark); border-bottom: 1px solid var(--border); padding-top: 60px;">
-  <div style="max-width: 1000px; margin: 0 auto; text-align: center;" class="reveal">
-    <div class="section-tag" style="justify-content: center;">Galeria</div>
-    <h2 class="section-title" style="margin-bottom: 40px;">Conheça de <span class="gold">Perto</span></h2>
-    
-    <div class="carousel-container">
-      <div class="carousel-slide active">
-        <img src="./enviar.jpeg" alt="Imagem 1">
-      </div>
-      <div class="carousel-slide">
-        <img src="./receber.jpeg" alt="Imagem 2">
-      </div>
-      <div class="carousel-slide">
-        <img src="./WhatsApp%20Image%202026-03-22%20at%2019.29.51.png" alt="Imagem 3">
-      </div>
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-corner tl"></div>
+    <div class="hero-corner br"></div>
 
-      <button class="carousel-btn prev-btn">❮</button>
-      <button class="carousel-btn next-btn">❯</button>
-      
-      <div class="carousel-dots">
-        <span class="dot active"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
+    <div class="hero-content">
+      <div class="hero-tag">Powered by Solana · América Latina</div>
+      <h1 class="hero-headline">
+        A Nova<br>
+        <span class="gold">Infraestrutura</span><br>
+        Financeira
+      </h1>
+      <p class="hero-sub">Para o Comércio Digital na América Latina</p>
+      <p class="hero-body">
+        Compre, venda e movimente ativos digitais com liquidez real, câmbio inteligente e integração direta com o
+        comércio.
+      </p>
+      <div class="hero-ctas">
+        <a href="#cta-final" class="btn-primary">Começar Agora</a>
+        <a href="#how" class="btn-secondary">Solicitar Acesso</a>
+      </div>
+    </div>
+
+    <!-- App Mockup -->
+    <div class="hero-visual">
+      <img src="/home.jpeg" alt="Verum Crypto App" class="app-image">
+    </div>
+  </section>
+
+  <!-- STATS TICKER -->
+  <div id="stats">
+    <div class="stats-track">
+      <div class="stat-item">
+        <span class="stat-label">Rede</span>
+        <span class="stat-value">Solana</span>
+      </div>
+      <div class="stat-item stat-divider">◆</div>
+      <div class="stat-item">
+        <span class="stat-label">Velocidade</span>
+        <span class="stat-value">65,000 TPS</span>
+      </div>
+      <div class="stat-item stat-divider">◆</div>
+      <div class="stat-item">
+        <span class="stat-label">Custo por tx</span>
+        <span class="stat-value">2%</span>
+      </div>
+      <div class="stat-item stat-divider">◆</div>
+      <div class="stat-item">
+        <span class="stat-label">Mercados</span>
+        <span class="stat-value">BR · PY · PA</span>
+      </div>
+      <div class="stat-item stat-divider">◆</div>
+      <div class="stat-item">
+        <span class="stat-label">Self-Custody</span>
+        <span class="stat-value">100%</span>
+      </div>
+      <div class="stat-item stat-divider">◆</div>
+      <div class="stat-item">
+        <span class="stat-label">Tokens Nativos</span>
+        <span class="stat-value">ESCT · BDC · BRUTOS</span>
+      </div>
+      <div class="stat-item stat-divider">◆</div>
+      <!-- repeat for seamless loop -->
+      <div class="stat-item">
+        <span class="stat-label">Rede</span>
+        <span class="stat-value">Solana</span>
+      </div>
+      <div class="stat-item stat-divider">◆</div>
+      <div class="stat-item">
+        <span class="stat-label">Velocidade</span>
+        <span class="stat-value">65,000 TPS</span>
+      </div>
+      <div class="stat-item stat-divider">◆</div>
+      <div class="stat-item">
+        <span class="stat-label">Custo por tx</span>
+        <span class="stat-value">2%</span>
+      </div>
+      <div class="stat-item stat-divider">◆</div>
+      <div class="stat-item">
+        <span class="stat-label">Mercados</span>
+        <span class="stat-value">BR · PY · PA</span>
+      </div>
+      <div class="stat-item stat-divider">◆</div>
+      <div class="stat-item">
+        <span class="stat-label">Self-Custody</span>
+        <span class="stat-value">100%</span>
+      </div>
+      <div class="stat-item stat-divider">◆</div>
+      <div class="stat-item">
+        <span class="stat-label">Tokens Nativos</span>
+        <span class="stat-value">ESCT · BDC · BRUTOS</span>
       </div>
     </div>
   </div>
-  <div style="text-align: center; margin-top: 60px;" class="reveal">
-    <a href="#cta-final" class="btn-primary">Baixe Agora</a>
-  </div>
-</section>
 
-<!-- DIFFERENTIALS -->
-<section id="diff">
-  <div class="diff-content">
-    <div class="reveal">
-      <div class="section-tag">Diferenciais</div>
-      <h2 class="section-title">Não é apenas uma wallet.<br><span class="gold">É um ecossistema.</span></h2>
-    </div>
-    <div class="diff-grid">
-      <ul class="diff-list">
-        <li class="diff-item reveal">
-          <div class="diff-check">✓</div>
+  <!-- PROBLEM -->
+  <section id="problem">
+    <div class="problem-grid">
+      <div class="reveal">
+        <div class="section-tag">O Problema</div>
+        <h2 class="section-title">O sistema financeiro <span class="gold">não foi feito</span> para você</h2>
+        <p class="section-body">O sistema tradicional é lento, caro e limitado para quem vive entre múltiplas moedas e
+          mercados na América Latina.</p>
+      </div>
+      <ul class="pain-list">
+        <li class="pain-item">
+          <span class="pain-num">01</span>
           <div>
-            <div class="diff-title">Integração com Comércio Regional</div>
-            <div class="diff-desc">Conectado à redes de comércio real no Brasil, Paraguai e Panamá.</div>
+            <div class="pain-title">Taxas Abusivas</div>
+            <div class="pain-desc">Câmbio com spread de 3-8%, remessas internacionais custando até 15% do valor.</div>
           </div>
         </li>
-        <li class="diff-item reveal">
-          <div class="diff-check">✓</div>
+        <li class="pain-item">
+          <span class="pain-num">02</span>
           <div>
-            <div class="diff-title">Liquidez Própria</div>
-            <div class="diff-desc">Sistema de câmbio com pools de liquidez nativos ao ecossistema.</div>
+            <div class="pain-title">Burocracia Excessiva</div>
+            <div class="pain-desc">Processos lentos, exigências documentais e barreiras que excluem a maioria.</div>
           </div>
         </li>
-        <li class="diff-item reveal">
-          <div class="diff-check">✓</div>
+        <li class="pain-item">
+          <span class="pain-num">03</span>
           <div>
-            <div class="diff-title">Multi-Rede Preparado</div>
-            <div class="diff-desc">Estrutura técnica pronta para expansão multi-chain quando necessário.</div>
+            <div class="pain-title">Fronteiras Fragmentadas</div>
+            <div class="pain-desc">Sem integração real entre Brasil, Paraguai e Panamá para comércio digital.</div>
           </div>
         </li>
-        <li class="diff-item reveal">
-          <div class="diff-check">✓</div>
+        <li class="pain-item">
+          <span class="pain-num">04</span>
           <div>
-            <div class="diff-title">Experiência Para Todos</div>
-            <div class="diff-desc">Interface simplificada mesmo para quem está entrando agora no mundo digital.</div>
-          </div>
-        </li>
-        <li class="diff-item reveal">
-          <div class="diff-check">✓</div>
-          <div>
-            <div class="diff-title">Comunidade Ativa</div>
-            <div class="diff-desc">Redes de motociclistas, organizações fraternais e comunidades educacionais integradas.</div>
+            <div class="pain-title">Inflação Silenciosa</div>
+            <div class="pain-desc">Dinheiro desvalorizando enquanto alternativas reais de proteção eram inacessíveis.
+            </div>
           </div>
         </li>
       </ul>
-      <div class="diff-visual reveal">
-        <div class="tech-badge">
-          <div>
-            <div class="tech-badge-name">Solana Blockchain</div>
-            <div class="tech-badge-detail">65,000 TPS · 2%/tx · Finalidade <1s</div>
-          </div>
-          <div class="tech-badge-tag">LAYER 1</div>
-        </div>
-        <div class="tech-badge">
-          <div>
-            <div class="tech-badge-name">Self-Custody Wallet</div>
-            <div class="tech-badge-detail">Chaves privadas sob controle do usuário</div>
-          </div>
-          <div class="tech-badge-tag">SEGURO</div>
-        </div>
-        <div class="tech-badge">
-          <div>
-            <div class="tech-badge-name">DeFi Integrado</div>
-            <div class="tech-badge-detail">Swap, liquidez, staking nativo</div>
-          </div>
-          <div class="tech-badge-tag">DEFI</div>
-        </div>
-        <div class="tech-badge">
-          <div>
-            <div class="tech-badge-name">Pagamentos QR</div>
-            <div class="tech-badge-detail">Integração física + digital</div>
-          </div>
-          <div class="tech-badge-tag">PAYMENTS</div>
-        </div>
-        <div class="tech-badge">
-          <div>
-            <div class="tech-badge-name">Estrutura Panamá</div>
-            <div class="tech-badge-detail">Compliance internacional · LATAM focus</div>
-          </div>
-          <div class="tech-badge-tag">LEGAL</div>
-        </div>
-      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ECOSYSTEM TOKENS -->
-<section id="ecosystem">
-  <div class="eco-content">
-    <div class="reveal">
-      <div class="section-tag">Ecossistema</div>
-      <h2 class="section-title">Tokens construídos para o <span class="gold">mundo real</span></h2>
-      <p class="section-body">Cada ativo do ecossistema Verum tem utilidade real, comunidade ativa e tokenomics sustentável.</p>
+
+
+  <!-- SOLUTION -->
+  <section id="solution">
+    <div class="solution-header reveal">
+      <div class="section-tag">A Solução</div>
+      <h2 class="section-title">Tecnologia que <span class="gold">conecta</span> você ao futuro</h2>
+      <p class="section-body">Com infraestrutura baseada em Solana, a Verum oferece velocidade, segurança e integração
+        real com o comércio local.</p>
     </div>
-    <div class="tokens-grid">
-      <div class="token-card reveal">
-        <img src="./ESCT.png" alt="ESCT Logo" class="token-icon-img">
-        <div class="token-symbol">$ESCT</div>
-        <div class="token-name">Escoteiro Coin</div>
-        <p class="token-desc">Token de governança e utilidade do ecossistema Verum. Vinculado à comunidade escoteira e educacional da América Latina.</p>
-        <div class="token-tags">
-          <span class="token-tag">Governança</span>
-          <span class="token-tag">Utilidade</span>
-          <span class="token-tag">Educação</span>
-        </div>
+    <div class="features-grid">
+      <div class="feature-card reveal">
+        <span class="feature-icon">⚡</span>
+        <div class="feature-title">Conversão Instantânea</div>
+        <p class="feature-desc">Troque entre ativos digitais em segundos com liquidez real e taxas transparentes. Sem
+          espera, sem burocracia.</p>
       </div>
-      <div class="token-card reveal">
-        <img src="./BDC.png" alt="BDC Logo" class="token-icon-img">
-        <div class="token-symbol">$BDC</div>
-        <div class="token-name">BodeCoin</div>
-        <p class="token-desc">Token da comunidade motociclista e fraternal. Pagamentos, eventos, acesso e recompensas dentro da rede de parceiros.</p>
-        <div class="token-tags">
-          <span class="token-tag">Comunidade</span>
-          <span class="token-tag">Pagamentos</span>
-          <span class="token-tag">Recompensas</span>
-        </div>
+      <div class="feature-card reveal">
+        <span class="feature-icon">⊞</span>
+        <div class="feature-title">Pagamentos via QR Code</div>
+        <p class="feature-desc">Pague produtos e serviços diretamente com QR Code dinâmico. Integração com comércio
+          físico e digital.</p>
       </div>
-      <div class="token-card reveal">
-        <img src="./BRT.png" alt="BRUTOS Logo" class="token-icon-img">
-        <div class="token-symbol">$BRUTOS</div>
-        <div class="token-name">Brutos</div>
-        <p class="token-desc">Token de acesso a funcionalidades avançadas da plataforma. Staking, acesso premium e participação em programas exclusivos.</p>
-        <div class="token-tags">
-          <span class="token-tag">Acesso</span>
-          <span class="token-tag">Staking</span>
-          <span class="token-tag">Premium</span>
-        </div>
+      <div class="feature-card reveal">
+        <span class="feature-icon">📊</span>
+        <div class="feature-title">Dashboard em Tempo Real</div>
+        <p class="feature-desc">Visualize movimentações, conversões e evolução dos seus ativos com interface clara e
+          profissional.</p>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- SINGLE IMAGE SECTION -->
-<section id="banner-image" style="background: var(--black); border-top: 1px solid var(--border); padding: 60px 20px; text-align: center; min-height: 80vh; display: flex; align-items: center; justify-content: center;">
-  <div style="width: 100%; max-width: 500px; margin: 0 auto; display: flex; justify-content: center;" class="reveal">
-    <img src="./WhatsApp%20Image%202026-03-22%20at%2019.30.20.jpeg" alt="Verum Visual" style="max-width: 100%; max-height: 80vh; width: auto; height: auto; display: block; border-radius: 20px; border: 1px solid var(--border-bright); box-shadow: 0 40px 100px rgba(0,0,0,0.8);">
-  </div>
-</section>
-
-<!-- PROGRAM -->
-<section id="program">
-  <div class="program-bg"></div>
-  <div class="program-content reveal">
-    <div class="section-tag" style="justify-content:center">Programa de Participação</div>
-    <h2 class="section-title">Cresça <span class="gold">com o ecossistema</span></h2>
-    <p class="section-body" style="margin:0 auto;text-align:center">Usuários qualificados podem acessar programas exclusivos vinculados ao crescimento do ecossistema Verum.</p>
-
-    <div class="program-metrics">
-      <div class="program-metric">
-        <div class="program-metric-value">3</div>
-        <div class="program-metric-label">Países</div>
+      <div class="feature-card reveal">
+        <span class="feature-icon">🔐</span>
+        <div class="feature-title">Self-Custody Total</div>
+        <p class="feature-desc">Suas chaves, seus ativos. Controle total sobre seu patrimônio digital sem
+          intermediários.</p>
       </div>
-      <div class="program-metric">
-        <div class="program-metric-value">∞</div>
-        <div class="program-metric-label">Possibilidades</div>
-      </div>
-      <div class="program-metric">
-        <div class="program-metric-value">24/7</div>
-        <div class="program-metric-label">Operação</div>
-      </div>
-    </div>
-
-    <div class="program-notice">
-      <strong>⚠ Aviso Importante:</strong> Participação variável baseada no volume de transações e critérios internos. Disponível apenas para usuários elegíveis, mediante análise e condições de mercado. Acesso a funcionalidades avançadas é progressivo conforme uso da plataforma.
     </div>
     <div style="text-align: center; margin-top: 60px;" class="reveal">
-      <a href="https://verumcrypto.com" class="btn-primary">Baixe Agora</a>
+      <a href="#cta-final" class="btn-primary">Baixe Agora</a>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="how">
+    <div class="how-content">
+      <div class="how-header reveal">
+        <div class="section-tag">Como Funciona</div>
+        <h2 class="section-title">Três passos para a <span class="gold">nova economia</span></h2>
+      </div>
+      <div class="steps">
+        <div class="step reveal">
+          <div class="step-num">01 — ADQUIRIR</div>
+          <div class="step-title">Comprar e Vender</div>
+          <p class="step-desc">Adquira USDT, USDC, SOL e tokens nativos do ecossistema Verum com poucos cliques. Câmbio
+            inteligente com melhor cotação disponível.</p>
+        </div>
+        <div class="step reveal">
+          <div class="step-num">02 — USAR</div>
+          <div class="step-title">Usar no Dia a Dia</div>
+          <p class="step-desc">Pague produtos e serviços com QR Code. Envie para qualquer carteira Solana. Integração
+            com a rede de parceiros comerciais Verum.</p>
+        </div>
+        <div class="step reveal">
+          <div class="step-num">03 — CRESCER</div>
+          <div class="step-title">Acompanhar e Crescer</div>
+          <p class="step-desc">Monitore em tempo real a evolução do seu patrimônio digital. Acesse funcionalidades
+            avançadas conforme você cresce no ecossistema.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAROUSEL -->
+  <section id="carousel-section"
+    style="background: var(--dark); border-bottom: 1px solid var(--border); padding-top: 60px;">
+    <div style="max-width: 1000px; margin: 0 auto; text-align: center;" class="reveal">
+      <div class="section-tag" style="justify-content: center;">Galeria</div>
+      <h2 class="section-title" style="margin-bottom: 40px;">Conheça de <span class="gold">Perto</span></h2>
+
+      <div class="carousel-container">
+        <div class="carousel-slide active">
+          <img src="./enviar.jpeg" alt="Imagem 1">
+        </div>
+        <div class="carousel-slide">
+          <img src="./receber.jpeg" alt="Imagem 2">
+        </div>
+        <div class="carousel-slide">
+          <img src="./WhatsApp%20Image%202026-03-22%20at%2019.29.51.png" alt="Imagem 3">
+        </div>
+
+        <button class="carousel-btn prev-btn">❮</button>
+        <button class="carousel-btn next-btn">❯</button>
+
+        <div class="carousel-dots">
+          <span class="dot active"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </div>
+      </div>
+    </div>
+    <div style="text-align: center; margin-top: 60px;" class="reveal">
+      <a href="#cta-final" class="btn-primary">Baixe Agora</a>
+    </div>
+  </section>
+
+  <!-- DIFFERENTIALS -->
+  <section id="diff">
+    <div class="diff-content">
+      <div class="reveal">
+        <div class="section-tag">Diferenciais</div>
+        <h2 class="section-title">Não é apenas uma wallet.<br><span class="gold">É um ecossistema.</span></h2>
+      </div>
+      <div class="diff-grid">
+        <ul class="diff-list">
+          <li class="diff-item reveal">
+            <div class="diff-check">✓</div>
+            <div>
+              <div class="diff-title">Integração com Comércio Regional</div>
+              <div class="diff-desc">Conectado à redes de comércio real no Brasil, Paraguai e Panamá.</div>
+            </div>
+          </li>
+          <li class="diff-item reveal">
+            <div class="diff-check">✓</div>
+            <div>
+              <div class="diff-title">Liquidez Própria</div>
+              <div class="diff-desc">Sistema de câmbio com pools de liquidez nativos ao ecossistema.</div>
+            </div>
+          </li>
+          <li class="diff-item reveal">
+            <div class="diff-check">✓</div>
+            <div>
+              <div class="diff-title">Multi-Rede Preparado</div>
+              <div class="diff-desc">Estrutura técnica pronta para expansão multi-chain quando necessário.</div>
+            </div>
+          </li>
+          <li class="diff-item reveal">
+            <div class="diff-check">✓</div>
+            <div>
+              <div class="diff-title">Experiência Para Todos</div>
+              <div class="diff-desc">Interface simplificada mesmo para quem está entrando agora no mundo digital.</div>
+            </div>
+          </li>
+          <li class="diff-item reveal">
+            <div class="diff-check">✓</div>
+            <div>
+              <div class="diff-title">Comunidade Ativa</div>
+              <div class="diff-desc">Redes de motociclistas, organizações fraternais e comunidades educacionais
+                integradas.</div>
+            </div>
+          </li>
+        </ul>
+        <div class="diff-visual reveal">
+          <div class="tech-badge">
+            <div>
+              <div class="tech-badge-name">Solana Blockchain</div>
+              <div class="tech-badge-detail">65,000 TPS · 2%/tx · Finalidade <1s< /div>
+              </div>
+              <div class="tech-badge-tag">LAYER 1</div>
+            </div>
+            <div class="tech-badge">
+              <div>
+                <div class="tech-badge-name">Self-Custody Wallet</div>
+                <div class="tech-badge-detail">Chaves privadas sob controle do usuário</div>
+              </div>
+              <div class="tech-badge-tag">SEGURO</div>
+            </div>
+            <div class="tech-badge">
+              <div>
+                <div class="tech-badge-name">DeFi Integrado</div>
+                <div class="tech-badge-detail">Swap, liquidez, staking nativo</div>
+              </div>
+              <div class="tech-badge-tag">DEFI</div>
+            </div>
+            <div class="tech-badge">
+              <div>
+                <div class="tech-badge-name">Pagamentos QR</div>
+                <div class="tech-badge-detail">Integração física + digital</div>
+              </div>
+              <div class="tech-badge-tag">PAYMENTS</div>
+            </div>
+            <div class="tech-badge">
+              <div>
+                <div class="tech-badge-name">Estrutura Panamá</div>
+                <div class="tech-badge-detail">Compliance internacional · LATAM focus</div>
+              </div>
+              <div class="tech-badge-tag">LEGAL</div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </section>
+
+  <!-- ECOSYSTEM TOKENS -->
+  <section id="ecosystem">
+    <div class="eco-content">
+      <div class="reveal">
+        <div class="section-tag">Ecossistema</div>
+        <h2 class="section-title">Tokens construídos para o <span class="gold">mundo real</span></h2>
+        <p class="section-body">Cada ativo do ecossistema Verum tem utilidade real, comunidade ativa e tokenomics
+          sustentável.</p>
+      </div>
+      <div class="tokens-grid">
+        <div class="token-card reveal">
+          <img src="./ESCT.png" alt="ESCT Logo" class="token-icon-img">
+          <div class="token-symbol">$ESCT</div>
+          <div class="token-name">Escoteiro Coin</div>
+          <p class="token-desc">Token de governança e utilidade do ecossistema Verum. Vinculado à comunidade escoteira e
+            educacional da América Latina.</p>
+          <div class="token-tags">
+            <span class="token-tag">Governança</span>
+            <span class="token-tag">Utilidade</span>
+            <span class="token-tag">Educação</span>
+          </div>
+        </div>
+        <div class="token-card reveal">
+          <img src="./BDC.png" alt="BDC Logo" class="token-icon-img">
+          <div class="token-symbol">$BDC</div>
+          <div class="token-name">BodeCoin</div>
+          <p class="token-desc">Token da comunidade motociclista e fraternal. Pagamentos, eventos, acesso e recompensas
+            dentro da rede de parceiros.</p>
+          <div class="token-tags">
+            <span class="token-tag">Comunidade</span>
+            <span class="token-tag">Pagamentos</span>
+            <span class="token-tag">Recompensas</span>
+          </div>
+        </div>
+        <div class="token-card reveal">
+          <img src="./BRT.png" alt="BRUTOS Logo" class="token-icon-img">
+          <div class="token-symbol">$BRUTOS</div>
+          <div class="token-name">Brutos</div>
+          <p class="token-desc">Token de acesso a funcionalidades avançadas da plataforma. Staking, acesso premium e
+            participação em programas exclusivos.</p>
+          <div class="token-tags">
+            <span class="token-tag">Acesso</span>
+            <span class="token-tag">Staking</span>
+            <span class="token-tag">Premium</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SINGLE IMAGE SECTION -->
+  <section id="banner-image"
+    style="background: var(--black); border-top: 1px solid var(--border); padding: 60px 20px; text-align: center; min-height: 80vh; display: flex; align-items: center; justify-content: center;">
+    <div style="width: 100%; max-width: 500px; margin: 0 auto; display: flex; justify-content: center;" class="reveal">
+      <img src="/WhatsApp Image 2026-03-22 at 19.30.20.jpeg" alt="Verum Visual"
+        style="max-width: 100%; max-height: 80vh; width: auto; height: auto; display: block; border-radius: 20px; border: 1px solid var(--border-bright); box-shadow: 0 40px 100px rgba(0,0,0,0.8);">
+    </div>
+  </section>
+
+  <!-- PROGRAM -->
+  <section id="program">
+    <div class="program-bg"></div>
+    <div class="program-content reveal">
+      <div class="section-tag" style="justify-content:center">Programa de Participação</div>
+      <h2 class="section-title">Cresça <span class="gold">com o ecossistema</span></h2>
+      <p class="section-body" style="margin:0 auto;text-align:center">Usuários qualificados podem acessar programas
+        exclusivos vinculados ao crescimento do ecossistema Verum.</p>
+
+      <div class="program-metrics">
+        <div class="program-metric">
+          <div class="program-metric-value">3</div>
+          <div class="program-metric-label">Países</div>
+        </div>
+        <div class="program-metric">
+          <div class="program-metric-value">∞</div>
+          <div class="program-metric-label">Possibilidades</div>
+        </div>
+        <div class="program-metric">
+          <div class="program-metric-value">24/7</div>
+          <div class="program-metric-label">Operação</div>
+        </div>
+      </div>
+
+      <div class="program-notice">
+        <strong>⚠ Aviso Importante:</strong> Participação variável baseada no volume de transações e critérios internos.
+        Disponível apenas para usuários elegíveis, mediante análise e condições de mercado. Acesso a funcionalidades
+        avançadas é progressivo conforme uso da plataforma.
+      </div>
+      <div style="text-align: center; margin-top: 60px;" class="reveal">
+        <a href="https://verumcrypto.com" class="btn-primary">Baixe Agora</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECURITY -->
+  <section id="security">
+    <div class="security-content">
+      <div class="reveal">
+        <div class="section-tag">Segurança</div>
+        <h2 class="section-title">Infraestrutura <span class="gold">imutável</span> e transparente</h2>
+      </div>
+      <div class="security-grid">
+        <div class="security-item reveal">
+          <span class="security-icon">⛓</span>
+          <div class="security-title">Blockchain Nativa</div>
+          <p class="security-desc">Infraestrutura baseada em Solana — um dos blockchains mais rápidos e seguros do
+            mundo.</p>
+        </div>
+        <div class="security-item reveal">
+          <span class="security-icon">📋</span>
+          <div class="security-title">Registro Imutável</div>
+          <p class="security-desc">Toda transação gravada permanentemente na blockchain. Auditável por qualquer pessoa,
+            a qualquer momento.</p>
+        </div>
+        <div class="security-item reveal">
+          <span class="security-icon">🔑</span>
+          <div class="security-title">Controle do Usuário</div>
+          <p class="security-desc">Suas chaves privadas ficam com você. A Verum nunca tem custódia dos seus ativos.</p>
+        </div>
+        <div class="security-item reveal">
+          <span class="security-icon">👁</span>
+          <div class="security-title">Monitoramento Contínuo</div>
+          <p class="security-desc">Rede monitorada 24/7. Alertas em tempo real para qualquer atividade incomum.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GLOBAL -->
+  <section id="global">
+    <div class="global-content reveal">
+      <div class="section-tag" style="justify-content:center">Expansão Global</div>
+      <h2 class="section-title">Construído para a <span class="gold">América Latina</span></h2>
+      <p class="section-body" style="margin:0 auto;text-align:center">Estruturada com base internacional, a Verum foi
+        concebida para operar de forma escalável e conectada aos principais mercados da região.</p>
+
+      <div class="markets">
+        <div class="market-item">
+          <span class="market-flag">🇧🇷</span>
+          <div class="market-name">Brasil</div>
+          <div class="market-sub">Mercado Principal</div>
+        </div>
+        <div class="market-item">
+          <span class="market-flag">🇵🇾</span>
+          <div class="market-name">Paraguai</div>
+          <div class="market-sub">Hub Cripto</div>
+        </div>
+        <div class="market-item">
+          <span class="market-flag">🇵🇦</span>
+          <div class="market-name">Panamá</div>
+          <div class="market-sub">Sede Corporativa</div>
+        </div>
+      </div>
+
+      <div class="global-bar">
+        <strong>Estrutura Corporativa:</strong> Operação com base no Panamá · Foco na América Latina · Compliance
+        multi-jurisdicional
+      </div>
+    </div>
+  </section>
+
+  <!-- DISCLAIMER -->
+  <div id="disclaimer">
+    <div class="disclaimer-content">
+      <div class="disclaimer-box">
+        <div class="disclaimer-title">Aviso Legal Obrigatório</div>
+        <p class="disclaimer-text">
+          Ativos digitais são voláteis e podem apresentar variações significativas de valor. A Verum não oferece
+          garantias de retorno financeiro. Qualquer participação em programas disponíveis na plataforma está sujeita a
+          critérios, disponibilidade e condições de mercado. Este material possui caráter estritamente informativo e não
+          constitui recomendação de investimento, oferta pública de valores mobiliários ou serviço de assessoria
+          financeira regulamentada. A decisão de adquirir ativos digitais é de exclusiva responsabilidade do usuário.
+          Verifique as regulamentações vigentes em sua jurisdição antes de operar.
+        </p>
+      </div>
     </div>
   </div>
-</section>
 
-<!-- SECURITY -->
-<section id="security">
-  <div class="security-content">
-    <div class="reveal">
-      <div class="section-tag">Segurança</div>
-      <h2 class="section-title">Infraestrutura <span class="gold">imutável</span> e transparente</h2>
-    </div>
-    <div class="security-grid">
-      <div class="security-item reveal">
-        <span class="security-icon">⛓</span>
-        <div class="security-title">Blockchain Nativa</div>
-        <p class="security-desc">Infraestrutura baseada em Solana — um dos blockchains mais rápidos e seguros do mundo.</p>
-      </div>
-      <div class="security-item reveal">
-        <span class="security-icon">📋</span>
-        <div class="security-title">Registro Imutável</div>
-        <p class="security-desc">Toda transação gravada permanentemente na blockchain. Auditável por qualquer pessoa, a qualquer momento.</p>
-      </div>
-      <div class="security-item reveal">
-        <span class="security-icon">🔑</span>
-        <div class="security-title">Controle do Usuário</div>
-        <p class="security-desc">Suas chaves privadas ficam com você. A Verum nunca tem custódia dos seus ativos.</p>
-      </div>
-      <div class="security-item reveal">
-        <span class="security-icon">👁</span>
-        <div class="security-title">Monitoramento Contínuo</div>
-        <p class="security-desc">Rede monitorada 24/7. Alertas em tempo real para qualquer atividade incomum.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- GLOBAL -->
-<section id="global">
-  <div class="global-content reveal">
-    <div class="section-tag" style="justify-content:center">Expansão Global</div>
-    <h2 class="section-title">Construído para a <span class="gold">América Latina</span></h2>
-    <p class="section-body" style="margin:0 auto;text-align:center">Estruturada com base internacional, a Verum foi concebida para operar de forma escalável e conectada aos principais mercados da região.</p>
-
-    <div class="markets">
-      <div class="market-item">
-        <span class="market-flag">🇧🇷</span>
-        <div class="market-name">Brasil</div>
-        <div class="market-sub">Mercado Principal</div>
-      </div>
-      <div class="market-item">
-        <span class="market-flag">🇵🇾</span>
-        <div class="market-name">Paraguai</div>
-        <div class="market-sub">Hub Cripto</div>
-      </div>
-      <div class="market-item">
-        <span class="market-flag">🇵🇦</span>
-        <div class="market-name">Panamá</div>
-        <div class="market-sub">Sede Corporativa</div>
-      </div>
-    </div>
-
-    <div class="global-bar">
-      <strong>Estrutura Corporativa:</strong> Operação com base no Panamá · Foco na América Latina · Compliance multi-jurisdicional
-    </div>
-  </div>
-</section>
-
-<!-- DISCLAIMER -->
-<div id="disclaimer">
-  <div class="disclaimer-content">
-    <div class="disclaimer-box">
-      <div class="disclaimer-title">Aviso Legal Obrigatório</div>
-      <p class="disclaimer-text">
-        Ativos digitais são voláteis e podem apresentar variações significativas de valor. A Verum não oferece garantias de retorno financeiro. Qualquer participação em programas disponíveis na plataforma está sujeita a critérios, disponibilidade e condições de mercado. Este material possui caráter estritamente informativo e não constitui recomendação de investimento, oferta pública de valores mobiliários ou serviço de assessoria financeira regulamentada. A decisão de adquirir ativos digitais é de exclusiva responsabilidade do usuário. Verifique as regulamentações vigentes em sua jurisdição antes de operar.
+  <!-- CTA FINAL -->
+  <section id="cta-final">
+    <div class="cta-final-content reveal">
+      <div class="section-tag" style="justify-content:center">Próximo Passo</div>
+      <h2 class="cta-final-title">Entre para a nova geração do <span class="gold">sistema financeiro</span></h2>
+      <p class="cta-final-sub">Junte-se à comunidade que está construindo a infraestrutura financeira da América Latina.
       </p>
+      <div class="cta-final-btns">
+        <a href="https://verumcrypto.com" class="btn-primary">Baixe Agora</a>
+        <a href="#" class="btn-secondary">Solicitar Acesso Antecipado</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">VERUM</div>
+        <p class="footer-tagline">A nova infraestrutura financeira para o comércio digital na América Latina. Powered by
+          Solana.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Plataforma</div>
+        <ul class="footer-links">
+          <li><a href="#">Wallet</a></li>
+          <li><a href="#">Câmbio</a></li>
+          <li><a href="#">Pagamentos</a></li>
+          <li><a href="#">DeFi</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Ecossistema</div>
+        <ul class="footer-links">
+          <li><a href="https://escoteiro.mastter.digital" target="_blank" rel="noopener noreferrer">ESCT Token</a></li>
+          <li><a href="https://bodecoin.mastter.digital" target="_blank" rel="noopener noreferrer">BodeCoin</a></li>
+          <li><a href="https://brutos.mastter.digital" target="_blank" rel="noopener noreferrer">Brutos</a></li>
+          <li><a href="#">Comunidade</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Recursos</div>
+        <ul class="footer-links">
+          <li><a href="#">Suporte</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Contato</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Verum Crypto. Todos os direitos reservados.</span>
+      <span>Operação baseada no Panamá · América Latina</span>
+      <span><a href="javascript:void(0)" id="open-terms"
+          style="color: inherit; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.1);">Terms of Use &
+          Privacy</a> · Legal</span>
+    </div>
+  </footer>
+
+  <!-- MODAL TERMS AND PRIVACY -->
+  <div id="terms-modal">
+    <div class="modal-content">
+      <span class="modal-close" id="close-terms-x">&times;</span>
+      <h2 class="modal-title">PRIVACY NOTICE AND GLOBAL COMPLIANCE TERMS – VERUM CRYPTO FREEPORT</h2>
+      <div class="modal-update">Last Updated: March 29, 2026</div>
+
+      <div class="modal-body">
+        <h3>1. LEGAL STRUCTURE AND JURISDICTION</h3>
+        <p><strong>Verum Crypto Freeport</strong>, established under the laws of the Republic of Panama, acts as the
+          data controller and technological infrastructure provider for the Verum Wallet and the Verum Pay gateway. By
+          using our services, you accept that any dispute will be processed under the exclusive jurisdiction of the
+          courts of Panama City, waiving any other forum regardless of its privileges.</p>
+
+        <h3>2. THE SELF-CUSTODY PILLAR (NON-CUSTODIAL SHIELD)</h3>
+        <p>Verum Wallet is a self-custody software interface.<br>
+          Verum Crypto Freeport <strong>DOES NOT collect, DOES NOT store, and DOES NOT have access</strong> to your
+          Private Keys, Seed Phrases (Mnemonics), or local passwords.<br><br>
+          <strong>Disclaimer:</strong> The security of digital assets is the sole responsibility of the user. The loss
+          of private keys results in the irreversible loss of funds, with no technical or legal possibility of recovery
+          by Verum Crypto Freeport.
+        </p>
+
+        <h3>3. VERUM PAY: IRREVERSIBILITY AND FIAT CONVERSION</h3>
+        <p>Verum Pay service operates strictly as a technological gateway for conversion between fiat currencies (e.g.,
+          Pix) and digital assets.<br>
+          <strong>Transaction Purpose:</strong> Once assets are sent to the Blockchain network, the transaction is
+          considered final and irreversible.<br>
+          <strong>Chargeback Prohibition:</strong> Due to the immutable nature of Blockchain technology, there are no
+          refund or chargeback mechanisms. The user acknowledges that sending amounts to incorrect addresses or
+          withdrawing after confirmation on the network does not generate a right to a refund.
+        </p>
+
+        <h3>4. AML COMPLIANCE AND DATA COLLECTION (KYC)</h3>
+        <p>To ensure the protection of the company against financial crimes and comply with FATF/GAFI standards, we
+          collect:<br>
+          <strong>Identification (KYC):</strong> Data provided voluntarily for identity verification.<br>
+          <strong>Technical Data:</strong> IP address, transaction metadata, and device identifiers for fraud prevention
+          and cybersecurity purposes.<br>
+          <strong>Legal Sharing:</strong> We reserve the right to share data with competent authorities only through a
+          valid court order issued by a Panamanian authority or international mutual cooperation treaties recognized by
+          the Republic of Panama.
+        </p>
+
+        <h3>5. DATA PROTECTION (LAW 81/2019 AND GDPR)</h3>
+        <p>We adopt the highest security standards to protect the integrity of the Verum System:<br>
+          <strong>User Rights:</strong> You have the right to access, rectify, and delete your personal data (KYC),
+          provided that such data is not required for maintenance due to legal retention obligations (anti-money
+          laundering standards).<br>
+          <strong>Security:</strong> We use end-to-end encryption and layered security protocols to protect our
+          infrastructure against unauthorized access.
+        </p>
+
+        <h3>6. LIMITATION OF LIABILITY</h3>
+        <p>Under no circumstances shall Verum Crypto Freeport, its directors, or developers be liable for indirect
+          damages, lost profits, or failures resulting from inherent instabilities of third-party Blockchain networks
+          (such as Bitcoin, Ethereum, Solana, or Verum Chain).</p>
+      </div>
+
+      <div class="modal-footer">
+        <button class="close-btn" id="close-terms-btn">Read and Accepted</button>
+      </div>
     </div>
   </div>
-</div>
 
-<!-- CTA FINAL -->
-<section id="cta-final">
-  <div class="cta-final-content reveal">
-    <div class="section-tag" style="justify-content:center">Próximo Passo</div>
-    <h2 class="cta-final-title">Entre para a nova geração do <span class="gold">sistema financeiro</span></h2>
-    <p class="cta-final-sub">Junte-se à comunidade que está construindo a infraestrutura financeira da América Latina.</p>
-    <div class="cta-final-btns">
-      <a href="https://verumcrypto.com" class="btn-primary">Baixe Agora</a>
-      <a href="#" class="btn-secondary">Solicitar Acesso Antecipado</a>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-grid">
-    <div class="footer-brand">
-      <div class="footer-logo">VERUM</div>
-      <p class="footer-tagline">A nova infraestrutura financeira para o comércio digital na América Latina. Powered by Solana.</p>
-    </div>
-    <div>
-      <div class="footer-col-title">Plataforma</div>
-      <ul class="footer-links">
-        <li><a href="#">Wallet</a></li>
-        <li><a href="#">Câmbio</a></li>
-        <li><a href="#">Pagamentos</a></li>
-        <li><a href="#">DeFi</a></li>
-      </ul>
-    </div>
-    <div>
-      <div class="footer-col-title">Ecossistema</div>
-      <ul class="footer-links">
-        <li><a href="https://escoteiro.mastter.digital" target="_blank" rel="noopener noreferrer">ESCT Token</a></li>
-        <li><a href="https://bodecoin.mastter.digital" target="_blank" rel="noopener noreferrer">BodeCoin</a></li>
-        <li><a href="https://brutos.mastter.digital" target="_blank" rel="noopener noreferrer">Brutos</a></li>
-        <li><a href="#">Comunidade</a></li>
-      </ul>
-    </div>
-    <div>
-      <div class="footer-col-title">Recursos</div>
-      <ul class="footer-links">
-        <li><a href="#">Suporte</a></li>
-        <li><a href="#">Blog</a></li>
-        <li><a href="#">Contato</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <span>© 2025 Verum Crypto. Todos os direitos reservados.</span>
-    <span>Operação baseada no Panamá · América Latina</span>
-    <span><a href="javascript:void(0)" id="open-terms" style="color: inherit; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.1);">Terms of Use & Privacy</a> · Legal</span>
-  </div>
-</footer>
-
-<!-- MODAL TERMS AND PRIVACY -->
-<div id="terms-modal">
-  <div class="modal-content">
-    <span class="modal-close" id="close-terms-x">&times;</span>
-    <h2 class="modal-title">PRIVACY NOTICE AND GLOBAL COMPLIANCE TERMS – VERUM CRYPTO FREEPORT</h2>
-    <div class="modal-update">Last Updated: March 29, 2026</div>
-    
-    <div class="modal-body">
-      <h3>1. LEGAL STRUCTURE AND JURISDICTION</h3>
-      <p><strong>Verum Crypto Freeport</strong>, established under the laws of the Republic of Panama, acts as the data controller and technological infrastructure provider for the Verum Wallet and the Verum Pay gateway. By using our services, you accept that any dispute will be processed under the exclusive jurisdiction of the courts of Panama City, waiving any other forum regardless of its privileges.</p>
-
-      <h3>2. THE SELF-CUSTODY PILLAR (NON-CUSTODIAL SHIELD)</h3>
-      <p>Verum Wallet is a self-custody software interface.<br>
-      Verum Crypto Freeport <strong>DOES NOT collect, DOES NOT store, and DOES NOT have access</strong> to your Private Keys, Seed Phrases (Mnemonics), or local passwords.<br><br>
-      <strong>Disclaimer:</strong> The security of digital assets is the sole responsibility of the user. The loss of private keys results in the irreversible loss of funds, with no technical or legal possibility of recovery by Verum Crypto Freeport.</p>
-
-      <h3>3. VERUM PAY: IRREVERSIBILITY AND FIAT CONVERSION</h3>
-      <p>Verum Pay service operates strictly as a technological gateway for conversion between fiat currencies (e.g., Pix) and digital assets.<br>
-      <strong>Transaction Purpose:</strong> Once assets are sent to the Blockchain network, the transaction is considered final and irreversible.<br>
-      <strong>Chargeback Prohibition:</strong> Due to the immutable nature of Blockchain technology, there are no refund or chargeback mechanisms. The user acknowledges that sending amounts to incorrect addresses or withdrawing after confirmation on the network does not generate a right to a refund.</p>
-
-      <h3>4. AML COMPLIANCE AND DATA COLLECTION (KYC)</h3>
-      <p>To ensure the protection of the company against financial crimes and comply with FATF/GAFI standards, we collect:<br>
-      <strong>Identification (KYC):</strong> Data provided voluntarily for identity verification.<br>
-      <strong>Technical Data:</strong> IP address, transaction metadata, and device identifiers for fraud prevention and cybersecurity purposes.<br>
-      <strong>Legal Sharing:</strong> We reserve the right to share data with competent authorities only through a valid court order issued by a Panamanian authority or international mutual cooperation treaties recognized by the Republic of Panama.</p>
-
-      <h3>5. DATA PROTECTION (LAW 81/2019 AND GDPR)</h3>
-      <p>We adopt the highest security standards to protect the integrity of the Verum System:<br>
-      <strong>User Rights:</strong> You have the right to access, rectify, and delete your personal data (KYC), provided that such data is not required for maintenance due to legal retention obligations (anti-money laundering standards).<br>
-      <strong>Security:</strong> We use end-to-end encryption and layered security protocols to protect our infrastructure against unauthorized access.</p>
-
-      <h3>6. LIMITATION OF LIABILITY</h3>
-      <p>Under no circumstances shall Verum Crypto Freeport, its directors, or developers be liable for indirect damages, lost profits, or failures resulting from inherent instabilities of third-party Blockchain networks (such as Bitcoin, Ethereum, Solana, or Verum Chain).</p>
-    </div>
-
-    <div class="modal-footer">
-      <button class="close-btn" id="close-terms-btn">Read and Accepted</button>
-    </div>
-  </div>
-</div>
-
-<script>
-// Mobile menu toggle
-const mobileMenu = document.getElementById('mobile-menu');
-const navMenu = document.getElementById('nav-menu');
-if (mobileMenu) {
-  mobileMenu.addEventListener('click', () => {
-    navMenu.classList.toggle('active');
-  });
-}
-
-// Carousel
-const slides = document.querySelectorAll('.carousel-slide');
-const dots = document.querySelectorAll('.carousel-dots .dot');
-const prevBtn = document.querySelector('.prev-btn');
-const nextBtn = document.querySelector('.next-btn');
-let currentSlide = 0;
-let slideInterval;
-
-function showSlide(index) {
-  slides.forEach(slide => slide.classList.remove('active'));
-  dots.forEach(dot => dot.classList.remove('active'));
-  
-  if (index >= slides.length) currentSlide = 0;
-  else if (index < 0) currentSlide = slides.length - 1;
-  else currentSlide = index;
-  
-  slides[currentSlide].classList.add('active');
-  if (dots[currentSlide]) dots[currentSlide].classList.add('active');
-}
-
-function nextSlide() { showSlide(currentSlide + 1); }
-function prevSlide() { showSlide(currentSlide - 1); }
-
-if (slides.length > 0) {
-  nextBtn.addEventListener('click', () => { nextSlide(); resetInterval(); });
-  prevBtn.addEventListener('click', () => { prevSlide(); resetInterval(); });
-  
-  dots.forEach((dot, index) => {
-    dot.addEventListener('click', () => {
-      showSlide(index);
-      resetInterval();
-    });
-  });
-  
-  function startInterval() {
-    slideInterval = setInterval(nextSlide, 5000);
-  }
-  function resetInterval() {
-    clearInterval(slideInterval);
-    startInterval();
-  }
-  startInterval();
-}
-
-// Scroll reveal
-const reveals = document.querySelectorAll('.reveal, .pain-item');
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry, i) => {
-    if (entry.isIntersecting) {
-      setTimeout(() => {
-        entry.target.classList.add('visible');
-      }, 100);
+  <script>
+    // Mobile menu toggle
+    const mobileMenu = document.getElementById('mobile-menu');
+    const navMenu = document.getElementById('nav-menu');
+    if (mobileMenu) {
+      mobileMenu.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+      });
     }
-  });
-}, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
 
-reveals.forEach(el => observer.observe(el));
+    // Carousel
+    const slides = document.querySelectorAll('.carousel-slide');
+    const dots = document.querySelectorAll('.carousel-dots .dot');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+    let currentSlide = 0;
+    let slideInterval;
 
-// Stagger children in features grid
-document.querySelectorAll('.feature-card, .token-card, .security-item, .step').forEach((el, i) => {
-  el.style.transitionDelay = `${i * 0.1}s`;
-});
+    function showSlide(index) {
+      slides.forEach(slide => slide.classList.remove('active'));
+      dots.forEach(dot => dot.classList.remove('active'));
 
-// Nav shrink on scroll
-const nav = document.querySelector('nav');
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 80) {
-    nav.style.background = 'rgba(8,8,8,0.98)';
-    nav.style.padding = '8.5px 40px';
-  } else {
-    nav.style.background = '';
-    nav.style.padding = '';
-  }
-}, { passive: true });
+      if (index >= slides.length) currentSlide = 0;
+      else if (index < 0) currentSlide = slides.length - 1;
+      else currentSlide = index;
 
-// Pain items stagger
-document.querySelectorAll('.pain-item').forEach((el, i) => {
-  el.style.transitionDelay = `${i * 0.15}s`;
-});
+      slides[currentSlide].classList.add('active');
+      if (dots[currentSlide]) dots[currentSlide].classList.add('active');
+    }
 
-// Modal Logic
-const modal = document.getElementById('terms-modal');
-const openBtn = document.getElementById('open-terms');
-const closeBtnX = document.getElementById('close-terms-x');
-const closeBtnLido = document.getElementById('close-terms-btn');
+    function nextSlide() { showSlide(currentSlide + 1); }
+    function prevSlide() { showSlide(currentSlide - 1); }
 
-if (openBtn) {
-  openBtn.addEventListener('click', () => {
-    modal.style.display = 'flex';
-    document.body.style.overflow = 'hidden'; // Prevent scrolling
-  });
-}
+    if (slides.length > 0) {
+      nextBtn.addEventListener('click', () => { nextSlide(); resetInterval(); });
+      prevBtn.addEventListener('click', () => { prevSlide(); resetInterval(); });
 
-const closeModal = () => {
-  modal.style.display = 'none';
-  document.body.style.overflow = '';
-};
+      dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+          showSlide(index);
+          resetInterval();
+        });
+      });
 
-if (closeBtnX) closeBtnX.addEventListener('click', closeModal);
-if (closeBtnLido) closeBtnLido.addEventListener('click', closeModal);
+      function startInterval() {
+        slideInterval = setInterval(nextSlide, 5000);
+      }
+      function resetInterval() {
+        clearInterval(slideInterval);
+        startInterval();
+      }
+      startInterval();
+    }
 
-window.addEventListener('click', (event) => {
-  if (event.target == modal) {
-    closeModal();
-  }
-});
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal, .pain-item');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, 100);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
 
-</script>
+    reveals.forEach(el => observer.observe(el));
+
+    // Stagger children in features grid
+    document.querySelectorAll('.feature-card, .token-card, .security-item, .step').forEach((el, i) => {
+      el.style.transitionDelay = `${i * 0.1}s`;
+    });
+
+    // Nav shrink on scroll
+    const nav = document.querySelector('nav');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 80) {
+        nav.style.background = 'rgba(8,8,8,0.98)';
+        nav.style.padding = '8.5px 40px';
+      } else {
+        nav.style.background = '';
+        nav.style.padding = '';
+      }
+    }, { passive: true });
+
+    // Pain items stagger
+    document.querySelectorAll('.pain-item').forEach((el, i) => {
+      el.style.transitionDelay = `${i * 0.15}s`;
+    });
+
+    // Modal Logic
+    const modal = document.getElementById('terms-modal');
+    const openBtn = document.getElementById('open-terms');
+    const closeBtnX = document.getElementById('close-terms-x');
+    const closeBtnLido = document.getElementById('close-terms-btn');
+
+    if (openBtn) {
+      openBtn.addEventListener('click', () => {
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden'; // Prevent scrolling
+      });
+    }
+
+    const closeModal = () => {
+      modal.style.display = 'none';
+      document.body.style.overflow = '';
+    };
+
+    if (closeBtnX) closeBtnX.addEventListener('click', closeModal);
+    if (closeBtnLido) closeBtnLido.addEventListener('click', closeModal);
+
+    window.addEventListener('click', (event) => {
+      if (event.target == modal) {
+        closeModal();
+      }
+    });
+
+  </script>
 </body>
+
 </html>
