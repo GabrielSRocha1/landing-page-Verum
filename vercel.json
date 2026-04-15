@@ -9,5 +9,14 @@
     { "source": "/bode-coin-landing", "destination": "/index.html" },
     { "source": "/bode-coin-landing.html", "destination": "/index.html" },
     { "source": "/favicon.ico", "destination": "/vc-favicon-lp.png" }
+  ],
+  "headers": [
+    {
+      "source": "/vc-favicon-lp.png",
+      "headers": [
+        { "key": "Content-Type", "value": "image/png" },
+        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
+      ]
+    }
   ]
 }
