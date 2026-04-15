@@ -7,7 +7,6 @@
     { "source": "/verum-landing", "destination": "/index.html" },
     { "source": "/verum-landing.html", "destination": "/index.html" },
     { "source": "/bode-coin-landing", "destination": "/index.html" },
-    { "source": "/bode-coin-landing.html", "destination": "/index.html" },
-    { "source": "/favicon.ico", "destination": "/vc-favicon-lp.png" }
+    { "source": "/bode-coin-landing.html", "destination": "/index.html" }
   ]
 }
