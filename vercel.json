@@ -1,8 +1,12 @@
 {
-    "rewrites": [
-        {
-            "source": "/(.*)",
-            "destination": "/index.html"
-        }
-    ]
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/register-form", "destination": "/index.html" },
+    { "source": "/esct_presentation", "destination": "/index.html" },
+    { "source": "/esct_presentation.html", "destination": "/index.html" },
+    { "source": "/verum-landing", "destination": "/index.html" },
+    { "source": "/verum-landing.html", "destination": "/index.html" },
+    { "source": "/bode-coin-landing", "destination": "/index.html" },
+    { "source": "/bode-coin-landing.html", "destination": "/index.html" }
+  ]
 }
