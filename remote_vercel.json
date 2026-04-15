@@ -1,4 +1,4 @@
-﻿{
+{
   "cleanUrls": true,
   "rewrites": [
     { "source": "/register-form", "destination": "/index.html" },

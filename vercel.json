@@ -7,15 +7,14 @@
     { "source": "/verum-landing", "destination": "/index.html" },
     { "source": "/verum-landing.html", "destination": "/index.html" },
     { "source": "/bode-coin-landing", "destination": "/index.html" },
-    { "source": "/bode-coin-landing.html", "destination": "/index.html" },
-    { "source": "/favicon.ico", "destination": "/vc-favicon-lp.png" }
+    { "source": "/bode-coin-landing.html", "destination": "/index.html" }
   ],
   "headers": [
     {
-      "source": "/vc-favicon-lp.png",
+      "source": "/favicon.png",
       "headers": [
         { "key": "Content-Type", "value": "image/png" },
-        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
       ]
     }
   ]

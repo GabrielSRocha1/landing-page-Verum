@@ -1,7 +1,7 @@
-﻿{
+{
   "cleanUrls": true,
   "rewrites": [
-    { "source": "/", "destination": "/index.html" },
+    { "source": "/register-form", "destination": "/index.html" },
     { "source": "/esct_presentation", "destination": "/index.html" },
     { "source": "/esct_presentation.html", "destination": "/index.html" },
     { "source": "/verum-landing", "destination": "/index.html" },
