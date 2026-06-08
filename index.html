@@ -1,0 +1,3025 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verum Crypto — Nova Infraestrutura Tecnológica da América Latina</title>
+  <link rel="icon" type="image/png" href="./vc-favicon-lp.png">
+  <link rel="shortcut icon" type="image/png" href="./vc-favicon-lp.png">
+  <link rel="apple-touch-icon" href="./vc-favicon-lp.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --gold: #C9A84C;
+      --gold-light: #E8C96A;
+      --gold-dim: #8B6914;
+      --black: #080808;
+      --dark: #0F0F0F;
+      --dark2: #141414;
+      --dark3: #1A1A1A;
+      --dark4: #222222;
+      --white: #F0ECE0;
+      --white-dim: #A09880;
+      --accent-teal: #1FD6B4;
+      --accent-red: #E84040;
+      --border: rgba(201, 168, 76, 0.15);
+      --border-bright: rgba(201, 168, 76, 0.4);
+    }
+
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 17px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ===== NOISE OVERLAY ===== */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 1000;
+      opacity: 0.4;
+    }
+
+    /* ===== NAV ===== */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 900;
+      padding: 16.5px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(180deg, rgba(8, 8, 8, 0.95) 0%, transparent 100%);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'Cinzel', serif;
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    .nav-logo span {
+      color: var(--white-dim);
+      font-size: 12px;
+      display: block;
+      letter-spacing: 6px;
+      font-weight: 400;
+      margin-top: -2px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--white-dim);
+      text-decoration: none;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--gold);
+    }
+
+    .nav-cta {
+      background: transparent;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 10px 24px;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-decoration: none;
+    }
+
+    .nav-cta:hover {
+      background: var(--gold);
+      color: var(--black);
+    }
+
+    .lang-switch {
+      display: flex;
+      align-items: center;
+      border: 1px solid var(--border-bright);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .lang-btn {
+      background: transparent;
+      border: none;
+      color: var(--white-dim);
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: 1px;
+      padding: 6px 9px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .lang-btn:hover {
+      color: var(--gold);
+    }
+
+    .lang-btn.active {
+      background: var(--gold);
+      color: var(--black);
+    }
+
+    /* ===== HERO ===== */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: 120px 40px 80px;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 80% at 80% 50%, rgba(201, 168, 76, 0.06) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 60% at 20% 80%, rgba(31, 214, 180, 0.04) 0%, transparent 60%),
+        linear-gradient(180deg, #080808 0%, #0A0A0A 100%);
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(201, 168, 76, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201, 168, 76, 0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+    }
+
+    .hero-corner {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      border: 1px solid var(--border-bright);
+    }
+
+    .hero-corner.tl {
+      top: 80px;
+      left: 40px;
+      border-right: none;
+      border-bottom: none;
+    }
+
+    .hero-corner.br {
+      bottom: 40px;
+      right: 40px;
+      border-left: none;
+      border-top: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--border-bright);
+      padding: 6px 16px;
+      margin-bottom: 32px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      animation: fadeUp 0.8s ease both;
+    }
+
+    .hero-tag::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--accent-teal);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 0.5;
+        transform: scale(0.8);
+      }
+    }
+
+    .hero-headline {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(36px, 6vw, 68px);
+      font-weight: 900;
+      line-height: 1.05;
+      margin-bottom: 12px;
+      animation: fadeUp 0.8s 0.1s ease both;
+      color: var(--white);
+    }
+
+    .hero-headline .gold {
+      color: var(--gold);
+    }
+
+    .hero-sub {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(14px, 2vw, 18px);
+      font-weight: 400;
+      color: var(--gold-dim);
+      letter-spacing: 2px;
+      margin-bottom: 28px;
+      animation: fadeUp 0.8s 0.2s ease both;
+    }
+
+    .hero-body {
+      font-size: 18px;
+      color: var(--white-dim);
+      max-width: 520px;
+      margin-bottom: 48px;
+      animation: fadeUp 0.8s 0.3s ease both;
+      font-weight: 400;
+      line-height: 1.7;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      animation: fadeUp 0.8s 0.4s ease both;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--gold), var(--gold-dim));
+      color: var(--black);
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 800;
+      font-size: 14px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 16px 36px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-decoration: none;
+      display: inline-block;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .btn-primary:hover::after {
+      opacity: 1;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(201, 168, 76, 0.3);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 1px solid var(--border-bright);
+      color: var(--white);
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 16px 36px;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    /* Hero right panel - mockup */
+    .hero-visual {
+      position: absolute;
+      right: 100px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 380px;
+      animation: fadeLeft 1s 0.5s ease both;
+      opacity: 0.85;
+    }
+
+    .app-image {
+      width: 100%;
+      height: auto;
+      border-radius: 28px;
+      box-shadow: 0 40px 120px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(201, 168, 76, 0.1);
+      display: block;
+    }
+
+    .app-mockup::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+
+    .mock-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .mock-logo {
+      font-family: 'Cinzel', serif;
+      font-size: 16px;
+      color: var(--gold);
+      font-weight: 700;
+      letter-spacing: 3px;
+    }
+
+    .mock-icons {
+      display: flex;
+      gap: 8px;
+    }
+
+    .mock-icon {
+      width: 36px;
+      height: 36px;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      border-radius: 8px;
+    }
+
+    .mock-welcome {
+      font-size: 12px;
+      color: var(--white-dim);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .mock-name {
+      font-family: 'Cinzel', serif;
+      font-size: 20px;
+      color: var(--white);
+      font-weight: 700;
+    }
+
+    .mock-balance-card {
+      background: linear-gradient(135deg, var(--dark3), var(--dark4));
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px;
+      margin: 16px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mock-balance-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 80% 20%, rgba(201, 168, 76, 0.08), transparent);
+    }
+
+    .mock-bal-label {
+      font-size: 12px;
+      color: var(--gold);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .mock-bal-value {
+      font-family: 'Cinzel', serif;
+      font-size: 28px;
+      font-weight: 900;
+      color: var(--white);
+    }
+
+    .mock-bal-change {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: rgba(31, 214, 180, 0.15);
+      color: var(--accent-teal);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 20px;
+      margin-top: 8px;
+    }
+
+    .mock-actions {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+      margin: 16px 0;
+    }
+
+    .mock-action {
+      background: var(--dark3);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 10px 4px;
+      text-align: center;
+      font-size: 12px;
+      color: var(--white-dim);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .mock-action .icon {
+      font-size: 16px;
+      display: block;
+      margin-bottom: 4px;
+      color: var(--gold);
+    }
+
+
+    .mock-assets-label {
+      font-size: 12px;
+      color: var(--gold);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .mock-asset {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .mock-asset:last-child {
+      border-bottom: none;
+    }
+
+    .mock-asset-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+
+    .mock-asset-icon.usdt {
+      background: #26A17B;
+    }
+
+    .mock-asset-icon.sol {
+      background: linear-gradient(135deg, #9945FF, #14F195);
+    }
+
+    .mock-asset-icon.bdc {
+      background: linear-gradient(135deg, #8B6914, #C9A84C);
+    }
+
+    .mock-asset-name {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      flex: 1;
+    }
+
+    .mock-asset-ticker {
+      font-size: 12px;
+      color: var(--white-dim);
+    }
+
+    .mock-asset-value {
+      text-align: right;
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    .mock-asset-usd {
+      font-size: 12px;
+      color: var(--white-dim);
+    }
+
+    /* ===== STATS BAND ===== */
+    #stats {
+      background: var(--dark2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 40px;
+      overflow: hidden;
+    }
+
+    .stats-track {
+      display: flex;
+      gap: 60px;
+      animation: ticker 20s linear infinite;
+      white-space: nowrap;
+    }
+
+    @keyframes ticker {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    .stat-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-shrink: 0;
+    }
+
+    .stat-divider {
+      color: var(--gold-dim);
+      opacity: 0.3;
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: var(--white-dim);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .stat-value {
+      font-family: 'Cinzel', serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--gold);
+    }
+
+    /* ===== SECTION BASE ===== */
+    section {
+      padding: 120px 40px;
+    }
+
+    .section-tag {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-tag::before {
+      content: '';
+      width: 30px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .section-title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(28px, 4vw, 48px);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      color: var(--white);
+    }
+
+    .section-title .gold {
+      color: var(--gold);
+    }
+
+    .section-body {
+      font-size: 17px;
+      color: var(--white-dim);
+      line-height: 1.8;
+      max-width: 560px;
+    }
+
+    /* ===== PROBLEM ===== */
+    #problem {
+      background: var(--dark);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #problem::before {
+      content: '';
+      position: absolute;
+      left: -200px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(232, 64, 64, 0.05) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .problem-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .pain-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .pain-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--border);
+      opacity: 0;
+      transform: translateX(30px);
+      transition: all 0.6s ease;
+    }
+
+    .pain-item.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .pain-num {
+      font-family: 'Space Mono', monospace;
+      font-size: 12px;
+      color: var(--accent-red);
+      opacity: 0.6;
+      padding-top: 3px;
+      flex-shrink: 0;
+    }
+
+    .pain-title {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 18px;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+
+    .pain-desc {
+      font-size: 14px;
+      color: var(--white-dim);
+    }
+
+    /* ===== SOLUTION ===== */
+    #solution {
+      position: relative;
+      overflow: hidden;
+    }
+
+    #solution::after {
+      content: '';
+      position: absolute;
+      right: -100px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(201, 168, 76, 0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .solution-header {
+      max-width: 1200px;
+      margin: 0 auto 60px;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: var(--border);
+      max-width: 1200px;
+      margin: 0 auto;
+      border: 1px solid var(--border);
+    }
+
+    .feature-card {
+      background: var(--dark);
+      padding: 48px 40px;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s;
+    }
+
+    .feature-card:hover {
+      background: var(--dark2);
+    }
+
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 3px;
+      height: 0;
+      background: var(--gold);
+      transition: height 0.4s ease;
+    }
+
+    .feature-card:hover::before {
+      height: 100%;
+    }
+
+    .feature-icon {
+      font-size: 36px;
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .feature-title {
+      font-family: 'Cinzel', serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 12px;
+      letter-spacing: 1px;
+    }
+
+    .feature-desc {
+      font-size: 15px;
+      color: var(--white-dim);
+      line-height: 1.7;
+    }
+
+    /* ===== HOW IT WORKS ===== */
+    #how {
+      background: var(--dark2);
+      position: relative;
+    }
+
+    .how-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .how-header {
+      margin-bottom: 80px;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      position: relative;
+    }
+
+    .steps::before {
+      content: '';
+      position: absolute;
+      top: 40px;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border-bright), transparent);
+    }
+
+    .step {
+      padding: 0 40px 0 0;
+      position: relative;
+    }
+
+    .step:last-child {
+      padding-right: 0;
+    }
+
+    .step-num {
+      font-family: 'Space Mono', monospace;
+      font-size: 12px;
+      color: var(--gold-dim);
+      letter-spacing: 2px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .step-num::before {
+      content: '';
+      width: 12px;
+      height: 12px;
+      border: 1px solid var(--gold);
+      background: var(--black);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .step-title {
+      font-family: 'Cinzel', serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+
+    .step-desc {
+      font-size: 15px;
+      color: var(--white-dim);
+      line-height: 1.7;
+    }
+
+    /* ===== DIFFERENTIALS ===== */
+    #diff {
+      background: var(--black);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .diff-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .diff-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      margin-top: 80px;
+    }
+
+    .diff-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .diff-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 24px;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .diff-check {
+      width: 24px;
+      height: 24px;
+      border: 1px solid var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      color: var(--gold);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .diff-title {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 18px;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+
+    .diff-desc {
+      font-size: 14px;
+      color: var(--white-dim);
+    }
+
+    .diff-visual {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .tech-badge {
+      background: var(--dark2);
+      border: 1px solid var(--border);
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: border-color 0.3s;
+    }
+
+    .tech-badge:hover {
+      border-color: var(--gold-dim);
+    }
+
+    .tech-badge-name {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--white);
+    }
+
+    .tech-badge-detail {
+      font-size: 12px;
+      color: var(--white-dim);
+      margin-top: 2px;
+    }
+
+    .tech-badge-tag {
+      font-family: 'Space Mono', monospace;
+      font-size: 12px;
+      color: var(--gold);
+      border: 1px solid var(--border-bright);
+      padding: 4px 10px;
+    }
+
+    /* ===== ECOSYSTEM ===== */
+    #ecosystem {
+      background: var(--dark);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .eco-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .tokens-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 60px;
+    }
+
+    .token-card {
+      background: var(--dark2);
+      border: 1px solid var(--border);
+      padding: 36px 28px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+
+    .token-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--gold-dim);
+    }
+
+    .token-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .token-card:hover::before {
+      opacity: 1;
+    }
+
+    .token-icon-img {
+      width: 56px;
+      height: 56px;
+      object-fit: contain;
+      margin-bottom: 24px;
+    }
+
+    .token-symbol {
+      font-family: 'Space Mono', monospace;
+      font-size: 12px;
+      color: var(--gold);
+      letter-spacing: 3px;
+      margin-bottom: 8px;
+    }
+
+    .token-name {
+      font-family: 'Cinzel', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+
+    .token-desc {
+      font-size: 14px;
+      color: var(--white-dim);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .token-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .token-tag {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border: 1px solid var(--border);
+      color: var(--white-dim);
+    }
+
+    /* ===== PROGRAM ===== */
+    #program {
+      background: linear-gradient(135deg, #0A0A0A, #0F0C06);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .program-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 80% at 50% 50%, rgba(201, 168, 76, 0.04) 0%, transparent 70%);
+    }
+
+    .program-content {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .program-notice {
+      background: rgba(201, 168, 76, 0.06);
+      border: 1px solid var(--border-bright);
+      padding: 20px 24px;
+      margin-top: 48px;
+      font-size: 13px;
+      color: var(--white-dim);
+      line-height: 1.7;
+    }
+
+    .program-notice strong {
+      color: var(--gold);
+    }
+
+    .program-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      margin: 48px 0;
+    }
+
+    .program-metric {
+      background: var(--dark2);
+      padding: 32px 20px;
+      text-align: center;
+    }
+
+    .program-metric-value {
+      font-family: 'Cinzel', serif;
+      font-size: 32px;
+      font-weight: 900;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    .program-metric-label {
+      font-size: 12px;
+      color: var(--white-dim);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    /* ===== SECURITY ===== */
+    #security {
+      background: var(--dark2);
+    }
+
+    .security-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .security-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      margin-top: 60px;
+    }
+
+    .security-item {
+      background: var(--dark);
+      padding: 36px 28px;
+      text-align: center;
+    }
+
+    .security-icon {
+      font-size: 32px;
+      display: block;
+      margin-bottom: 16px;
+    }
+
+    .security-title {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+
+    .security-desc {
+      font-size: 13px;
+      color: var(--white-dim);
+      line-height: 1.6;
+    }
+
+    /* ===== GLOBAL ===== */
+    #global {
+      background: var(--black);
+      text-align: center;
+    }
+
+    .global-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .markets {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      margin: 60px 0;
+      flex-wrap: wrap;
+    }
+
+    .market-item {
+      text-align: center;
+    }
+
+    .market-flag {
+      font-size: 40px;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .market-name {
+      font-family: 'Cinzel', serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 2px;
+    }
+
+    .market-sub {
+      font-size: 12px;
+      color: var(--white-dim);
+    }
+
+    .global-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      background: var(--dark2);
+      border: 1px solid var(--border);
+      padding: 16px 24px;
+      font-size: 13px;
+      color: var(--white-dim);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .global-bar strong {
+      color: var(--gold);
+    }
+
+    /* ===== DISCLAIMER ===== */
+    #disclaimer {
+      background: var(--dark2);
+      border-top: 1px solid var(--border);
+      padding: 60px 40px;
+    }
+
+    .disclaimer-content {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .disclaimer-box {
+      border: 1px solid rgba(232, 64, 64, 0.2);
+      background: rgba(232, 64, 64, 0.03);
+      padding: 32px;
+    }
+
+    .disclaimer-title {
+      font-family: 'Space Mono', monospace;
+      font-size: 12px;
+      color: var(--accent-red);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .disclaimer-title::before {
+      content: '⚠';
+      font-size: 14px;
+    }
+
+    .disclaimer-text {
+      font-size: 13px;
+      color: var(--white-dim);
+      line-height: 1.8;
+    }
+
+    /* ===== CTA FINAL ===== */
+    #cta-final {
+      background: var(--black);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #cta-final::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 80% at 50% 0%, rgba(201, 168, 76, 0.08) 0%, transparent 60%);
+    }
+
+    .cta-final-content {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .cta-final-title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(28px, 5vw, 52px);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    .cta-final-sub {
+      font-size: 18px;
+      color: var(--white-dim);
+      margin-bottom: 48px;
+    }
+
+    .cta-final-btns {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--dark);
+      border-top: 1px solid var(--border);
+      padding: 60px 40px 40px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 60px;
+      max-width: 1200px;
+      margin: 0 auto 60px;
+    }
+
+
+    .footer-logo {
+      font-family: 'Cinzel', serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 4px;
+      margin-bottom: 16px;
+    }
+
+    .footer-tagline {
+      font-size: 14px;
+      color: var(--white-dim);
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .footer-col-title {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 800;
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-links a {
+      color: var(--white-dim);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.3s;
+    }
+
+    .footer-links a:hover {
+      color: var(--white);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding-top: 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      font-size: 12px;
+      color: var(--white-dim);
+      letter-spacing: 1px;
+    }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeLeft {
+      from {
+        opacity: 0;
+        transform: translate(60px, -50%);
+      }
+
+      to {
+        opacity: 0.85;
+        transform: translate(0, -50%);
+      }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===== SCROLLBAR ===== */
+    ::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--black);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--gold-dim);
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      width: 25px;
+      height: 2px;
+      background: var(--gold);
+      transition: all 0.3s;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1100px) {
+      .hero-visual {
+        display: none;
+      }
+
+      .problem-grid,
+      .diff-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .features-grid,
+      .tokens-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .steps {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .steps::before {
+        display: none;
+      }
+
+      .security-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .program-metrics {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 930px) {
+      .menu-toggle {
+        display: flex;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background: rgba(8, 8, 8, 0.98);
+        padding: 24px;
+        border-bottom: 1px solid var(--border);
+        display: none;
+        text-align: center;
+        gap: 20px;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+    }
+
+    @media (max-width: 600px) {
+      nav {
+        padding: 12.5px 20px;
+      }
+
+      section {
+        padding: 80px 24px;
+      }
+
+      #hero {
+        padding: 100px 24px 60px;
+      }
+
+      .hero-corner {
+        display: none;
+      }
+
+      .security-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 443px) {
+      .nav-right {
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 12px;
+      }
+
+      .nav-cta {
+        order: 3;
+        flex-basis: 100%;
+        text-align: center;
+      }
+
+      #hero {
+        padding-top: 160px;
+      }
+    }
+
+    @media (max-width: 887px) {
+      .tech-badge {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+
+      .tech-badge-detail {
+        word-break: break-word;
+      }
+    }
+
+    /* ===== CAROUSEL ===== */
+    .carousel-container {
+      position: relative;
+      width: fit-content;
+      max-width: 400px;
+      margin: 0 auto;
+      display: grid;
+      overflow: hidden;
+      border-radius: 20px;
+      border: 1px solid var(--border-bright);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    }
+
+    .carousel-slide {
+      grid-area: 1 / 1;
+      opacity: 0;
+      transition: opacity 0.8s ease-in-out;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1;
+    }
+
+    .carousel-slide.active {
+      opacity: 1;
+      z-index: 2;
+    }
+
+    .carousel-slide img {
+      display: block;
+      width: auto;
+      height: auto;
+      max-width: 100%;
+      max-height: 75vh;
+      border-radius: 20px;
+    }
+
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(8, 8, 8, 0.7);
+      color: var(--gold);
+      border: 1px solid var(--gold);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      font-size: 20px;
+      cursor: pointer;
+      z-index: 10;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .carousel-btn:hover {
+      background: var(--gold);
+      color: var(--black);
+    }
+
+    .prev-btn {
+      left: 20px;
+    }
+
+    .next-btn {
+      right: 20px;
+    }
+
+    .carousel-dots {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 12px;
+      z-index: 10;
+    }
+
+    .carousel-dots .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .carousel-dots .dot.active {
+      background: var(--gold);
+    }
+
+    /* ===== MODAL ===== */
+    #terms-modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      backdrop-filter: blur(10px);
+      overflow-y: auto;
+      padding: 40px 20px;
+    }
+
+    .modal-content {
+      background: var(--dark2);
+      margin: auto;
+      padding: 48px;
+      border: 1px solid var(--border-bright);
+      width: 100%;
+      max-width: 800px;
+      border-radius: 16px;
+      position: relative;
+      box-shadow: 0 40px 100px rgba(0, 0, 0, 0.8);
+      animation: modalFadeIn 0.4s ease-out;
+    }
+
+    @keyframes modalFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      color: var(--white-dim);
+      font-size: 24px;
+      cursor: pointer;
+      transition: color 0.3s;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+    }
+
+    .modal-close:hover {
+      color: var(--gold);
+      border-color: var(--gold);
+    }
+
+    .modal-title {
+      font-family: 'Cinzel', serif;
+      color: var(--gold);
+      font-size: clamp(20px, 4vw, 24px);
+      margin-bottom: 8px;
+      line-height: 1.2;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .modal-update {
+      font-size: 13px;
+      color: var(--gold-dim);
+      margin-bottom: 32px;
+      font-family: 'Space Mono', monospace;
+      letter-spacing: 1px;
+    }
+
+    .modal-body {
+      color: var(--white-dim);
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    .modal-body h3 {
+      color: var(--white);
+      margin-top: 32px;
+      margin-bottom: 12px;
+      font-family: 'Cinzel', serif;
+      font-size: 16px;
+      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .modal-body h3::after {
+      content: '';
+      height: 1px;
+      flex: 1;
+      background: var(--border);
+    }
+
+    .modal-body strong {
+      color: var(--white);
+    }
+
+    .modal-footer {
+      margin-top: 48px;
+      text-align: center;
+    }
+
+    .close-btn {
+      background: var(--gold);
+      color: var(--black);
+      border: none;
+      padding: 12px 32px;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .close-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(201, 168, 76, 0.3);
+    }
+
+    #terms-modal::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    #terms-modal::-webkit-scrollbar-track {
+      background: var(--black);
+    }
+
+    #terms-modal::-webkit-scrollbar-thumb {
+      background: var(--gold-dim);
+      border-radius: 3px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">VERUM<span>CRYPTO</span></a>
+    <ul class="nav-links" id="nav-menu">
+      <li><a href="#solution">Solução</a></li>
+      <li><a href="#how">Como Funciona</a></li>
+      <li><a href="#ecosystem">Ecossistema</a></li>
+      <li><a href="#security">Segurança</a></li>
+    </ul>
+    <div class="nav-right">
+      <div class="lang-switch" id="lang-switch">
+        <button class="lang-btn" data-lang="en" type="button">EN</button>
+        <button class="lang-btn" data-lang="es" type="button">ES</button>
+        <button class="lang-btn active" data-lang="pt" type="button">PT</button>
+      </div>
+      <a href="https://www.verumcrypto.com/" target="_blank" rel="noopener noreferrer" class="nav-cta">Baixe Agora</a>
+      <div class="menu-toggle" id="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-corner tl"></div>
+    <div class="hero-corner br"></div>
+
+    <div class="hero-content">
+      <div class="hero-tag">Tecnologia Solana · Inovação para a América Latina</div>
+      <h1 class="hero-headline">
+        A Evolução<br>
+        <span class="gold">Definitiva</span><br>
+        do Seu Dinheiro.
+      </h1>
+      <p class="hero-sub">Uma experiência financeira digital de classe mundial, sem intermediários.</p>
+      <p class="hero-body">
+        Assuma o controle absoluto do seu patrimônio com uma interface simples e segura. Acesse o mercado global,
+        troque moedas automaticamente com as melhores taxas do mercado e integre seu saldo diretamente ao comércio
+        digital. Tudo isso com a velocidade que só a tecnologia mais avançada pode oferecer.
+      </p>
+      <div class="hero-ctas">
+        <a href="https://www.verumcrypto.com/" target="_blank" rel="noopener noreferrer" class="btn-primary">Começar Agora</a>
+        <a href="https://www.verumcrypto.com/" target="_blank" rel="noopener noreferrer" class="btn-secondary">Solicitar Acesso</a>
+      </div>
+    </div>
+
+    <!-- App Mockup -->
+    <div class="hero-visual">
+      <img src="./portfolio.png" alt="Verum Crypto App" class="app-image">
+    </div>
+  </section>
+
+  <!-- STATS TICKER -->
+  <div id="stats">
+    <div class="stats-track">
+      <div class="stat-item">
+        <span class="stat-label">Rede</span>
+        <span class="stat-value">Solana</span>
+      </div>
+      <div class="stat-item stat-divider">◆</div>
+      <div class="stat-item">
+        <span class="stat-label">Velocidade</span>
+        <span class="stat-value">65,000 TPS</span>
+      </div>
+      <div class="stat-item stat-divider">◆</div>
+      <div class="stat-item">
+        <span class="stat-label">Custo por tx</span>
+        <span class="stat-value">2%</span>
+      </div>
+      <div class="stat-item stat-divider">◆</div>
+      <div class="stat-item">
+        <span class="stat-label">Mercado</span>
+        <span class="stat-value">América Latina</span>
+      </div>
+      <div class="stat-item stat-divider">◆</div>
+      <div class="stat-item">
+        <span class="stat-label">Self-Custody</span>
+        <span class="stat-value">100%</span>
+      </div>
+      <div class="stat-item stat-divider">◆</div>
+      <div class="stat-item">
+        <span class="stat-label">Apoiamos Comunidades com</span>
+        <span class="stat-value">ativos de Utilidade real</span>
+      </div>
+      <div class="stat-item stat-divider">◆</div>
+      <!-- repeat for seamless loop -->
+      <div class="stat-item">
+        <span class="stat-label">Rede</span>
+        <span class="stat-value">Solana</span>
+      </div>
+      <div class="stat-item stat-divider">◆</div>
+      <div class="stat-item">
+        <span class="stat-label">Velocidade</span>
+        <span class="stat-value">65,000 TPS</span>
+      </div>
+      <div class="stat-item stat-divider">◆</div>
+      <div class="stat-item">
+        <span class="stat-label">Custo por tx</span>
+        <span class="stat-value">2%</span>
+      </div>
+      <div class="stat-item stat-divider">◆</div>
+      <div class="stat-item">
+        <span class="stat-label">Mercado</span>
+        <span class="stat-value">América Latina</span>
+      </div>
+      <div class="stat-item stat-divider">◆</div>
+      <div class="stat-item">
+        <span class="stat-label">Self-Custody</span>
+        <span class="stat-value">100%</span>
+      </div>
+      <div class="stat-item stat-divider">◆</div>
+      <div class="stat-item">
+        <span class="stat-label">Apoiamos Comunidades com</span>
+        <span class="stat-value">ativos de Utilidade real</span>
+      </div>
+      <div class="stat-item stat-divider">◆</div>
+    </div>
+  </div>
+
+  <!-- PROBLEM -->
+  <section id="problem">
+    <div class="problem-grid">
+      <div class="reveal">
+        <div class="section-tag">O Problema</div>
+        <h2 class="section-title">O sistema bancário tradicional <span class="gold">não foi feito</span> para quem cruza fronteiras</h2>
+        <p class="section-body">O sistema bancário tradicional é lento, caro e limitado para quem vive entre múltiplas
+          moedas e mercados na América Latina.</p>
+      </div>
+      <ul class="pain-list">
+        <li class="pain-item">
+          <span class="pain-num">01</span>
+          <div>
+            <div class="pain-title">Taxas Abusivas</div>
+            <div class="pain-desc">Conversão cambial bancária com spread de 3-8%, remessas internacionais custando até 15% do valor.</div>
+          </div>
+        </li>
+        <li class="pain-item">
+          <span class="pain-num">02</span>
+          <div>
+            <div class="pain-title">Burocracia Excessiva</div>
+            <div class="pain-desc">Processos lentos, exigências documentais e barreiras que excluem a maioria.</div>
+          </div>
+        </li>
+        <li class="pain-item">
+          <span class="pain-num">03</span>
+          <div>
+            <div class="pain-title">Fronteiras Fechadas</div>
+            <div class="pain-desc">Operar em diferentes moedas na América Latina hoje é sinônimo de lentidão.</div>
+          </div>
+        </li>
+        <li class="pain-item">
+          <span class="pain-num">04</span>
+          <div>
+            <div class="pain-title">Inflação Silenciosa</div>
+            <div class="pain-desc">Dinheiro desvalorizando enquanto alternativas reais de proteção eram inacessíveis.
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+
+
+  <!-- SOLUTION -->
+  <section id="solution">
+    <div class="solution-header reveal">
+      <div class="section-tag">A Solução</div>
+      <h2 class="section-title">Tecnologia que <span class="gold">conecta</span> você ao futuro</h2>
+      <p class="section-body">Com infraestrutura baseada em Solana, a Verum oferece velocidade, segurança e integração
+        real com o comércio local.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card reveal">
+        <span class="feature-icon">⚡</span>
+        <div class="feature-title">Conversão Inteligente de Moedas</div>
+        <p class="feature-desc">Troque seus ativos digitais em segundos, direto no aplicativo. Nossa tecnologia busca
+          automaticamente as melhores taxas do mercado global para você, sem intermediários e sem taxas ocultas. A
+          conversão é instantânea: sem espera, sem burocracia.</p>
+      </div>
+      <div class="feature-card reveal">
+        <span class="feature-icon">⊞</span>
+        <div class="feature-title">Pagamentos via QR Code</div>
+        <p class="feature-desc">Pague produtos e serviços diretamente com QR Code. Integração para uso no comércio
+          físico e digital. É o seu saldo conectado ao mundo real, com controle 100% seu.</p>
+      </div>
+      <div class="feature-card reveal">
+        <span class="feature-icon">📊</span>
+        <div class="feature-title">Dashboard em Tempo Real</div>
+        <p class="feature-desc">Visualize movimentações, conversões e evolução dos seus ativos com interface clara e
+          profissional.</p>
+      </div>
+      <div class="feature-card reveal">
+        <span class="feature-icon">🔐</span>
+        <div class="feature-title">Self-Custody Total</div>
+        <p class="feature-desc">Suas chaves, seus ativos. Controle total sobre seu patrimônio digital sem
+          intermediários.</p>
+      </div>
+    </div>
+    <div style="text-align: center; margin-top: 60px;" class="reveal">
+      <a href="https://www.verumcrypto.com/" target="_blank" rel="noopener noreferrer" class="btn-primary">Baixe Agora</a>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="how">
+    <div class="how-content">
+      <div class="how-header reveal">
+        <div class="section-tag">Como Funciona</div>
+        <h2 class="section-title">Três passos para a <span class="gold">nova economia</span></h2>
+      </div>
+      <div class="steps">
+        <div class="step reveal">
+          <div class="step-num">01 — ACESSAR</div>
+          <div class="step-title">Acessar Ativos Digitais</div>
+          <p class="step-desc">Interaja com USDT, USDC, SOL e tokens compatíveis da rede diretamente da
+            sua carteira não custodial. A conversão fiduciária (Pix/BRL) é processada por parceiros terceirizados e
+            devidamente licenciados.</p>
+        </div>
+        <div class="step reveal">
+          <div class="step-num">02 — USAR</div>
+          <div class="step-title">Usar no Dia a Dia</div>
+          <p class="step-desc">Pague produtos e serviços com QR Code. Envie para qualquer carteira que recebe na rede
+            Solana.</p>
+        </div>
+        <div class="step reveal">
+          <div class="step-num">03 — GERENCIAR</div>
+          <div class="step-title">Acompanhe seu Patrimônio</div>
+          <p class="step-desc">Tenha controle total sobre os seus ativos digitais. Acompanhe seu saldo, seu histórico e
+            todas as suas movimentações em tempo real, com total transparência. Um painel inteligente e intuitivo que
+            oferece as ferramentas certas no momento exato em que você precisa.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAROUSEL -->
+  <section id="carousel-section"
+    style="background: var(--dark); border-bottom: 1px solid var(--border); padding-top: 60px;">
+    <div style="max-width: 1000px; margin: 0 auto; text-align: center;" class="reveal">
+      <div class="section-tag" style="justify-content: center;">Galeria</div>
+      <h2 class="section-title" style="margin-bottom: 40px;">Conheça de <span class="gold">Perto</span></h2>
+
+      <div class="carousel-container">
+        <div class="carousel-slide active">
+          <img src="./receber.jpeg" alt="Receber">
+        </div>
+        <div class="carousel-slide">
+          <img src="./enviar.jpeg" alt="Enviar">
+        </div>
+        <div class="carousel-slide">
+          <img src="./vesting.jpeg" alt="Vesting">
+        </div>
+
+        <button class="carousel-btn prev-btn">❮</button>
+        <button class="carousel-btn next-btn">❯</button>
+
+        <div class="carousel-dots">
+          <span class="dot active"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </div>
+      </div>
+    </div>
+    <div style="text-align: center; margin-top: 60px;" class="reveal">
+      <a href="https://www.verumcrypto.com/" target="_blank" rel="noopener noreferrer" class="btn-primary">Baixe Agora</a>
+    </div>
+  </section>
+
+  <!-- DIFFERENTIALS -->
+  <section id="diff">
+    <div class="diff-content">
+      <div class="reveal">
+        <div class="section-tag">Diferenciais</div>
+        <h2 class="section-title">Não é apenas uma wallet.<br><span class="gold">É um ecossistema.</span></h2>
+      </div>
+      <div class="diff-grid">
+        <ul class="diff-list">
+          <li class="diff-item reveal">
+            <div class="diff-check">✓</div>
+            <div>
+              <div class="diff-title">Integração com Comércio Regional</div>
+              <div class="diff-desc">Conectando à redes de comércios físicos e digitais.</div>
+            </div>
+          </li>
+          <li class="diff-item reveal">
+            <div class="diff-check">✓</div>
+            <div>
+              <div class="diff-title">Acesso Descentralizado</div>
+              <div class="diff-desc">Conecte-se a protocolos DeFi de terceiros diretamente da sua carteira não custodial.</div>
+            </div>
+          </li>
+          <li class="diff-item reveal">
+            <div class="diff-check">✓</div>
+            <div>
+              <div class="diff-title">Multi-Rede Preparado</div>
+              <div class="diff-desc">Estrutura técnica pronta para expansão multi-chain quando necessário.</div>
+            </div>
+          </li>
+          <li class="diff-item reveal">
+            <div class="diff-check">✓</div>
+            <div>
+              <div class="diff-title">Experiência Para Todos</div>
+              <div class="diff-desc">Interface simplificada mesmo para quem está entrando agora no mundo digital.</div>
+            </div>
+          </li>
+          <li class="diff-item reveal">
+            <div class="diff-check">✓</div>
+            <div>
+              <div class="diff-title">Comunidade Ativa</div>
+              <div class="diff-desc">Organizações fraternais e comunidades educacionais engajadas.</div>
+            </div>
+          </li>
+        </ul>
+        <div class="diff-visual reveal">
+          <div class="tech-badge">
+            <div>
+              <div class="tech-badge-name">Solana Blockchain</div>
+              <div class="tech-badge-detail">65,000 TPS · 2%/tx · Finalidade &lt;1s</div>
+            </div>
+            <div class="tech-badge-tag">LAYER 1</div>
+          </div>
+            <div class="tech-badge">
+              <div>
+                <div class="tech-badge-name">Self-Custody Wallet</div>
+                <div class="tech-badge-detail">Chaves privadas sob controle do usuário</div>
+              </div>
+              <div class="tech-badge-tag">SEGURO</div>
+            </div>
+            <div class="tech-badge">
+              <div>
+                <div class="tech-badge-name">Acesso DeFi</div>
+                <div class="tech-badge-detail">Interaja com Smart Contracts e protocolos compatíveis</div>
+              </div>
+              <div class="tech-badge-tag">DEFI</div>
+            </div>
+            <div class="tech-badge">
+              <div>
+                <div class="tech-badge-name">Pagamentos QR</div>
+                <div class="tech-badge-detail">Integração física + digital</div>
+              </div>
+              <div class="tech-badge-tag">PAYMENTS</div>
+            </div>
+            <div class="tech-badge">
+              <div>
+                <div class="tech-badge-name">Estrutura America Latina</div>
+                <div class="tech-badge-detail">Compliance internacional · LATAM focus</div>
+              </div>
+              <div class="tech-badge-tag">LEGAL</div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </section>
+
+  <!-- ECOSYSTEM TOKENS -->
+  <section id="ecosystem">
+    <div class="eco-content">
+      <div class="reveal">
+        <div class="section-tag">Ecossistema</div>
+        <h2 class="section-title">Tokens apoiados pela Verum para <span class="gold">utilidade real</span></h2>
+        <p class="section-body">Cada token tem utilidade no mundo físico, comunidade ativa e tokenomics sustentável.
+          Tokens não constituem promessas de retorno financeiro nem valor mobiliário.</p>
+      </div>
+      <div class="tokens-grid">
+        <div class="token-card reveal">
+          <img src="./ESCT.png" alt="ESCT Logo" class="token-icon-img">
+          <div class="token-symbol">$ESCT</div>
+          <div class="token-name">Escoteiro Coin</div>
+          <p class="token-desc">Utility token para acesso e uso na comunidade escoteira e educacional da
+            América Latina. Sem lastro financeiro e sem direitos societários.</p>
+          <div class="token-tags">
+            <span class="token-tag">Utilidade</span>
+            <span class="token-tag">Comunidade</span>
+            <span class="token-tag">Educação</span>
+          </div>
+        </div>
+        <div class="token-card reveal">
+          <img src="./BDC.png" alt="BDC Logo" class="token-icon-img">
+          <div class="token-symbol">$BDC</div>
+          <div class="token-name">BodeCoin</div>
+          <p class="token-desc">Utility token da comunidade Irmandade moderna. Conectando cultura, tecnologia e
+            pertencimento para as próximas gerações.</p>
+          <div class="token-tags">
+            <span class="token-tag">Comunidade</span>
+            <span class="token-tag">Utilidade</span>
+            <span class="token-tag">Benefícios de Rede</span>
+          </div>
+        </div>
+        <div class="token-card reveal">
+          <img src="./BRT.png" alt="BRUTOS Logo" class="token-icon-img">
+          <div class="token-symbol">$BRT</div>
+          <div class="token-name">Brutos</div>
+          <p class="token-desc">Utility token da Comunidade de transporte, crédito digital para mobilidade conectando
+            motoristas e frotas a uma infraestrutura automática em tempo real.</p>
+          <div class="token-tags">
+            <span class="token-tag">Acesso</span>
+            <span class="token-tag">Utilidade</span>
+            <span class="token-tag">Premium</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SINGLE IMAGE SECTION -->
+  <section id="banner-image"
+    style="background: var(--black); border-top: 1px solid var(--border); padding: 60px 20px; text-align: center; min-height: 80vh; display: flex; align-items: center; justify-content: center;">
+    <div style="width: 100%; max-width: 500px; margin: 0 auto; display: flex; justify-content: center;" class="reveal">
+      <img src="./ativos.jpeg" alt="Verum Visual"
+        style="max-width: 100%; max-height: 80vh; width: auto; height: auto; display: block; border-radius: 20px; border: 1px solid var(--border-bright); box-shadow: 0 40px 100px rgba(0,0,0,0.8);">
+    </div>
+  </section>
+
+  <!-- PROGRAM -->
+  <section id="program">
+    <div class="program-bg"></div>
+    <div class="program-content reveal">
+      <div class="section-tag" style="justify-content:center">Programa de Utilidade</div>
+      <h2 class="section-title">Desbloqueie <span class="gold">benefícios de software</span></h2>
+      <p class="section-body" style="margin:0 auto;text-align:center">Usuários ativos da interface podem desbloquear
+        benefícios e acessos exclusivos de software dentro do ecossistema Verum. Programa de fidelidade baseado em
+        uso — não constitui oferta de investimento, distribuição de lucros ou participação societária.</p>
+
+      <div class="program-metrics">
+        <div class="program-metric">
+          <div class="program-metric-value">+3</div>
+          <div class="program-metric-label">Países</div>
+        </div>
+        <div class="program-metric">
+          <div class="program-metric-value">∞</div>
+          <div class="program-metric-label">Possibilidades</div>
+        </div>
+        <div class="program-metric">
+          <div class="program-metric-value">24/7</div>
+          <div class="program-metric-label">Operação</div>
+        </div>
+      </div>
+
+      <div class="program-notice">
+        <strong>⚠ Aviso Importante:</strong> O acesso a funcionalidades de software é progressivo conforme uso da
+        interface. Programa baseado em utilidade (utility/loyalty) — sem promessa de rendimento financeiro,
+        revenue share, dividendos ou qualquer forma de remuneração de capital. Disponível apenas para usuários
+        elegíveis, mediante critérios de elegibilidade definidos pela plataforma.
+      </div>
+      <div style="text-align: center; margin-top: 60px;" class="reveal">
+        <a href="https://www.verumcrypto.com/" target="_blank" rel="noopener noreferrer" class="btn-primary">Baixe Agora</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECURITY -->
+  <section id="security">
+    <div class="security-content">
+      <div class="reveal">
+        <div class="section-tag">Segurança</div>
+        <h2 class="section-title">Infraestrutura <span class="gold">imutável</span> e transparente</h2>
+      </div>
+      <div class="security-grid">
+        <div class="security-item reveal">
+          <span class="security-icon">⛓</span>
+          <div class="security-title">Blockchain Nativa</div>
+          <p class="security-desc">Infraestrutura baseada em Solana — um dos blockchains mais rápidos e seguros do
+            mundo.</p>
+        </div>
+        <div class="security-item reveal">
+          <span class="security-icon">📋</span>
+          <div class="security-title">Registro Imutável</div>
+          <p class="security-desc">Toda transação gravada permanentemente na blockchain. Auditável por qualquer pessoa,
+            a qualquer momento.</p>
+        </div>
+        <div class="security-item reveal">
+          <span class="security-icon">🔑</span>
+          <div class="security-title">Controle do Usuário</div>
+          <p class="security-desc">Suas chaves privadas ficam com você. A Verum nunca tem custódia dos seus ativos.</p>
+        </div>
+        <div class="security-item reveal">
+          <span class="security-icon">👁</span>
+          <div class="security-title">Monitoramento Contínuo</div>
+          <p class="security-desc">Rede monitorada 24/7. Alertas em tempo real para qualquer atividade incomum.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GLOBAL -->
+  <section id="global">
+    <div class="global-content reveal">
+      <div class="section-tag" style="justify-content:center">Expansão Global</div>
+      <h2 class="section-title">Construído para a <span class="gold">América Latina</span></h2>
+      <p class="section-body" style="margin:0 auto;text-align:center">Estruturada com base internacional, a Verum foi
+        concebida para operar de forma escalável e conectada aos principais mercados da região.</p>
+
+      <div class="markets">
+        <div class="market-item">
+          <span class="market-flag">🇧🇷</span>
+          <div class="market-name">Brasil</div>
+          <div class="market-sub">Mercado Principal</div>
+        </div>
+        <div class="market-item">
+          <span class="market-flag">🇵🇾</span>
+          <div class="market-name">Paraguai</div>
+          <div class="market-sub">Hub Cripto</div>
+        </div>
+        <div class="market-item">
+          <span class="market-flag">🇵🇦</span>
+          <div class="market-name">Panamá</div>
+          <div class="market-sub">Sede Corporativa</div>
+        </div>
+      </div>
+
+      <div class="global-bar">
+        <strong>Estrutura Corporativa:</strong> Foco na América Latina · Compliance multi-jurisdicional
+      </div>
+    </div>
+  </section>
+
+  <!-- DISCLAIMER -->
+  <div id="disclaimer">
+    <div class="disclaimer-content">
+      <div class="disclaimer-box">
+        <div class="disclaimer-title">Aviso Legal Obrigatório</div>
+        <p class="disclaimer-text">
+          A Verum Wallet é uma <strong>interface de software não custodial (self-custody)</strong>. A Verum não
+          atua como instituição financeira, instituição de pagamento, corretora de valores, exchange, custodiante
+          ou contraparte em operações com ativos digitais. A Verum não provê liquidez própria e não opera câmbio
+          em nome do usuário — apenas facilita o acesso, via software, a protocolos descentralizados e autônomos
+          de terceiros.<br><br>
+          A <strong>conversão entre moeda fiduciária (BRL/Pix) e ativos digitais é processada exclusivamente por
+          parceiros terceirizados e devidamente licenciados</strong> em suas respectivas jurisdições. A Verum atua
+          apenas como interface (frontend) e não processa, custodia ou intermedia pagamentos em moeda fiduciária.<br><br>
+          Ativos digitais são voláteis e podem apresentar variações significativas de valor. A Verum não oferece
+          garantias de retorno financeiro, rendimento, distribuição de lucros, dividendos ou revenue share. Tokens
+          do ecossistema possuem natureza estritamente de utilidade (utility tokens) e não constituem valores
+          mobiliários, contratos de investimento coletivo ou promessa de remuneração de capital. Este material
+          possui caráter estritamente informativo e não constitui recomendação de investimento, oferta pública de
+          valores mobiliários ou serviço de assessoria financeira regulamentada. A decisão de adquirir ativos
+          digitais é de exclusiva responsabilidade do usuário. Verifique as regulamentações vigentes em sua
+          jurisdição antes de operar.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA FINAL -->
+  <section id="cta-final">
+    <div class="cta-final-content reveal">
+      <div class="section-tag" style="justify-content:center">Próximo Passo</div>
+      <h2 class="cta-final-title">Entre para a nova geração da <span class="gold">economia digital</span></h2>
+      <p class="cta-final-sub">Junte-se à comunidade que está construindo a infraestrutura tecnológica Web3 da América
+        Latina.
+      </p>
+      <div class="cta-final-btns">
+        <a href="https://www.verumcrypto.com/" target="_blank" rel="noopener noreferrer" class="btn-primary">Baixe Agora</a>
+        <a href="https://www.verumcrypto.com/" target="_blank" rel="noopener noreferrer" class="btn-secondary">Solicitar Acesso Antecipado</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">VERUM</div>
+        <p class="footer-tagline">A nova infraestrutura tecnológica Web3 para o comércio digital na América Latina.
+          Powered by Solana.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Plataforma</div>
+        <ul class="footer-links">
+          <li><a href="https://www.verumcrypto.com/" target="_blank" rel="noopener noreferrer">Wallet</a></li>
+          <li><a href="https://vesting.verumcrypto.com/home-cliente" target="_blank" rel="noopener noreferrer">Vesting</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Recursos</div>
+        <ul class="footer-links">
+          <li><a href="https://www.verumcrypto.com/" target="_blank" rel="noopener noreferrer">Câmbio</a></li>
+          <li><a href="https://www.verumcrypto.com/" target="_blank" rel="noopener noreferrer">Enviar</a></li>
+          <li><a href="https://www.verumcrypto.com/" target="_blank" rel="noopener noreferrer">Receber</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Ecossistema</div>
+        <ul class="footer-links">
+          <li><a href="https://blog.verumcrypto.com/" target="_blank" rel="noopener noreferrer">Blog</a></li>
+          <li><a href="mailto:suporte@verumcrypto.com">suporte@verumcrypto.com</a></li>
+          <li><a href="mailto:contato@verumcrypto.com">contato@verumcrypto.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Verum Crypto. Todos os direitos reservados.</span>
+      <span>Operação baseada · América Latina</span>
+      <span><a href="javascript:void(0)" id="open-terms"
+          style="color: inherit; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.1);">Terms of Use &
+          Privacy</a> · Legal</span>
+    </div>
+  </footer>
+
+  <!-- MODAL TERMS AND PRIVACY -->
+  <div id="terms-modal">
+    <div class="modal-content">
+      <span class="modal-close" id="close-terms-x">&times;</span>
+      <h2 class="modal-title">PRIVACY NOTICE AND GLOBAL COMPLIANCE TERMS – VERUM CRYPTO FREEPORT</h2>
+      <div class="modal-update">Last Updated: March 29, 2026</div>
+
+      <div class="modal-body">
+        <h3>1. LEGAL STRUCTURE AND JURISDICTION</h3>
+        <p><strong>Verum Crypto Freeport</strong>, established under the laws of the Republic of Panama, acts as the
+          data controller and technological infrastructure provider for the Verum Wallet and the Verum Pay gateway. By
+          using our services, you accept that any dispute will be processed under the exclusive jurisdiction of the
+          courts of Panama City, waiving any other forum regardless of its privileges.</p>
+
+        <h3>2. THE SELF-CUSTODY PILLAR (NON-CUSTODIAL SHIELD)</h3>
+        <p>Verum Wallet is a self-custody software interface.<br>
+          Verum Crypto Freeport <strong>DOES NOT collect, DOES NOT store, and DOES NOT have access</strong> to your
+          Private Keys, Seed Phrases (Mnemonics), or local passwords.<br><br>
+          <strong>Disclaimer:</strong> The security of digital assets is the sole responsibility of the user. The loss
+          of private keys results in the irreversible loss of funds, with no technical or legal possibility of recovery
+          by Verum Crypto Freeport.
+        </p>
+
+        <h3>3. VERUM PAY: TECHNOLOGICAL INTERFACE AND THIRD-PARTY FIAT PROCESSING</h3>
+        <p><strong>Verum Pay is a technological interface (frontend) only.</strong> Verum Crypto Freeport does not
+          operate as a payment institution, money transmitter, exchange, broker-dealer, or financial intermediary.<br><br>
+          <strong>Third-Party Fiat Processing:</strong> All conversion between fiat currency (BRL/Pix and other
+          fiduciary currencies) and digital assets — including all on-ramp (cash-in) and off-ramp (cash-out)
+          operations — is processed <strong>exclusively by duly licensed third-party payment service providers</strong>
+          in their respective jurisdictions. Verum Crypto Freeport does not custody, process, or intermediate
+          fiat funds, KYC for payment processing, or chargeback flows; these are the sole responsibility of the
+          licensed third-party processor.<br><br>
+          <strong>Self-Custody of Generated Assets:</strong> Once the third-party processor delivers the digital
+          asset to the user's wallet, custody is fully self-managed (self-custody) by the user.<br><br>
+          <strong>Transaction Finality:</strong> Once assets are sent to the Blockchain network, the transaction is
+          considered final and irreversible.<br>
+          <strong>Chargeback Prohibition:</strong> Due to the immutable nature of Blockchain technology, there are no
+          refund or chargeback mechanisms within Verum Wallet. The user acknowledges that sending amounts to
+          incorrect addresses or withdrawing after confirmation on the network does not generate a right to a refund
+          from Verum Crypto Freeport.
+        </p>
+
+        <h3>4. AML COMPLIANCE AND DATA COLLECTION (KYC)</h3>
+        <p>To ensure the protection of the company against financial crimes and comply with FATF/GAFI standards, we
+          collect:<br>
+          <strong>Identification (KYC):</strong> Data provided voluntarily for identity verification.<br>
+          <strong>Technical Data:</strong> IP address, transaction metadata, and device identifiers for fraud prevention
+          and cybersecurity purposes.<br>
+          <strong>Legal Sharing:</strong> We reserve the right to share data with competent authorities only through a
+          valid court order issued by a Panamanian authority or international mutual cooperation treaties recognized by
+          the Republic of Panama.
+        </p>
+
+        <h3>5. DATA PROTECTION (LAW 81/2019 AND GDPR)</h3>
+        <p>We adopt the highest security standards to protect the integrity of the Verum System:<br>
+          <strong>User Rights:</strong> You have the right to access, rectify, and delete your personal data (KYC),
+          provided that such data is not required for maintenance due to legal retention obligations (anti-money
+          laundering standards).<br>
+          <strong>Security:</strong> We use end-to-end encryption and layered security protocols to protect our
+          infrastructure against unauthorized access.
+        </p>
+
+        <h3>6. LIMITATION OF LIABILITY</h3>
+        <p>Under no circumstances shall Verum Crypto Freeport, its directors, or developers be liable for indirect
+          damages, lost profits, or failures resulting from inherent instabilities of third-party Blockchain networks
+          (such as Bitcoin, Ethereum, Solana, or Verum Chain).</p>
+      </div>
+
+      <div class="modal-footer">
+        <button class="close-btn" id="close-terms-btn">Read and Accepted</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ===== Language switcher (EN / ES / PT) =====
+    (function () {
+      const I18N = {
+        en: {
+          // Nav / common
+          "Solução": "Solution",
+          "Como Funciona": "How It Works",
+          "Ecossistema": "Ecosystem",
+          "Segurança": "Security",
+          "Baixe Agora": "Download Now",
+          // Hero
+          "Tecnologia Solana · Inovação para a América Latina": "Solana Technology · Innovation for Latin America",
+          "A Evolução": "The Ultimate",
+          "Definitiva": "Evolution",
+          "do Seu Dinheiro.": "of Your Money.",
+          "Uma experiência financeira digital de classe mundial, sem intermediários.": "A world-class digital financial experience, with no intermediaries.",
+          "Assuma o controle absoluto do seu patrimônio com uma interface simples e segura. Acesse o mercado global, troque moedas automaticamente com as melhores taxas do mercado e integre seu saldo diretamente ao comércio digital. Tudo isso com a velocidade que só a tecnologia mais avançada pode oferecer.": "Take absolute control of your wealth with a simple and secure interface. Access the global market, swap currencies automatically at the best market rates and integrate your balance directly into digital commerce. All of this with the speed that only the most advanced technology can offer.",
+          "Começar Agora": "Get Started",
+          "Solicitar Acesso": "Request Access",
+          // Stats ticker
+          "Rede": "Network",
+          "Velocidade": "Speed",
+          "Custo por tx": "Cost per tx",
+          "Mercado": "Market",
+          "América Latina": "Latin America",
+          "Apoiamos Comunidades com": "We support Communities with",
+          "ativos de Utilidade real": "real Utility assets",
+          // Problem
+          "O Problema": "The Problem",
+          "O sistema bancário tradicional": "The traditional banking system",
+          "não foi feito": "wasn't built",
+          "para quem cruza fronteiras": "for those who cross borders",
+          "O sistema bancário tradicional é lento, caro e limitado para quem vive entre múltiplas moedas e mercados na América Latina.": "The traditional banking system is slow, expensive and limited for those who live between multiple currencies and markets in Latin America.",
+          "Taxas Abusivas": "Abusive Fees",
+          "Conversão cambial bancária com spread de 3-8%, remessas internacionais custando até 15% do valor.": "Bank currency conversion with a 3-8% spread, international remittances costing up to 15% of the amount.",
+          "Burocracia Excessiva": "Excessive Bureaucracy",
+          "Processos lentos, exigências documentais e barreiras que excluem a maioria.": "Slow processes, documentation requirements and barriers that exclude the majority.",
+          "Fronteiras Fechadas": "Closed Borders",
+          "Operar em diferentes moedas na América Latina hoje é sinônimo de lentidão.": "Operating in different currencies in Latin America today is synonymous with slowness.",
+          "Inflação Silenciosa": "Silent Inflation",
+          "Dinheiro desvalorizando enquanto alternativas reais de proteção eram inacessíveis.": "Money losing value while real protection alternatives were inaccessible.",
+          // Solution
+          "A Solução": "The Solution",
+          "Tecnologia que": "Technology that",
+          "conecta": "connects",
+          "você ao futuro": "you to the future",
+          "Com infraestrutura baseada em Solana, a Verum oferece velocidade, segurança e integração real com o comércio local.": "With infrastructure based on Solana, Verum delivers speed, security and real integration with local commerce.",
+          "Conversão Inteligente de Moedas": "Smart Currency Conversion",
+          "Troque seus ativos digitais em segundos, direto no aplicativo. Nossa tecnologia busca automaticamente as melhores taxas do mercado global para você, sem intermediários e sem taxas ocultas. A conversão é instantânea: sem espera, sem burocracia.": "Swap your digital assets in seconds, right in the app. Our technology automatically finds the best global market rates for you, with no intermediaries and no hidden fees. The conversion is instant: no waiting, no bureaucracy.",
+          "Pagamentos via QR Code": "QR Code Payments",
+          "Pague produtos e serviços diretamente com QR Code. Integração para uso no comércio físico e digital. É o seu saldo conectado ao mundo real, com controle 100% seu.": "Pay for products and services directly with QR Code. Integration for use in physical and digital commerce. It's your balance connected to the real world, with 100% your control.",
+          "Dashboard em Tempo Real": "Real-Time Dashboard",
+          "Visualize movimentações, conversões e evolução dos seus ativos com interface clara e profissional.": "View transactions, conversions and the evolution of your assets with a clear and professional interface.",
+          "Self-Custody Total": "Full Self-Custody",
+          "Suas chaves, seus ativos. Controle total sobre seu patrimônio digital sem intermediários.": "Your keys, your assets. Full control over your digital wealth with no intermediaries.",
+          // How it works
+          "01 — ACESSAR": "01 — ACCESS",
+          "Acessar Ativos Digitais": "Access Digital Assets",
+          "Interaja com USDT, USDC, SOL e tokens compatíveis da rede diretamente da sua carteira não custodial. A conversão fiduciária (Pix/BRL) é processada por parceiros terceirizados e devidamente licenciados.": "Interact with USDT, USDC, SOL and network-compatible tokens directly from your non-custodial wallet. Fiat conversion (Pix/BRL) is processed by duly licensed third-party partners.",
+          "02 — USAR": "02 — USE",
+          "Usar no Dia a Dia": "Use in Everyday Life",
+          "Pague produtos e serviços com QR Code. Envie para qualquer carteira que recebe na rede Solana.": "Pay for products and services with QR Code. Send to any wallet that receives on the Solana network.",
+          "03 — GERENCIAR": "03 — MANAGE",
+          "Acompanhe seu Patrimônio": "Track Your Wealth",
+          "Tenha controle total sobre os seus ativos digitais. Acompanhe seu saldo, seu histórico e todas as suas movimentações em tempo real, com total transparência. Um painel inteligente e intuitivo que oferece as ferramentas certas no momento exato em que você precisa.": "Have full control over your digital assets. Track your balance, your history and all your transactions in real time, with complete transparency. A smart and intuitive dashboard that offers the right tools at the exact moment you need them.",
+          // Carousel
+          "Galeria": "Gallery",
+          "Conheça de": "Take a",
+          "Perto": "Closer Look",
+          // Differentiators
+          "Diferenciais": "Differentiators",
+          "Não é apenas uma wallet.": "It's not just a wallet.",
+          "É um ecossistema.": "It's an ecosystem.",
+          "Integração com Comércio Regional": "Regional Commerce Integration",
+          "Conectando à redes de comércios físicos e digitais.": "Connecting to networks of physical and digital merchants.",
+          "Acesso Descentralizado": "Decentralized Access",
+          "Conecte-se a protocolos DeFi de terceiros diretamente da sua carteira não custodial.": "Connect to third-party DeFi protocols directly from your non-custodial wallet.",
+          "Multi-Rede Preparado": "Multi-Network Ready",
+          "Estrutura técnica pronta para expansão multi-chain quando necessário.": "Technical structure ready for multi-chain expansion when needed.",
+          "Experiência Para Todos": "Experience For Everyone",
+          "Interface simplificada mesmo para quem está entrando agora no mundo digital.": "Simplified interface even for those just entering the digital world.",
+          "Comunidade Ativa": "Active Community",
+          "Organizações fraternais e comunidades educacionais engajadas.": "Engaged fraternal organizations and educational communities.",
+          "Chaves privadas sob controle do usuário": "Private keys under the user's control",
+          "SEGURO": "SECURE",
+          "Acesso DeFi": "DeFi Access",
+          "Interaja com Smart Contracts e protocolos compatíveis": "Interact with Smart Contracts and compatible protocols",
+          "Pagamentos QR": "QR Payments",
+          "Integração física + digital": "Physical + digital integration",
+          "Estrutura America Latina": "Latin America Structure",
+          "Compliance internacional · LATAM focus": "International compliance · LATAM focus",
+          // Ecosystem tokens
+          "Tokens apoiados pela Verum para": "Tokens backed by Verum for",
+          "utilidade real": "real utility",
+          "Cada token tem utilidade no mundo físico, comunidade ativa e tokenomics sustentável. Tokens não constituem promessas de retorno financeiro nem valor mobiliário.": "Each token has real-world utility, an active community and sustainable tokenomics. Tokens do not constitute promises of financial return or securities.",
+          "Utility token para acesso e uso na comunidade escoteira e educacional da América Latina. Sem lastro financeiro e sem direitos societários.": "Utility token for access and use in the scouting and educational community of Latin America. No financial backing and no corporate rights.",
+          "Utilidade": "Utility",
+          "Comunidade": "Community",
+          "Educação": "Education",
+          "Utility token da comunidade Irmandade moderna. Conectando cultura, tecnologia e pertencimento para as próximas gerações.": "Utility token of the modern Brotherhood community. Connecting culture, technology and belonging for the next generations.",
+          "Benefícios de Rede": "Network Benefits",
+          "Utility token da Comunidade de transporte, crédito digital para mobilidade conectando motoristas e frotas a uma infraestrutura automática em tempo real.": "Utility token of the transport Community, digital credit for mobility connecting drivers and fleets to an automated real-time infrastructure.",
+          "Acesso": "Access",
+          // Program
+          "Programa de Utilidade": "Utility Program",
+          "Desbloqueie": "Unlock",
+          "benefícios de software": "software benefits",
+          "Usuários ativos da interface podem desbloquear benefícios e acessos exclusivos de software dentro do ecossistema Verum. Programa de fidelidade baseado em uso — não constitui oferta de investimento, distribuição de lucros ou participação societária.": "Active interface users can unlock exclusive software benefits and access within the Verum ecosystem. A usage-based loyalty program — it does not constitute an investment offer, profit distribution or equity participation.",
+          "Países": "Countries",
+          "Possibilidades": "Possibilities",
+          "Operação": "Operation",
+          "⚠ Aviso Importante:": "⚠ Important Notice:",
+          "O acesso a funcionalidades de software é progressivo conforme uso da interface. Programa baseado em utilidade (utility/loyalty) — sem promessa de rendimento financeiro, revenue share, dividendos ou qualquer forma de remuneração de capital. Disponível apenas para usuários elegíveis, mediante critérios de elegibilidade definidos pela plataforma.": "Access to software features is progressive according to interface usage. A utility-based program (utility/loyalty) — with no promise of financial yield, revenue share, dividends or any form of capital remuneration. Available only to eligible users, subject to eligibility criteria defined by the platform.",
+          // Security
+          "Infraestrutura": "Infrastructure that is",
+          "imutável": "immutable",
+          "e transparente": "and transparent",
+          "Blockchain Nativa": "Native Blockchain",
+          "Infraestrutura baseada em Solana — um dos blockchains mais rápidos e seguros do mundo.": "Infrastructure based on Solana — one of the fastest and most secure blockchains in the world.",
+          "Registro Imutável": "Immutable Record",
+          "Toda transação gravada permanentemente na blockchain. Auditável por qualquer pessoa, a qualquer momento.": "Every transaction permanently recorded on the blockchain. Auditable by anyone, at any time.",
+          "Controle do Usuário": "User Control",
+          "Suas chaves privadas ficam com você. A Verum nunca tem custódia dos seus ativos.": "Your private keys stay with you. Verum never has custody of your assets.",
+          "Monitoramento Contínuo": "Continuous Monitoring",
+          "Rede monitorada 24/7. Alertas em tempo real para qualquer atividade incomum.": "Network monitored 24/7. Real-time alerts for any unusual activity.",
+          // Global
+          "Expansão Global": "Global Expansion",
+          "Construído para a": "Built for",
+          "Estruturada com base internacional, a Verum foi concebida para operar de forma escalável e conectada aos principais mercados da região.": "Built on an international base, Verum was designed to operate in a scalable way, connected to the region's main markets.",
+          "Brasil": "Brazil",
+          "Mercado Principal": "Main Market",
+          "Paraguai": "Paraguay",
+          "Hub Cripto": "Crypto Hub",
+          "Panamá": "Panama",
+          "Sede Corporativa": "Corporate Headquarters",
+          "Estrutura Corporativa:": "Corporate Structure:",
+          "Foco na América Latina · Compliance multi-jurisdicional": "Focus on Latin America · Multi-jurisdictional compliance",
+          // Disclaimer
+          "Aviso Legal Obrigatório": "Mandatory Legal Notice",
+          "A Verum Wallet é uma": "Verum Wallet is a",
+          "interface de software não custodial (self-custody)": "non-custodial (self-custody) software interface",
+          ". A Verum não atua como instituição financeira, instituição de pagamento, corretora de valores, exchange, custodiante ou contraparte em operações com ativos digitais. A Verum não provê liquidez própria e não opera câmbio em nome do usuário — apenas facilita o acesso, via software, a protocolos descentralizados e autônomos de terceiros.": ". Verum does not act as a financial institution, payment institution, securities broker, exchange, custodian or counterparty in transactions with digital assets. Verum does not provide its own liquidity and does not operate currency exchange on behalf of the user — it only facilitates access, via software, to decentralized and autonomous third-party protocols.",
+          "conversão entre moeda fiduciária (BRL/Pix) e ativos digitais é processada exclusivamente por parceiros terceirizados e devidamente licenciados": "conversion between fiat currency (BRL/Pix) and digital assets is processed exclusively by duly licensed third-party partners",
+          "em suas respectivas jurisdições. A Verum atua apenas como interface (frontend) e não processa, custodia ou intermedia pagamentos em moeda fiduciária.": "in their respective jurisdictions. Verum acts only as an interface (frontend) and does not process, hold in custody or intermediate payments in fiat currency.",
+          "Ativos digitais são voláteis e podem apresentar variações significativas de valor. A Verum não oferece garantias de retorno financeiro, rendimento, distribuição de lucros, dividendos ou revenue share. Tokens do ecossistema possuem natureza estritamente de utilidade (utility tokens) e não constituem valores mobiliários, contratos de investimento coletivo ou promessa de remuneração de capital. Este material possui caráter estritamente informativo e não constitui recomendação de investimento, oferta pública de valores mobiliários ou serviço de assessoria financeira regulamentada. A decisão de adquirir ativos digitais é de exclusiva responsabilidade do usuário. Verifique as regulamentações vigentes em sua jurisdição antes de operar.": "Digital assets are volatile and may show significant variations in value. Verum does not offer guarantees of financial return, yield, profit distribution, dividends or revenue share. Ecosystem tokens are strictly utility in nature (utility tokens) and do not constitute securities, collective investment contracts or a promise of capital remuneration. This material is strictly informational in nature and does not constitute an investment recommendation, public offering of securities or regulated financial advisory service. The decision to acquire digital assets is the sole responsibility of the user. Check the regulations in force in your jurisdiction before operating.",
+          // CTA final
+          "Próximo Passo": "Next Step",
+          "Entre para a nova geração da": "Join the new generation of the",
+          "economia digital": "digital economy",
+          "Junte-se à comunidade que está construindo a infraestrutura tecnológica Web3 da América Latina.": "Join the community that is building Latin America's Web3 technological infrastructure.",
+          "Solicitar Acesso Antecipado": "Request Early Access",
+          // Footer
+          "A nova infraestrutura tecnológica Web3 para o comércio digital na América Latina. Powered by Solana.": "The new Web3 technological infrastructure for digital commerce in Latin America. Powered by Solana.",
+          "Plataforma": "Platform",
+          "Recursos": "Resources",
+          "Câmbio": "Exchange",
+          "Enviar": "Send",
+          "Receber": "Receive",
+          "© 2025 Verum Crypto. Todos os direitos reservados.": "© 2025 Verum Crypto. All rights reserved.",
+          "Operação baseada · América Latina": "Operation based · Latin America"
+        },
+        es: {
+          // Nav / common
+          "Solução": "Solución",
+          "Como Funciona": "Cómo Funciona",
+          "Ecossistema": "Ecosistema",
+          "Segurança": "Seguridad",
+          "Baixe Agora": "Descarga Ahora",
+          // Hero
+          "Tecnologia Solana · Inovação para a América Latina": "Tecnología Solana · Innovación para América Latina",
+          "A Evolução": "La Evolución",
+          "Definitiva": "Definitiva",
+          "do Seu Dinheiro.": "de Su Dinero.",
+          "Uma experiência financeira digital de classe mundial, sem intermediários.": "Una experiencia financiera digital de clase mundial, sin intermediarios.",
+          "Assuma o controle absoluto do seu patrimônio com uma interface simples e segura. Acesse o mercado global, troque moedas automaticamente com as melhores taxas do mercado e integre seu saldo diretamente ao comércio digital. Tudo isso com a velocidade que só a tecnologia mais avançada pode oferecer.": "Asume el control absoluto de tu patrimonio con una interfaz simple y segura. Accede al mercado global, cambia monedas automáticamente con las mejores tasas del mercado e integra tu saldo directamente al comercio digital. Todo esto con la velocidad que solo la tecnología más avanzada puede ofrecer.",
+          "Começar Agora": "Comenzar Ahora",
+          "Solicitar Acesso": "Solicitar Acceso",
+          // Stats ticker
+          "Rede": "Red",
+          "Velocidade": "Velocidad",
+          "Custo por tx": "Costo por tx",
+          "Mercado": "Mercado",
+          "América Latina": "América Latina",
+          "Apoiamos Comunidades com": "Apoyamos Comunidades con",
+          "ativos de Utilidade real": "activos de Utilidad real",
+          // Problem
+          "O Problema": "El Problema",
+          "O sistema bancário tradicional": "El sistema bancario tradicional",
+          "não foi feito": "no fue hecho",
+          "para quem cruza fronteiras": "para quien cruza fronteras",
+          "O sistema bancário tradicional é lento, caro e limitado para quem vive entre múltiplas moedas e mercados na América Latina.": "El sistema bancario tradicional es lento, caro y limitado para quien vive entre múltiples monedas y mercados en América Latina.",
+          "Taxas Abusivas": "Tarifas Abusivas",
+          "Conversão cambial bancária com spread de 3-8%, remessas internacionais custando até 15% do valor.": "Conversión cambiaria bancaria con spread de 3-8%, remesas internacionales que cuestan hasta el 15% del valor.",
+          "Burocracia Excessiva": "Burocracia Excesiva",
+          "Processos lentos, exigências documentais e barreiras que excluem a maioria.": "Procesos lentos, exigencias documentales y barreras que excluyen a la mayoría.",
+          "Fronteiras Fechadas": "Fronteras Cerradas",
+          "Operar em diferentes moedas na América Latina hoje é sinônimo de lentidão.": "Operar en diferentes monedas en América Latina hoy es sinónimo de lentitud.",
+          "Inflação Silenciosa": "Inflación Silenciosa",
+          "Dinheiro desvalorizando enquanto alternativas reais de proteção eram inacessíveis.": "Dinero perdiendo valor mientras las alternativas reales de protección eran inaccesibles.",
+          // Solution
+          "A Solução": "La Solución",
+          "Tecnologia que": "Tecnología que",
+          "conecta": "conecta",
+          "você ao futuro": "al futuro",
+          "Com infraestrutura baseada em Solana, a Verum oferece velocidade, segurança e integração real com o comércio local.": "Con infraestructura basada en Solana, Verum ofrece velocidad, seguridad e integración real con el comercio local.",
+          "Conversão Inteligente de Moedas": "Conversión Inteligente de Monedas",
+          "Troque seus ativos digitais em segundos, direto no aplicativo. Nossa tecnologia busca automaticamente as melhores taxas do mercado global para você, sem intermediários e sem taxas ocultas. A conversão é instantânea: sem espera, sem burocracia.": "Cambia tus activos digitales en segundos, directo en la aplicación. Nuestra tecnología busca automáticamente las mejores tasas del mercado global para ti, sin intermediarios y sin tarifas ocultas. La conversión es instantánea: sin espera, sin burocracia.",
+          "Pagamentos via QR Code": "Pagos vía Código QR",
+          "Pague produtos e serviços diretamente com QR Code. Integração para uso no comércio físico e digital. É o seu saldo conectado ao mundo real, com controle 100% seu.": "Paga productos y servicios directamente con Código QR. Integración para uso en el comercio físico y digital. Es tu saldo conectado al mundo real, con control 100% tuyo.",
+          "Dashboard em Tempo Real": "Panel en Tiempo Real",
+          "Visualize movimentações, conversões e evolução dos seus ativos com interface clara e profissional.": "Visualiza movimientos, conversiones y la evolución de tus activos con una interfaz clara y profesional.",
+          "Self-Custody Total": "Autocustodia Total",
+          "Suas chaves, seus ativos. Controle total sobre seu patrimônio digital sem intermediários.": "Tus llaves, tus activos. Control total sobre tu patrimonio digital sin intermediarios.",
+          // How it works
+          "01 — ACESSAR": "01 — ACCEDER",
+          "Acessar Ativos Digitais": "Acceder a Activos Digitales",
+          "Interaja com USDT, USDC, SOL e tokens compatíveis da rede diretamente da sua carteira não custodial. A conversão fiduciária (Pix/BRL) é processada por parceiros terceirizados e devidamente licenciados.": "Interactúa con USDT, USDC, SOL y tokens compatibles de la red directamente desde tu billetera no custodial. La conversión fiduciaria (Pix/BRL) es procesada por socios terceros debidamente licenciados.",
+          "02 — USAR": "02 — USAR",
+          "Usar no Dia a Dia": "Usar en el Día a Día",
+          "Pague produtos e serviços com QR Code. Envie para qualquer carteira que recebe na rede Solana.": "Paga productos y servicios con Código QR. Envía a cualquier billetera que recibe en la red Solana.",
+          "03 — GERENCIAR": "03 — GESTIONAR",
+          "Acompanhe seu Patrimônio": "Sigue tu Patrimonio",
+          "Tenha controle total sobre os seus ativos digitais. Acompanhe seu saldo, seu histórico e todas as suas movimentações em tempo real, com total transparência. Um painel inteligente e intuitivo que oferece as ferramentas certas no momento exato em que você precisa.": "Ten control total sobre tus activos digitales. Sigue tu saldo, tu historial y todos tus movimientos en tiempo real, con total transparencia. Un panel inteligente e intuitivo que ofrece las herramientas correctas en el momento exacto en que las necesitas.",
+          // Carousel
+          "Galeria": "Galería",
+          "Conheça de": "Conócelo de",
+          "Perto": "Cerca",
+          // Differentiators
+          "Diferenciais": "Diferenciales",
+          "Não é apenas uma wallet.": "No es solo una wallet.",
+          "É um ecossistema.": "Es un ecosistema.",
+          "Integração com Comércio Regional": "Integración con el Comercio Regional",
+          "Conectando à redes de comércios físicos e digitais.": "Conectando a redes de comercios físicos y digitales.",
+          "Acesso Descentralizado": "Acceso Descentralizado",
+          "Conecte-se a protocolos DeFi de terceiros diretamente da sua carteira não custodial.": "Conéctate a protocolos DeFi de terceros directamente desde tu billetera no custodial.",
+          "Multi-Rede Preparado": "Preparado Multi-Red",
+          "Estrutura técnica pronta para expansão multi-chain quando necessário.": "Estructura técnica lista para expansión multi-chain cuando sea necesario.",
+          "Experiência Para Todos": "Experiencia Para Todos",
+          "Interface simplificada mesmo para quem está entrando agora no mundo digital.": "Interfaz simplificada incluso para quienes recién entran al mundo digital.",
+          "Comunidade Ativa": "Comunidad Activa",
+          "Organizações fraternais e comunidades educacionais engajadas.": "Organizaciones fraternales y comunidades educativas comprometidas.",
+          "Chaves privadas sob controle do usuário": "Llaves privadas bajo control del usuario",
+          "SEGURO": "SEGURO",
+          "Acesso DeFi": "Acceso DeFi",
+          "Interaja com Smart Contracts e protocolos compatíveis": "Interactúa con Smart Contracts y protocolos compatibles",
+          "Pagamentos QR": "Pagos QR",
+          "Integração física + digital": "Integración física + digital",
+          "Estrutura America Latina": "Estructura América Latina",
+          "Compliance internacional · LATAM focus": "Compliance internacional · enfoque LATAM",
+          // Ecosystem tokens
+          "Tokens apoiados pela Verum para": "Tokens respaldados por Verum para",
+          "utilidade real": "utilidad real",
+          "Cada token tem utilidade no mundo físico, comunidade ativa e tokenomics sustentável. Tokens não constituem promessas de retorno financeiro nem valor mobiliário.": "Cada token tiene utilidad en el mundo físico, comunidad activa y tokenomics sostenible. Los tokens no constituyen promesas de retorno financiero ni valores mobiliarios.",
+          "Utility token para acesso e uso na comunidade escoteira e educacional da América Latina. Sem lastro financeiro e sem direitos societários.": "Utility token para acceso y uso en la comunidad scout y educativa de América Latina. Sin respaldo financiero y sin derechos societarios.",
+          "Utilidade": "Utilidad",
+          "Comunidade": "Comunidad",
+          "Educação": "Educación",
+          "Utility token da comunidade Irmandade moderna. Conectando cultura, tecnologia e pertencimento para as próximas gerações.": "Utility token de la comunidad Hermandad moderna. Conectando cultura, tecnología y pertenencia para las próximas generaciones.",
+          "Benefícios de Rede": "Beneficios de Red",
+          "Utility token da Comunidade de transporte, crédito digital para mobilidade conectando motoristas e frotas a uma infraestrutura automática em tempo real.": "Utility token de la Comunidad de transporte, crédito digital para movilidad conectando conductores y flotas a una infraestructura automática en tiempo real.",
+          "Acesso": "Acceso",
+          // Program
+          "Programa de Utilidade": "Programa de Utilidad",
+          "Desbloqueie": "Desbloquea",
+          "benefícios de software": "beneficios de software",
+          "Usuários ativos da interface podem desbloquear benefícios e acessos exclusivos de software dentro do ecossistema Verum. Programa de fidelidade baseado em uso — não constitui oferta de investimento, distribuição de lucros ou participação societária.": "Los usuarios activos de la interfaz pueden desbloquear beneficios y accesos exclusivos de software dentro del ecosistema Verum. Programa de fidelidad basado en uso — no constituye oferta de inversión, distribución de ganancias ni participación societaria.",
+          "Países": "Países",
+          "Possibilidades": "Posibilidades",
+          "Operação": "Operación",
+          "⚠ Aviso Importante:": "⚠ Aviso Importante:",
+          "O acesso a funcionalidades de software é progressivo conforme uso da interface. Programa baseado em utilidade (utility/loyalty) — sem promessa de rendimento financeiro, revenue share, dividendos ou qualquer forma de remuneração de capital. Disponível apenas para usuários elegíveis, mediante critérios de elegibilidade definidos pela plataforma.": "El acceso a las funcionalidades de software es progresivo según el uso de la interfaz. Programa basado en utilidad (utility/loyalty) — sin promesa de rendimiento financiero, revenue share, dividendos ni ninguna forma de remuneración de capital. Disponible solo para usuarios elegibles, según criterios de elegibilidad definidos por la plataforma.",
+          // Security
+          "Infraestrutura": "Infraestructura",
+          "imutável": "inmutable",
+          "e transparente": "y transparente",
+          "Blockchain Nativa": "Blockchain Nativa",
+          "Infraestrutura baseada em Solana — um dos blockchains mais rápidos e seguros do mundo.": "Infraestructura basada en Solana — una de las blockchains más rápidas y seguras del mundo.",
+          "Registro Imutável": "Registro Inmutable",
+          "Toda transação gravada permanentemente na blockchain. Auditável por qualquer pessoa, a qualquer momento.": "Cada transacción registrada permanentemente en la blockchain. Auditable por cualquier persona, en cualquier momento.",
+          "Controle do Usuário": "Control del Usuario",
+          "Suas chaves privadas ficam com você. A Verum nunca tem custódia dos seus ativos.": "Tus llaves privadas se quedan contigo. Verum nunca tiene custodia de tus activos.",
+          "Monitoramento Contínuo": "Monitoreo Continuo",
+          "Rede monitorada 24/7. Alertas em tempo real para qualquer atividade incomum.": "Red monitoreada 24/7. Alertas en tiempo real para cualquier actividad inusual.",
+          // Global
+          "Expansão Global": "Expansión Global",
+          "Construído para a": "Construido para",
+          "Estruturada com base internacional, a Verum foi concebida para operar de forma escalável e conectada aos principais mercados da região.": "Estructurada con base internacional, Verum fue concebida para operar de forma escalable y conectada a los principales mercados de la región.",
+          "Brasil": "Brasil",
+          "Mercado Principal": "Mercado Principal",
+          "Paraguai": "Paraguay",
+          "Hub Cripto": "Hub Cripto",
+          "Panamá": "Panamá",
+          "Sede Corporativa": "Sede Corporativa",
+          "Estrutura Corporativa:": "Estructura Corporativa:",
+          "Foco na América Latina · Compliance multi-jurisdicional": "Enfoque en América Latina · Compliance multi-jurisdiccional",
+          // Disclaimer
+          "Aviso Legal Obrigatório": "Aviso Legal Obligatorio",
+          "A Verum Wallet é uma": "Verum Wallet es una",
+          "interface de software não custodial (self-custody)": "interfaz de software no custodial (self-custody)",
+          ". A Verum não atua como instituição financeira, instituição de pagamento, corretora de valores, exchange, custodiante ou contraparte em operações com ativos digitais. A Verum não provê liquidez própria e não opera câmbio em nome do usuário — apenas facilita o acesso, via software, a protocolos descentralizados e autônomos de terceiros.": ". Verum no actúa como institución financiera, institución de pago, corredora de valores, exchange, custodio o contraparte en operaciones con activos digitales. Verum no provee liquidez propia ni opera cambio de divisas en nombre del usuario — solo facilita el acceso, vía software, a protocolos descentralizados y autónomos de terceros.",
+          "conversão entre moeda fiduciária (BRL/Pix) e ativos digitais é processada exclusivamente por parceiros terceirizados e devidamente licenciados": "conversión entre moneda fiduciaria (BRL/Pix) y activos digitales es procesada exclusivamente por socios terceros debidamente licenciados",
+          "em suas respectivas jurisdições. A Verum atua apenas como interface (frontend) e não processa, custodia ou intermedia pagamentos em moeda fiduciária.": "en sus respectivas jurisdicciones. Verum actúa solo como interfaz (frontend) y no procesa, custodia ni intermedia pagos en moneda fiduciaria.",
+          "Ativos digitais são voláteis e podem apresentar variações significativas de valor. A Verum não oferece garantias de retorno financeiro, rendimento, distribuição de lucros, dividendos ou revenue share. Tokens do ecossistema possuem natureza estritamente de utilidade (utility tokens) e não constituem valores mobiliários, contratos de investimento coletivo ou promessa de remuneração de capital. Este material possui caráter estritamente informativo e não constitui recomendação de investimento, oferta pública de valores mobiliários ou serviço de assessoria financeira regulamentada. A decisão de adquirir ativos digitais é de exclusiva responsabilidade do usuário. Verifique as regulamentações vigentes em sua jurisdição antes de operar.": "Los activos digitales son volátiles y pueden presentar variaciones significativas de valor. Verum no ofrece garantías de retorno financiero, rendimiento, distribución de ganancias, dividendos o revenue share. Los tokens del ecosistema poseen naturaleza estrictamente de utilidad (utility tokens) y no constituyen valores mobiliarios, contratos de inversión colectiva ni promesa de remuneración de capital. Este material posee carácter estrictamente informativo y no constituye recomendación de inversión, oferta pública de valores mobiliarios ni servicio de asesoría financiera regulada. La decisión de adquirir activos digitales es responsabilidad exclusiva del usuario. Verifica las regulaciones vigentes en tu jurisdicción antes de operar.",
+          // CTA final
+          "Próximo Passo": "Próximo Paso",
+          "Entre para a nova geração da": "Únete a la nueva generación de la",
+          "economia digital": "economía digital",
+          "Junte-se à comunidade que está construindo a infraestrutura tecnológica Web3 da América Latina.": "Únete a la comunidad que está construyendo la infraestructura tecnológica Web3 de América Latina.",
+          "Solicitar Acesso Antecipado": "Solicitar Acceso Anticipado",
+          // Footer
+          "A nova infraestrutura tecnológica Web3 para o comércio digital na América Latina. Powered by Solana.": "La nueva infraestructura tecnológica Web3 para el comercio digital en América Latina. Powered by Solana.",
+          "Plataforma": "Plataforma",
+          "Recursos": "Recursos",
+          "Câmbio": "Cambio",
+          "Enviar": "Enviar",
+          "Receber": "Recibir",
+          "© 2025 Verum Crypto. Todos os direitos reservados.": "© 2025 Verum Crypto. Todos los derechos reservados.",
+          "Operação baseada · América Latina": "Operación basada · América Latina",
+          "Terms of Use & Privacy": "Términos de Uso y Privacidad"
+        }
+      };
+
+      const SKIP = { SCRIPT: 1, STYLE: 1, NOSCRIPT: 1 };
+      const collected = [];
+      const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+        acceptNode: function (node) {
+          if (SKIP[node.parentNode && node.parentNode.nodeName]) return NodeFilter.FILTER_REJECT;
+          return node.nodeValue.trim() ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+        }
+      });
+      let tn;
+      while ((tn = walker.nextNode())) {
+        collected.push({ node: tn, original: tn.nodeValue, key: tn.nodeValue.trim().replace(/\s+/g, ' ') });
+      }
+
+      function applyLang(lang) {
+        const map = I18N[lang];
+        collected.forEach(function (item) {
+          if (!map || map[item.key] === undefined) {
+            item.node.nodeValue = item.original;
+            return;
+          }
+          const lead = item.original.match(/^\s*/)[0];
+          const trail = item.original.match(/\s*$/)[0];
+          item.node.nodeValue = lead + map[item.key] + trail;
+        });
+        document.documentElement.lang = lang === 'pt' ? 'pt-BR' : lang;
+        document.querySelectorAll('.lang-btn').forEach(function (b) {
+          b.classList.toggle('active', b.getAttribute('data-lang') === lang);
+        });
+        try { localStorage.setItem('verum-lang', lang); } catch (e) {}
+      }
+
+      document.querySelectorAll('.lang-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () { applyLang(btn.getAttribute('data-lang')); });
+      });
+
+      let saved = 'pt';
+      try { saved = localStorage.getItem('verum-lang') || 'pt'; } catch (e) {}
+      applyLang(saved);
+    })();
+
+    // Mobile menu toggle
+    const mobileMenu = document.getElementById('mobile-menu');
+    const navMenu = document.getElementById('nav-menu');
+    if (mobileMenu) {
+      mobileMenu.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+      });
+    }
+
+    // Carousel
+    const slides = document.querySelectorAll('.carousel-slide');
+    const dots = document.querySelectorAll('.carousel-dots .dot');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+    let currentSlide = 0;
+    let slideInterval;
+
+    function showSlide(index) {
+      slides.forEach(slide => slide.classList.remove('active'));
+      dots.forEach(dot => dot.classList.remove('active'));
+
+      if (index >= slides.length) currentSlide = 0;
+      else if (index < 0) currentSlide = slides.length - 1;
+      else currentSlide = index;
+
+      slides[currentSlide].classList.add('active');
+      if (dots[currentSlide]) dots[currentSlide].classList.add('active');
+    }
+
+    function nextSlide() { showSlide(currentSlide + 1); }
+    function prevSlide() { showSlide(currentSlide - 1); }
+
+    if (slides.length > 0) {
+      nextBtn.addEventListener('click', () => { nextSlide(); resetInterval(); });
+      prevBtn.addEventListener('click', () => { prevSlide(); resetInterval(); });
+
+      dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+          showSlide(index);
+          resetInterval();
+        });
+      });
+
+      function startInterval() {
+        slideInterval = setInterval(nextSlide, 5000);
+      }
+      function resetInterval() {
+        clearInterval(slideInterval);
+        startInterval();
+      }
+      startInterval();
+    }
+
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal, .pain-item');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, 100);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+
+    reveals.forEach(el => observer.observe(el));
+
+    // Stagger children in features grid
+    document.querySelectorAll('.feature-card, .token-card, .security-item, .step').forEach((el, i) => {
+      el.style.transitionDelay = `${i * 0.1}s`;
+    });
+
+    // Nav shrink on scroll
+    const nav = document.querySelector('nav');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 80) {
+        nav.style.background = 'rgba(8,8,8,0.98)';
+        nav.style.paddingTop = '8.5px';
+        nav.style.paddingBottom = '8.5px';
+      } else {
+        nav.style.background = '';
+        nav.style.paddingTop = '';
+        nav.style.paddingBottom = '';
+      }
+    }, { passive: true });
+
+    // Pain items stagger
+    document.querySelectorAll('.pain-item').forEach((el, i) => {
+      el.style.transitionDelay = `${i * 0.15}s`;
+    });
+
+    // Modal Logic
+    const modal = document.getElementById('terms-modal');
+    const openBtn = document.getElementById('open-terms');
+    const closeBtnX = document.getElementById('close-terms-x');
+    const closeBtnLido = document.getElementById('close-terms-btn');
+
+    if (openBtn) {
+      openBtn.addEventListener('click', () => {
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden'; // Prevent scrolling
+      });
+    }
+
+    const closeModal = () => {
+      modal.style.display = 'none';
+      document.body.style.overflow = '';
+    };
+
+    if (closeBtnX) closeBtnX.addEventListener('click', closeModal);
+    if (closeBtnLido) closeBtnLido.addEventListener('click', closeModal);
+
+    window.addEventListener('click', (event) => {
+      if (event.target == modal) {
+        closeModal();
+      }
+    });
+
+  </script>
+</body>
+
+</html>
