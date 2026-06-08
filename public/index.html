@@ -90,7 +90,7 @@
 
     .nav-logo span {
       color: var(--white-dim);
-      font-size: 10px;
+      font-size: 12px;
       display: block;
       letter-spacing: 6px;
       font-weight: 400;
@@ -134,6 +134,36 @@
     }
 
     .nav-cta:hover {
+      background: var(--gold);
+      color: var(--black);
+    }
+
+    .lang-switch {
+      display: flex;
+      align-items: center;
+      border: 1px solid var(--border-bright);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .lang-btn {
+      background: transparent;
+      border: none;
+      color: var(--white-dim);
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: 1px;
+      padding: 6px 9px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .lang-btn:hover {
+      color: var(--gold);
+    }
+
+    .lang-btn.active {
       background: var(--gold);
       color: var(--black);
     }
@@ -201,7 +231,7 @@
       border: 1px solid var(--border-bright);
       padding: 6px 16px;
       margin-bottom: 32px;
-      font-size: 11px;
+      font-size: 12px;
       font-weight: 700;
       letter-spacing: 3px;
       text-transform: uppercase;
@@ -391,7 +421,7 @@
     }
 
     .mock-welcome {
-      font-size: 11px;
+      font-size: 12px;
       color: var(--white-dim);
       letter-spacing: 2px;
       text-transform: uppercase;
@@ -423,7 +453,7 @@
     }
 
     .mock-bal-label {
-      font-size: 10px;
+      font-size: 12px;
       color: var(--gold);
       letter-spacing: 2px;
       text-transform: uppercase;
@@ -443,7 +473,7 @@
       gap: 4px;
       background: rgba(31, 214, 180, 0.15);
       color: var(--accent-teal);
-      font-size: 11px;
+      font-size: 12px;
       font-weight: 700;
       padding: 3px 8px;
       border-radius: 20px;
@@ -463,7 +493,7 @@
       border-radius: 10px;
       padding: 10px 4px;
       text-align: center;
-      font-size: 9px;
+      font-size: 12px;
       color: var(--white-dim);
       letter-spacing: 1px;
       text-transform: uppercase;
@@ -478,7 +508,7 @@
 
 
     .mock-assets-label {
-      font-size: 10px;
+      font-size: 12px;
       color: var(--gold);
       letter-spacing: 2px;
       text-transform: uppercase;
@@ -528,7 +558,7 @@
     }
 
     .mock-asset-ticker {
-      font-size: 10px;
+      font-size: 12px;
       color: var(--white-dim);
     }
 
@@ -539,7 +569,7 @@
     }
 
     .mock-asset-usd {
-      font-size: 10px;
+      font-size: 12px;
       color: var(--white-dim);
     }
 
@@ -582,7 +612,7 @@
     }
 
     .stat-label {
-      font-size: 11px;
+      font-size: 12px;
       color: var(--white-dim);
       letter-spacing: 2px;
       text-transform: uppercase;
@@ -601,7 +631,7 @@
     }
 
     .section-tag {
-      font-size: 11px;
+      font-size: 12px;
       font-weight: 700;
       letter-spacing: 4px;
       text-transform: uppercase;
@@ -692,7 +722,7 @@
 
     .pain-num {
       font-family: 'Space Mono', monospace;
-      font-size: 11px;
+      font-size: 12px;
       color: var(--accent-red);
       opacity: 0.6;
       padding-top: 3px;
@@ -964,7 +994,7 @@
 
     .tech-badge-tag {
       font-family: 'Space Mono', monospace;
-      font-size: 10px;
+      font-size: 12px;
       color: var(--gold);
       border: 1px solid var(--border-bright);
       padding: 4px 10px;
@@ -1028,7 +1058,7 @@
 
     .token-symbol {
       font-family: 'Space Mono', monospace;
-      font-size: 11px;
+      font-size: 12px;
       color: var(--gold);
       letter-spacing: 3px;
       margin-bottom: 8px;
@@ -1056,7 +1086,7 @@
     }
 
     .token-tag {
-      font-size: 10px;
+      font-size: 12px;
       font-weight: 700;
       letter-spacing: 1px;
       text-transform: uppercase;
@@ -1127,7 +1157,7 @@
     }
 
     .program-metric-label {
-      font-size: 11px;
+      font-size: 12px;
       color: var(--white-dim);
       letter-spacing: 2px;
       text-transform: uppercase;
@@ -1258,7 +1288,7 @@
 
     .disclaimer-title {
       font-family: 'Space Mono', monospace;
-      font-size: 11px;
+      font-size: 12px;
       color: var(--accent-red);
       letter-spacing: 3px;
       text-transform: uppercase;
@@ -1503,7 +1533,7 @@
       }
     }
 
-    @media (max-width: 800px) {
+    @media (max-width: 930px) {
       .menu-toggle {
         display: flex;
       }
@@ -1556,6 +1586,36 @@
         flex-direction: column;
         gap: 12px;
         text-align: center;
+      }
+    }
+
+    @media (max-width: 443px) {
+      .nav-right {
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 12px;
+      }
+
+      .nav-cta {
+        order: 3;
+        flex-basis: 100%;
+        text-align: center;
+      }
+
+      #hero {
+        padding-top: 160px;
+      }
+    }
+
+    @media (max-width: 887px) {
+      .tech-badge {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+
+      .tech-badge-detail {
+        word-break: break-word;
       }
     }
 
@@ -1810,7 +1870,12 @@
       <li><a href="#security">Segurança</a></li>
     </ul>
     <div class="nav-right">
-      <a href="https://verumcrypto.com" class="nav-cta">Baixe Agora</a>
+      <div class="lang-switch" id="lang-switch">
+        <button class="lang-btn" data-lang="en" type="button">EN</button>
+        <button class="lang-btn" data-lang="es" type="button">ES</button>
+        <button class="lang-btn active" data-lang="pt" type="button">PT</button>
+      </div>
+      <a href="https://www.verumcrypto.com/" target="_blank" rel="noopener noreferrer" class="nav-cta">Baixe Agora</a>
       <div class="menu-toggle" id="mobile-menu">
         <span></span>
         <span></span>
@@ -1827,20 +1892,21 @@
     <div class="hero-corner br"></div>
 
     <div class="hero-content">
-      <div class="hero-tag">Powered by Solana · América Latina</div>
+      <div class="hero-tag">Tecnologia Solana · Inovação para a América Latina</div>
       <h1 class="hero-headline">
-        A Nova<br>
-        <span class="gold">Infraestrutura</span><br>
-        Tecnológica
+        A Evolução<br>
+        <span class="gold">Definitiva</span><br>
+        do Seu Dinheiro.
       </h1>
-      <p class="hero-sub">Interface Web3 de Próxima Geração para a América Latina</p>
+      <p class="hero-sub">Uma experiência financeira digital de classe mundial, sem intermediários.</p>
       <p class="hero-body">
-        Interface de software não custodial que conecta você a protocolos descentralizados de terceiros, com
-        roteamento otimizado (swap) e integração com o comércio digital.
+        Assuma o controle absoluto do seu patrimônio com uma interface simples e segura. Acesse o mercado global,
+        troque moedas automaticamente com as melhores taxas do mercado e integre seu saldo diretamente ao comércio
+        digital. Tudo isso com a velocidade que só a tecnologia mais avançada pode oferecer.
       </p>
       <div class="hero-ctas">
-        <a href="#cta-final" class="btn-primary">Começar Agora</a>
-        <a href="#how" class="btn-secondary">Solicitar Acesso</a>
+        <a href="https://www.verumcrypto.com/" target="_blank" rel="noopener noreferrer" class="btn-primary">Começar Agora</a>
+        <a href="https://www.verumcrypto.com/" target="_blank" rel="noopener noreferrer" class="btn-secondary">Solicitar Acesso</a>
       </div>
     </div>
 
@@ -1869,8 +1935,8 @@
       </div>
       <div class="stat-item stat-divider">◆</div>
       <div class="stat-item">
-        <span class="stat-label">Mercados</span>
-        <span class="stat-value">BR · PY · PA</span>
+        <span class="stat-label">Mercado</span>
+        <span class="stat-value">América Latina</span>
       </div>
       <div class="stat-item stat-divider">◆</div>
       <div class="stat-item">
@@ -1900,8 +1966,8 @@
       </div>
       <div class="stat-item stat-divider">◆</div>
       <div class="stat-item">
-        <span class="stat-label">Mercados</span>
-        <span class="stat-value">BR · PY · PA</span>
+        <span class="stat-label">Mercado</span>
+        <span class="stat-value">América Latina</span>
       </div>
       <div class="stat-item stat-divider">◆</div>
       <div class="stat-item">
@@ -1921,7 +1987,7 @@
     <div class="problem-grid">
       <div class="reveal">
         <div class="section-tag">O Problema</div>
-        <h2 class="section-title">O sistema bancário tradicional <span class="gold">não foi feito</span> para você</h2>
+        <h2 class="section-title">O sistema bancário tradicional <span class="gold">não foi feito</span> para quem cruza fronteiras</h2>
         <p class="section-body">O sistema bancário tradicional é lento, caro e limitado para quem vive entre múltiplas
           moedas e mercados na América Latina.</p>
       </div>
@@ -1943,8 +2009,8 @@
         <li class="pain-item">
           <span class="pain-num">03</span>
           <div>
-            <div class="pain-title">Fronteiras Fragmentadas</div>
-            <div class="pain-desc">Sem integração real entre Brasil, Paraguai e Panamá para comércio digital.</div>
+            <div class="pain-title">Fronteiras Fechadas</div>
+            <div class="pain-desc">Operar em diferentes moedas na América Latina hoje é sinônimo de lentidão.</div>
           </div>
         </li>
         <li class="pain-item">
@@ -1972,15 +2038,16 @@
     <div class="features-grid">
       <div class="feature-card reveal">
         <span class="feature-icon">⚡</span>
-        <div class="feature-title">Swap Descentralizado</div>
-        <p class="feature-desc">Roteamento otimizado (swap) entre ativos digitais via protocolos descentralizados de
-          terceiros, com taxas transparentes. Sem espera, sem burocracia.</p>
+        <div class="feature-title">Conversão Inteligente de Moedas</div>
+        <p class="feature-desc">Troque seus ativos digitais em segundos, direto no aplicativo. Nossa tecnologia busca
+          automaticamente as melhores taxas do mercado global para você, sem intermediários e sem taxas ocultas. A
+          conversão é instantânea: sem espera, sem burocracia.</p>
       </div>
       <div class="feature-card reveal">
         <span class="feature-icon">⊞</span>
         <div class="feature-title">Pagamentos via QR Code</div>
-        <p class="feature-desc">Pague produtos e serviços diretamente com QR Code dinâmico. Integração com comércio
-          físico e digital.</p>
+        <p class="feature-desc">Pague produtos e serviços diretamente com QR Code. Integração para uso no comércio
+          físico e digital. É o seu saldo conectado ao mundo real, com controle 100% seu.</p>
       </div>
       <div class="feature-card reveal">
         <span class="feature-icon">📊</span>
@@ -1996,7 +2063,7 @@
       </div>
     </div>
     <div style="text-align: center; margin-top: 60px;" class="reveal">
-      <a href="#cta-final" class="btn-primary">Baixe Agora</a>
+      <a href="https://www.verumcrypto.com/" target="_blank" rel="noopener noreferrer" class="btn-primary">Baixe Agora</a>
     </div>
   </section>
 
@@ -2011,21 +2078,22 @@
         <div class="step reveal">
           <div class="step-num">01 — ACESSAR</div>
           <div class="step-title">Acessar Ativos Digitais</div>
-          <p class="step-desc">Interaja com USDT, USDC, SOL e tokens compatíveis do ecossistema Verum diretamente da
+          <p class="step-desc">Interaja com USDT, USDC, SOL e tokens compatíveis da rede diretamente da
             sua carteira não custodial. A conversão fiduciária (Pix/BRL) é processada por parceiros terceirizados e
             devidamente licenciados.</p>
         </div>
         <div class="step reveal">
           <div class="step-num">02 — USAR</div>
           <div class="step-title">Usar no Dia a Dia</div>
-          <p class="step-desc">Pague produtos e serviços com QR Code. Envie para qualquer carteira Solana. Integração
-            com a rede de parceiros comerciais Verum.</p>
+          <p class="step-desc">Pague produtos e serviços com QR Code. Envie para qualquer carteira que recebe na rede
+            Solana.</p>
         </div>
         <div class="step reveal">
           <div class="step-num">03 — GERENCIAR</div>
-          <div class="step-title">Acompanhar seu Portfólio</div>
-          <p class="step-desc">Visualização transparente das suas interações Web3 em tempo real. Acesse funcionalidades
-            de software conforme você utiliza a interface.</p>
+          <div class="step-title">Acompanhe seu Patrimônio</div>
+          <p class="step-desc">Tenha controle total sobre os seus ativos digitais. Acompanhe seu saldo, seu histórico e
+            todas as suas movimentações em tempo real, com total transparência. Um painel inteligente e intuitivo que
+            oferece as ferramentas certas no momento exato em que você precisa.</p>
         </div>
       </div>
     </div>
@@ -2060,7 +2128,7 @@
       </div>
     </div>
     <div style="text-align: center; margin-top: 60px;" class="reveal">
-      <a href="#cta-final" class="btn-primary">Baixe Agora</a>
+      <a href="https://www.verumcrypto.com/" target="_blank" rel="noopener noreferrer" class="btn-primary">Baixe Agora</a>
     </div>
   </section>
 
@@ -2077,7 +2145,7 @@
             <div class="diff-check">✓</div>
             <div>
               <div class="diff-title">Integração com Comércio Regional</div>
-              <div class="diff-desc">Conectado à redes de comércio real no Brasil, Paraguai e Panamá.</div>
+              <div class="diff-desc">Conectando à redes de comércios físicos e digitais.</div>
             </div>
           </li>
           <li class="diff-item reveal">
@@ -2105,8 +2173,7 @@
             <div class="diff-check">✓</div>
             <div>
               <div class="diff-title">Comunidade Ativa</div>
-              <div class="diff-desc">Redes de motociclistas, organizações fraternais e comunidades educacionais
-                integradas.</div>
+              <div class="diff-desc">Organizações fraternais e comunidades educacionais engajadas.</div>
             </div>
           </li>
         </ul>
@@ -2114,10 +2181,10 @@
           <div class="tech-badge">
             <div>
               <div class="tech-badge-name">Solana Blockchain</div>
-              <div class="tech-badge-detail">65,000 TPS · 2%/tx · Finalidade <1s< /div>
-              </div>
-              <div class="tech-badge-tag">LAYER 1</div>
+              <div class="tech-badge-detail">65,000 TPS · 2%/tx · Finalidade &lt;1s</div>
             </div>
+            <div class="tech-badge-tag">LAYER 1</div>
+          </div>
             <div class="tech-badge">
               <div>
                 <div class="tech-badge-name">Self-Custody Wallet</div>
@@ -2141,7 +2208,7 @@
             </div>
             <div class="tech-badge">
               <div>
-                <div class="tech-badge-name">Estrutura Panamá</div>
+                <div class="tech-badge-name">Estrutura America Latina</div>
                 <div class="tech-badge-detail">Compliance internacional · LATAM focus</div>
               </div>
               <div class="tech-badge-tag">LEGAL</div>
@@ -2156,16 +2223,16 @@
     <div class="eco-content">
       <div class="reveal">
         <div class="section-tag">Ecossistema</div>
-        <h2 class="section-title">Tokens compatíveis para o <span class="gold">mundo real</span></h2>
-        <p class="section-body">Cada token compatível com o ecossistema Verum tem utilidade de software, comunidade
-          ativa e tokenomics sustentável. Tokens não constituem promessa de retorno financeiro nem valor mobiliário.</p>
+        <h2 class="section-title">Tokens apoiados pela Verum para <span class="gold">utilidade real</span></h2>
+        <p class="section-body">Cada token tem utilidade no mundo físico, comunidade ativa e tokenomics sustentável.
+          Tokens não constituem promessas de retorno financeiro nem valor mobiliário.</p>
       </div>
       <div class="tokens-grid">
         <div class="token-card reveal">
           <img src="./ESCT.png" alt="ESCT Logo" class="token-icon-img">
           <div class="token-symbol">$ESCT</div>
           <div class="token-name">Escoteiro Coin</div>
-          <p class="token-desc">Utility token para acesso e uso exclusivo na comunidade escoteira e educacional da
+          <p class="token-desc">Utility token para acesso e uso na comunidade escoteira e educacional da
             América Latina. Sem lastro financeiro e sem direitos societários.</p>
           <div class="token-tags">
             <span class="token-tag">Utilidade</span>
@@ -2177,8 +2244,8 @@
           <img src="./BDC.png" alt="BDC Logo" class="token-icon-img">
           <div class="token-symbol">$BDC</div>
           <div class="token-name">BodeCoin</div>
-          <p class="token-desc">Utility token da comunidade motociclista e fraternal. Acesso a eventos, descontos em
-            parceiros e benefícios de rede.</p>
+          <p class="token-desc">Utility token da comunidade Irmandade moderna. Conectando cultura, tecnologia e
+            pertencimento para as próximas gerações.</p>
           <div class="token-tags">
             <span class="token-tag">Comunidade</span>
             <span class="token-tag">Utilidade</span>
@@ -2187,10 +2254,10 @@
         </div>
         <div class="token-card reveal">
           <img src="./BRT.png" alt="BRUTOS Logo" class="token-icon-img">
-          <div class="token-symbol">$BRUTOS</div>
+          <div class="token-symbol">$BRT</div>
           <div class="token-name">Brutos</div>
-          <p class="token-desc">Utility token de acesso a funcionalidades de software. Requisito de saldo para
-            desbloqueio de features premium e acesso a áreas exclusivas da comunidade.</p>
+          <p class="token-desc">Utility token da Comunidade de transporte, crédito digital para mobilidade conectando
+            motoristas e frotas a uma infraestrutura automática em tempo real.</p>
           <div class="token-tags">
             <span class="token-tag">Acesso</span>
             <span class="token-tag">Utilidade</span>
@@ -2222,7 +2289,7 @@
 
       <div class="program-metrics">
         <div class="program-metric">
-          <div class="program-metric-value">3</div>
+          <div class="program-metric-value">+3</div>
           <div class="program-metric-label">Países</div>
         </div>
         <div class="program-metric">
@@ -2242,7 +2309,7 @@
         elegíveis, mediante critérios de elegibilidade definidos pela plataforma.
       </div>
       <div style="text-align: center; margin-top: 60px;" class="reveal">
-        <a href="https://verumcrypto.com" class="btn-primary">Baixe Agora</a>
+        <a href="https://www.verumcrypto.com/" target="_blank" rel="noopener noreferrer" class="btn-primary">Baixe Agora</a>
       </div>
     </div>
   </section>
@@ -2308,8 +2375,7 @@
       </div>
 
       <div class="global-bar">
-        <strong>Estrutura Corporativa:</strong> Operação com base no Panamá · Foco na América Latina · Compliance
-        multi-jurisdicional
+        <strong>Estrutura Corporativa:</strong> Foco na América Latina · Compliance multi-jurisdicional
       </div>
     </div>
   </section>
@@ -2350,8 +2416,8 @@
         Latina.
       </p>
       <div class="cta-final-btns">
-        <a href="https://verumcrypto.com" class="btn-primary">Baixe Agora</a>
-        <a href="#" class="btn-secondary">Solicitar Acesso Antecipado</a>
+        <a href="https://www.verumcrypto.com/" target="_blank" rel="noopener noreferrer" class="btn-primary">Baixe Agora</a>
+        <a href="https://www.verumcrypto.com/" target="_blank" rel="noopener noreferrer" class="btn-secondary">Solicitar Acesso Antecipado</a>
       </div>
     </div>
   </section>
@@ -2367,33 +2433,30 @@
       <div>
         <div class="footer-col-title">Plataforma</div>
         <ul class="footer-links">
-          <li><a href="#">Wallet</a></li>
-          <li><a href="#">Swap</a></li>
-          <li><a href="#">Pagamentos</a></li>
-          <li><a href="#">DeFi</a></li>
-        </ul>
-      </div>
-      <div>
-        <div class="footer-col-title">Ecossistema</div>
-        <ul class="footer-links">
-          <li><a href="https://escoteiro.mastter.digital" target="_blank" rel="noopener noreferrer">ESCT Token</a></li>
-          <li><a href="https://bodecoin.mastter.digital" target="_blank" rel="noopener noreferrer">BodeCoin</a></li>
-          <li><a href="https://brutos.mastter.digital" target="_blank" rel="noopener noreferrer">Brutos</a></li>
-          <li><a href="#">Comunidade</a></li>
+          <li><a href="https://www.verumcrypto.com/" target="_blank" rel="noopener noreferrer">Wallet</a></li>
+          <li><a href="https://vesting.verumcrypto.com/home-cliente" target="_blank" rel="noopener noreferrer">Vesting</a></li>
         </ul>
       </div>
       <div>
         <div class="footer-col-title">Recursos</div>
         <ul class="footer-links">
-          <li><a href="#">Suporte</a></li>
-          <li><a href="#">Blog</a></li>
-          <li><a href="#">Contato</a></li>
+          <li><a href="https://www.verumcrypto.com/" target="_blank" rel="noopener noreferrer">Câmbio</a></li>
+          <li><a href="https://www.verumcrypto.com/" target="_blank" rel="noopener noreferrer">Enviar</a></li>
+          <li><a href="https://www.verumcrypto.com/" target="_blank" rel="noopener noreferrer">Receber</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Ecossistema</div>
+        <ul class="footer-links">
+          <li><a href="https://blog.verumcrypto.com/" target="_blank" rel="noopener noreferrer">Blog</a></li>
+          <li><a href="mailto:suporte@verumcrypto.com">suporte@verumcrypto.com</a></li>
+          <li><a href="mailto:contato@verumcrypto.com">contato@verumcrypto.com</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
       <span>© 2025 Verum Crypto. Todos os direitos reservados.</span>
-      <span>Operação baseada no Panamá · América Latina</span>
+      <span>Operação baseada · América Latina</span>
       <span><a href="javascript:void(0)" id="open-terms"
           style="color: inherit; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.1);">Terms of Use &
           Privacy</a> · Legal</span>
@@ -2475,6 +2538,366 @@
   </div>
 
   <script>
+    // ===== Language switcher (EN / ES / PT) =====
+    (function () {
+      const I18N = {
+        en: {
+          // Nav / common
+          "Solução": "Solution",
+          "Como Funciona": "How It Works",
+          "Ecossistema": "Ecosystem",
+          "Segurança": "Security",
+          "Baixe Agora": "Download Now",
+          // Hero
+          "Tecnologia Solana · Inovação para a América Latina": "Solana Technology · Innovation for Latin America",
+          "A Evolução": "The Ultimate",
+          "Definitiva": "Evolution",
+          "do Seu Dinheiro.": "of Your Money.",
+          "Uma experiência financeira digital de classe mundial, sem intermediários.": "A world-class digital financial experience, with no intermediaries.",
+          "Assuma o controle absoluto do seu patrimônio com uma interface simples e segura. Acesse o mercado global, troque moedas automaticamente com as melhores taxas do mercado e integre seu saldo diretamente ao comércio digital. Tudo isso com a velocidade que só a tecnologia mais avançada pode oferecer.": "Take absolute control of your wealth with a simple and secure interface. Access the global market, swap currencies automatically at the best market rates and integrate your balance directly into digital commerce. All of this with the speed that only the most advanced technology can offer.",
+          "Começar Agora": "Get Started",
+          "Solicitar Acesso": "Request Access",
+          // Stats ticker
+          "Rede": "Network",
+          "Velocidade": "Speed",
+          "Custo por tx": "Cost per tx",
+          "Mercado": "Market",
+          "América Latina": "Latin America",
+          "Tokens Compatíveis": "Compatible Tokens",
+          // Problem
+          "O Problema": "The Problem",
+          "O sistema bancário tradicional": "The traditional banking system",
+          "não foi feito": "wasn't built",
+          "para quem cruza fronteiras": "for those who cross borders",
+          "O sistema bancário tradicional é lento, caro e limitado para quem vive entre múltiplas moedas e mercados na América Latina.": "The traditional banking system is slow, expensive and limited for those who live between multiple currencies and markets in Latin America.",
+          "Taxas Abusivas": "Abusive Fees",
+          "Conversão cambial bancária com spread de 3-8%, remessas internacionais custando até 15% do valor.": "Bank currency conversion with a 3-8% spread, international remittances costing up to 15% of the amount.",
+          "Burocracia Excessiva": "Excessive Bureaucracy",
+          "Processos lentos, exigências documentais e barreiras que excluem a maioria.": "Slow processes, documentation requirements and barriers that exclude the majority.",
+          "Fronteiras Fechadas": "Closed Borders",
+          "Operar em diferentes moedas na América Latina hoje é sinônimo de lentidão.": "Operating in different currencies in Latin America today is synonymous with slowness.",
+          "Inflação Silenciosa": "Silent Inflation",
+          "Dinheiro desvalorizando enquanto alternativas reais de proteção eram inacessíveis.": "Money losing value while real protection alternatives were inaccessible.",
+          // Solution
+          "A Solução": "The Solution",
+          "Tecnologia que": "Technology that",
+          "conecta": "connects",
+          "você ao futuro": "you to the future",
+          "Com infraestrutura baseada em Solana, a Verum oferece velocidade, segurança e integração real com o comércio local.": "With infrastructure based on Solana, Verum delivers speed, security and real integration with local commerce.",
+          "Conversão Inteligente de Moedas": "Smart Currency Conversion",
+          "Troque seus ativos digitais em segundos, direto no aplicativo. Nossa tecnologia busca automaticamente as melhores taxas do mercado global para você, sem intermediários e sem taxas ocultas. A conversão é instantânea: sem espera, sem burocracia.": "Swap your digital assets in seconds, right in the app. Our technology automatically finds the best global market rates for you, with no intermediaries and no hidden fees. The conversion is instant: no waiting, no bureaucracy.",
+          "Pagamentos via QR Code": "QR Code Payments",
+          "Pague produtos e serviços diretamente com QR Code. Integração para uso no comércio físico e digital. É o seu saldo conectado ao mundo real, com controle 100% seu.": "Pay for products and services directly with QR Code. Integration for use in physical and digital commerce. It's your balance connected to the real world, with 100% your control.",
+          "Dashboard em Tempo Real": "Real-Time Dashboard",
+          "Visualize movimentações, conversões e evolução dos seus ativos com interface clara e profissional.": "View transactions, conversions and the evolution of your assets with a clear and professional interface.",
+          "Self-Custody Total": "Full Self-Custody",
+          "Suas chaves, seus ativos. Controle total sobre seu patrimônio digital sem intermediários.": "Your keys, your assets. Full control over your digital wealth with no intermediaries.",
+          // How it works
+          "01 — ACESSAR": "01 — ACCESS",
+          "Acessar Ativos Digitais": "Access Digital Assets",
+          "Interaja com USDT, USDC, SOL e tokens compatíveis da rede diretamente da sua carteira não custodial. A conversão fiduciária (Pix/BRL) é processada por parceiros terceirizados e devidamente licenciados.": "Interact with USDT, USDC, SOL and network-compatible tokens directly from your non-custodial wallet. Fiat conversion (Pix/BRL) is processed by duly licensed third-party partners.",
+          "02 — USAR": "02 — USE",
+          "Usar no Dia a Dia": "Use in Everyday Life",
+          "Pague produtos e serviços com QR Code. Envie para qualquer carteira que recebe na rede Solana.": "Pay for products and services with QR Code. Send to any wallet that receives on the Solana network.",
+          "03 — GERENCIAR": "03 — MANAGE",
+          "Acompanhe seu Patrimônio": "Track Your Wealth",
+          "Tenha controle total sobre os seus ativos digitais. Acompanhe seu saldo, seu histórico e todas as suas movimentações em tempo real, com total transparência. Um painel inteligente e intuitivo que oferece as ferramentas certas no momento exato em que você precisa.": "Have full control over your digital assets. Track your balance, your history and all your transactions in real time, with complete transparency. A smart and intuitive dashboard that offers the right tools at the exact moment you need them.",
+          // Carousel
+          "Galeria": "Gallery",
+          "Conheça de": "Take a",
+          "Perto": "Closer Look",
+          // Differentiators
+          "Diferenciais": "Differentiators",
+          "Não é apenas uma wallet.": "It's not just a wallet.",
+          "É um ecossistema.": "It's an ecosystem.",
+          "Integração com Comércio Regional": "Regional Commerce Integration",
+          "Conectando à redes de comércios físicos e digitais.": "Connecting to networks of physical and digital merchants.",
+          "Acesso Descentralizado": "Decentralized Access",
+          "Conecte-se a protocolos DeFi de terceiros diretamente da sua carteira não custodial.": "Connect to third-party DeFi protocols directly from your non-custodial wallet.",
+          "Multi-Rede Preparado": "Multi-Network Ready",
+          "Estrutura técnica pronta para expansão multi-chain quando necessário.": "Technical structure ready for multi-chain expansion when needed.",
+          "Experiência Para Todos": "Experience For Everyone",
+          "Interface simplificada mesmo para quem está entrando agora no mundo digital.": "Simplified interface even for those just entering the digital world.",
+          "Comunidade Ativa": "Active Community",
+          "Organizações fraternais e comunidades educacionais engajadas.": "Engaged fraternal organizations and educational communities.",
+          "Chaves privadas sob controle do usuário": "Private keys under the user's control",
+          "SEGURO": "SECURE",
+          "Acesso DeFi": "DeFi Access",
+          "Interaja com Smart Contracts e protocolos compatíveis": "Interact with Smart Contracts and compatible protocols",
+          "Pagamentos QR": "QR Payments",
+          "Integração física + digital": "Physical + digital integration",
+          "Estrutura America Latina": "Latin America Structure",
+          "Compliance internacional · LATAM focus": "International compliance · LATAM focus",
+          // Ecosystem tokens
+          "Tokens apoiados pela Verum para": "Tokens backed by Verum for",
+          "utilidade real": "real utility",
+          "Cada token tem utilidade no mundo físico, comunidade ativa e tokenomics sustentável. Tokens não constituem promessas de retorno financeiro nem valor mobiliário.": "Each token has real-world utility, an active community and sustainable tokenomics. Tokens do not constitute promises of financial return or securities.",
+          "Utility token para acesso e uso na comunidade escoteira e educacional da América Latina. Sem lastro financeiro e sem direitos societários.": "Utility token for access and use in the scouting and educational community of Latin America. No financial backing and no corporate rights.",
+          "Utilidade": "Utility",
+          "Comunidade": "Community",
+          "Educação": "Education",
+          "Utility token da comunidade Irmandade moderna. Conectando cultura, tecnologia e pertencimento para as próximas gerações.": "Utility token of the modern Brotherhood community. Connecting culture, technology and belonging for the next generations.",
+          "Benefícios de Rede": "Network Benefits",
+          "Utility token da Comunidade de transporte, crédito digital para mobilidade conectando motoristas e frotas a uma infraestrutura automática em tempo real.": "Utility token of the transport Community, digital credit for mobility connecting drivers and fleets to an automated real-time infrastructure.",
+          "Acesso": "Access",
+          // Program
+          "Programa de Utilidade": "Utility Program",
+          "Desbloqueie": "Unlock",
+          "benefícios de software": "software benefits",
+          "Usuários ativos da interface podem desbloquear benefícios e acessos exclusivos de software dentro do ecossistema Verum. Programa de fidelidade baseado em uso — não constitui oferta de investimento, distribuição de lucros ou participação societária.": "Active interface users can unlock exclusive software benefits and access within the Verum ecosystem. A usage-based loyalty program — it does not constitute an investment offer, profit distribution or equity participation.",
+          "Países": "Countries",
+          "Possibilidades": "Possibilities",
+          "Operação": "Operation",
+          "⚠ Aviso Importante:": "⚠ Important Notice:",
+          "O acesso a funcionalidades de software é progressivo conforme uso da interface. Programa baseado em utilidade (utility/loyalty) — sem promessa de rendimento financeiro, revenue share, dividendos ou qualquer forma de remuneração de capital. Disponível apenas para usuários elegíveis, mediante critérios de elegibilidade definidos pela plataforma.": "Access to software features is progressive according to interface usage. A utility-based program (utility/loyalty) — with no promise of financial yield, revenue share, dividends or any form of capital remuneration. Available only to eligible users, subject to eligibility criteria defined by the platform.",
+          // Security
+          "Infraestrutura": "Infrastructure that is",
+          "imutável": "immutable",
+          "e transparente": "and transparent",
+          "Blockchain Nativa": "Native Blockchain",
+          "Infraestrutura baseada em Solana — um dos blockchains mais rápidos e seguros do mundo.": "Infrastructure based on Solana — one of the fastest and most secure blockchains in the world.",
+          "Registro Imutável": "Immutable Record",
+          "Toda transação gravada permanentemente na blockchain. Auditável por qualquer pessoa, a qualquer momento.": "Every transaction permanently recorded on the blockchain. Auditable by anyone, at any time.",
+          "Controle do Usuário": "User Control",
+          "Suas chaves privadas ficam com você. A Verum nunca tem custódia dos seus ativos.": "Your private keys stay with you. Verum never has custody of your assets.",
+          "Monitoramento Contínuo": "Continuous Monitoring",
+          "Rede monitorada 24/7. Alertas em tempo real para qualquer atividade incomum.": "Network monitored 24/7. Real-time alerts for any unusual activity.",
+          // Global
+          "Expansão Global": "Global Expansion",
+          "Construído para a": "Built for",
+          "Estruturada com base internacional, a Verum foi concebida para operar de forma escalável e conectada aos principais mercados da região.": "Built on an international base, Verum was designed to operate in a scalable way, connected to the region's main markets.",
+          "Brasil": "Brazil",
+          "Mercado Principal": "Main Market",
+          "Paraguai": "Paraguay",
+          "Hub Cripto": "Crypto Hub",
+          "Panamá": "Panama",
+          "Sede Corporativa": "Corporate Headquarters",
+          "Estrutura Corporativa:": "Corporate Structure:",
+          "Foco na América Latina · Compliance multi-jurisdicional": "Focus on Latin America · Multi-jurisdictional compliance",
+          // Disclaimer
+          "Aviso Legal Obrigatório": "Mandatory Legal Notice",
+          "A Verum Wallet é uma": "Verum Wallet is a",
+          "interface de software não custodial (self-custody)": "non-custodial (self-custody) software interface",
+          ". A Verum não atua como instituição financeira, instituição de pagamento, corretora de valores, exchange, custodiante ou contraparte em operações com ativos digitais. A Verum não provê liquidez própria e não opera câmbio em nome do usuário — apenas facilita o acesso, via software, a protocolos descentralizados e autônomos de terceiros.": ". Verum does not act as a financial institution, payment institution, securities broker, exchange, custodian or counterparty in transactions with digital assets. Verum does not provide its own liquidity and does not operate currency exchange on behalf of the user — it only facilitates access, via software, to decentralized and autonomous third-party protocols.",
+          "conversão entre moeda fiduciária (BRL/Pix) e ativos digitais é processada exclusivamente por parceiros terceirizados e devidamente licenciados": "conversion between fiat currency (BRL/Pix) and digital assets is processed exclusively by duly licensed third-party partners",
+          "em suas respectivas jurisdições. A Verum atua apenas como interface (frontend) e não processa, custodia ou intermedia pagamentos em moeda fiduciária.": "in their respective jurisdictions. Verum acts only as an interface (frontend) and does not process, hold in custody or intermediate payments in fiat currency.",
+          "Ativos digitais são voláteis e podem apresentar variações significativas de valor. A Verum não oferece garantias de retorno financeiro, rendimento, distribuição de lucros, dividendos ou revenue share. Tokens do ecossistema possuem natureza estritamente de utilidade (utility tokens) e não constituem valores mobiliários, contratos de investimento coletivo ou promessa de remuneração de capital. Este material possui caráter estritamente informativo e não constitui recomendação de investimento, oferta pública de valores mobiliários ou serviço de assessoria financeira regulamentada. A decisão de adquirir ativos digitais é de exclusiva responsabilidade do usuário. Verifique as regulamentações vigentes em sua jurisdição antes de operar.": "Digital assets are volatile and may show significant variations in value. Verum does not offer guarantees of financial return, yield, profit distribution, dividends or revenue share. Ecosystem tokens are strictly utility in nature (utility tokens) and do not constitute securities, collective investment contracts or a promise of capital remuneration. This material is strictly informational in nature and does not constitute an investment recommendation, public offering of securities or regulated financial advisory service. The decision to acquire digital assets is the sole responsibility of the user. Check the regulations in force in your jurisdiction before operating.",
+          // CTA final
+          "Próximo Passo": "Next Step",
+          "Entre para a nova geração da": "Join the new generation of the",
+          "economia digital": "digital economy",
+          "Junte-se à comunidade que está construindo a infraestrutura tecnológica Web3 da América Latina.": "Join the community that is building Latin America's Web3 technological infrastructure.",
+          "Solicitar Acesso Antecipado": "Request Early Access",
+          // Footer
+          "A nova infraestrutura tecnológica Web3 para o comércio digital na América Latina. Powered by Solana.": "The new Web3 technological infrastructure for digital commerce in Latin America. Powered by Solana.",
+          "Plataforma": "Platform",
+          "Recursos": "Resources",
+          "Câmbio": "Exchange",
+          "Enviar": "Send",
+          "Receber": "Receive",
+          "© 2025 Verum Crypto. Todos os direitos reservados.": "© 2025 Verum Crypto. All rights reserved.",
+          "Operação baseada · América Latina": "Operation based · Latin America"
+        },
+        es: {
+          // Nav / common
+          "Solução": "Solución",
+          "Como Funciona": "Cómo Funciona",
+          "Ecossistema": "Ecosistema",
+          "Segurança": "Seguridad",
+          "Baixe Agora": "Descarga Ahora",
+          // Hero
+          "Tecnologia Solana · Inovação para a América Latina": "Tecnología Solana · Innovación para América Latina",
+          "A Evolução": "La Evolución",
+          "Definitiva": "Definitiva",
+          "do Seu Dinheiro.": "de Su Dinero.",
+          "Uma experiência financeira digital de classe mundial, sem intermediários.": "Una experiencia financiera digital de clase mundial, sin intermediarios.",
+          "Assuma o controle absoluto do seu patrimônio com uma interface simples e segura. Acesse o mercado global, troque moedas automaticamente com as melhores taxas do mercado e integre seu saldo diretamente ao comércio digital. Tudo isso com a velocidade que só a tecnologia mais avançada pode oferecer.": "Asume el control absoluto de tu patrimonio con una interfaz simple y segura. Accede al mercado global, cambia monedas automáticamente con las mejores tasas del mercado e integra tu saldo directamente al comercio digital. Todo esto con la velocidad que solo la tecnología más avanzada puede ofrecer.",
+          "Começar Agora": "Comenzar Ahora",
+          "Solicitar Acesso": "Solicitar Acceso",
+          // Stats ticker
+          "Rede": "Red",
+          "Velocidade": "Velocidad",
+          "Custo por tx": "Costo por tx",
+          "Mercado": "Mercado",
+          "América Latina": "América Latina",
+          "Tokens Compatíveis": "Tokens Compatibles",
+          // Problem
+          "O Problema": "El Problema",
+          "O sistema bancário tradicional": "El sistema bancario tradicional",
+          "não foi feito": "no fue hecho",
+          "para quem cruza fronteiras": "para quien cruza fronteras",
+          "O sistema bancário tradicional é lento, caro e limitado para quem vive entre múltiplas moedas e mercados na América Latina.": "El sistema bancario tradicional es lento, caro y limitado para quien vive entre múltiples monedas y mercados en América Latina.",
+          "Taxas Abusivas": "Tarifas Abusivas",
+          "Conversão cambial bancária com spread de 3-8%, remessas internacionais custando até 15% do valor.": "Conversión cambiaria bancaria con spread de 3-8%, remesas internacionales que cuestan hasta el 15% del valor.",
+          "Burocracia Excessiva": "Burocracia Excesiva",
+          "Processos lentos, exigências documentais e barreiras que excluem a maioria.": "Procesos lentos, exigencias documentales y barreras que excluyen a la mayoría.",
+          "Fronteiras Fechadas": "Fronteras Cerradas",
+          "Operar em diferentes moedas na América Latina hoje é sinônimo de lentidão.": "Operar en diferentes monedas en América Latina hoy es sinónimo de lentitud.",
+          "Inflação Silenciosa": "Inflación Silenciosa",
+          "Dinheiro desvalorizando enquanto alternativas reais de proteção eram inacessíveis.": "Dinero perdiendo valor mientras las alternativas reales de protección eran inaccesibles.",
+          // Solution
+          "A Solução": "La Solución",
+          "Tecnologia que": "Tecnología que",
+          "conecta": "conecta",
+          "você ao futuro": "al futuro",
+          "Com infraestrutura baseada em Solana, a Verum oferece velocidade, segurança e integração real com o comércio local.": "Con infraestructura basada en Solana, Verum ofrece velocidad, seguridad e integración real con el comercio local.",
+          "Conversão Inteligente de Moedas": "Conversión Inteligente de Monedas",
+          "Troque seus ativos digitais em segundos, direto no aplicativo. Nossa tecnologia busca automaticamente as melhores taxas do mercado global para você, sem intermediários e sem taxas ocultas. A conversão é instantânea: sem espera, sem burocracia.": "Cambia tus activos digitales en segundos, directo en la aplicación. Nuestra tecnología busca automáticamente las mejores tasas del mercado global para ti, sin intermediarios y sin tarifas ocultas. La conversión es instantánea: sin espera, sin burocracia.",
+          "Pagamentos via QR Code": "Pagos vía Código QR",
+          "Pague produtos e serviços diretamente com QR Code. Integração para uso no comércio físico e digital. É o seu saldo conectado ao mundo real, com controle 100% seu.": "Paga productos y servicios directamente con Código QR. Integración para uso en el comercio físico y digital. Es tu saldo conectado al mundo real, con control 100% tuyo.",
+          "Dashboard em Tempo Real": "Panel en Tiempo Real",
+          "Visualize movimentações, conversões e evolução dos seus ativos com interface clara e profissional.": "Visualiza movimientos, conversiones y la evolución de tus activos con una interfaz clara y profesional.",
+          "Self-Custody Total": "Autocustodia Total",
+          "Suas chaves, seus ativos. Controle total sobre seu patrimônio digital sem intermediários.": "Tus llaves, tus activos. Control total sobre tu patrimonio digital sin intermediarios.",
+          // How it works
+          "01 — ACESSAR": "01 — ACCEDER",
+          "Acessar Ativos Digitais": "Acceder a Activos Digitales",
+          "Interaja com USDT, USDC, SOL e tokens compatíveis da rede diretamente da sua carteira não custodial. A conversão fiduciária (Pix/BRL) é processada por parceiros terceirizados e devidamente licenciados.": "Interactúa con USDT, USDC, SOL y tokens compatibles de la red directamente desde tu billetera no custodial. La conversión fiduciaria (Pix/BRL) es procesada por socios terceros debidamente licenciados.",
+          "02 — USAR": "02 — USAR",
+          "Usar no Dia a Dia": "Usar en el Día a Día",
+          "Pague produtos e serviços com QR Code. Envie para qualquer carteira que recebe na rede Solana.": "Paga productos y servicios con Código QR. Envía a cualquier billetera que recibe en la red Solana.",
+          "03 — GERENCIAR": "03 — GESTIONAR",
+          "Acompanhe seu Patrimônio": "Sigue tu Patrimonio",
+          "Tenha controle total sobre os seus ativos digitais. Acompanhe seu saldo, seu histórico e todas as suas movimentações em tempo real, com total transparência. Um painel inteligente e intuitivo que oferece as ferramentas certas no momento exato em que você precisa.": "Ten control total sobre tus activos digitales. Sigue tu saldo, tu historial y todos tus movimientos en tiempo real, con total transparencia. Un panel inteligente e intuitivo que ofrece las herramientas correctas en el momento exacto en que las necesitas.",
+          // Carousel
+          "Galeria": "Galería",
+          "Conheça de": "Conócelo de",
+          "Perto": "Cerca",
+          // Differentiators
+          "Diferenciais": "Diferenciales",
+          "Não é apenas uma wallet.": "No es solo una wallet.",
+          "É um ecossistema.": "Es un ecosistema.",
+          "Integração com Comércio Regional": "Integración con el Comercio Regional",
+          "Conectando à redes de comércios físicos e digitais.": "Conectando a redes de comercios físicos y digitales.",
+          "Acesso Descentralizado": "Acceso Descentralizado",
+          "Conecte-se a protocolos DeFi de terceiros diretamente da sua carteira não custodial.": "Conéctate a protocolos DeFi de terceros directamente desde tu billetera no custodial.",
+          "Multi-Rede Preparado": "Preparado Multi-Red",
+          "Estrutura técnica pronta para expansão multi-chain quando necessário.": "Estructura técnica lista para expansión multi-chain cuando sea necesario.",
+          "Experiência Para Todos": "Experiencia Para Todos",
+          "Interface simplificada mesmo para quem está entrando agora no mundo digital.": "Interfaz simplificada incluso para quienes recién entran al mundo digital.",
+          "Comunidade Ativa": "Comunidad Activa",
+          "Organizações fraternais e comunidades educacionais engajadas.": "Organizaciones fraternales y comunidades educativas comprometidas.",
+          "Chaves privadas sob controle do usuário": "Llaves privadas bajo control del usuario",
+          "SEGURO": "SEGURO",
+          "Acesso DeFi": "Acceso DeFi",
+          "Interaja com Smart Contracts e protocolos compatíveis": "Interactúa con Smart Contracts y protocolos compatibles",
+          "Pagamentos QR": "Pagos QR",
+          "Integração física + digital": "Integración física + digital",
+          "Estrutura America Latina": "Estructura América Latina",
+          "Compliance internacional · LATAM focus": "Compliance internacional · enfoque LATAM",
+          // Ecosystem tokens
+          "Tokens apoiados pela Verum para": "Tokens respaldados por Verum para",
+          "utilidade real": "utilidad real",
+          "Cada token tem utilidade no mundo físico, comunidade ativa e tokenomics sustentável. Tokens não constituem promessas de retorno financeiro nem valor mobiliário.": "Cada token tiene utilidad en el mundo físico, comunidad activa y tokenomics sostenible. Los tokens no constituyen promesas de retorno financiero ni valores mobiliarios.",
+          "Utility token para acesso e uso na comunidade escoteira e educacional da América Latina. Sem lastro financeiro e sem direitos societários.": "Utility token para acceso y uso en la comunidad scout y educativa de América Latina. Sin respaldo financiero y sin derechos societarios.",
+          "Utilidade": "Utilidad",
+          "Comunidade": "Comunidad",
+          "Educação": "Educación",
+          "Utility token da comunidade Irmandade moderna. Conectando cultura, tecnologia e pertencimento para as próximas gerações.": "Utility token de la comunidad Hermandad moderna. Conectando cultura, tecnología y pertenencia para las próximas generaciones.",
+          "Benefícios de Rede": "Beneficios de Red",
+          "Utility token da Comunidade de transporte, crédito digital para mobilidade conectando motoristas e frotas a uma infraestrutura automática em tempo real.": "Utility token de la Comunidad de transporte, crédito digital para movilidad conectando conductores y flotas a una infraestructura automática en tiempo real.",
+          "Acesso": "Acceso",
+          // Program
+          "Programa de Utilidade": "Programa de Utilidad",
+          "Desbloqueie": "Desbloquea",
+          "benefícios de software": "beneficios de software",
+          "Usuários ativos da interface podem desbloquear benefícios e acessos exclusivos de software dentro do ecossistema Verum. Programa de fidelidade baseado em uso — não constitui oferta de investimento, distribuição de lucros ou participação societária.": "Los usuarios activos de la interfaz pueden desbloquear beneficios y accesos exclusivos de software dentro del ecosistema Verum. Programa de fidelidad basado en uso — no constituye oferta de inversión, distribución de ganancias ni participación societaria.",
+          "Países": "Países",
+          "Possibilidades": "Posibilidades",
+          "Operação": "Operación",
+          "⚠ Aviso Importante:": "⚠ Aviso Importante:",
+          "O acesso a funcionalidades de software é progressivo conforme uso da interface. Programa baseado em utilidade (utility/loyalty) — sem promessa de rendimento financeiro, revenue share, dividendos ou qualquer forma de remuneração de capital. Disponível apenas para usuários elegíveis, mediante critérios de elegibilidade definidos pela plataforma.": "El acceso a las funcionalidades de software es progresivo según el uso de la interfaz. Programa basado en utilidad (utility/loyalty) — sin promesa de rendimiento financiero, revenue share, dividendos ni ninguna forma de remuneración de capital. Disponible solo para usuarios elegibles, según criterios de elegibilidad definidos por la plataforma.",
+          // Security
+          "Infraestrutura": "Infraestructura",
+          "imutável": "inmutable",
+          "e transparente": "y transparente",
+          "Blockchain Nativa": "Blockchain Nativa",
+          "Infraestrutura baseada em Solana — um dos blockchains mais rápidos e seguros do mundo.": "Infraestructura basada en Solana — una de las blockchains más rápidas y seguras del mundo.",
+          "Registro Imutável": "Registro Inmutable",
+          "Toda transação gravada permanentemente na blockchain. Auditável por qualquer pessoa, a qualquer momento.": "Cada transacción registrada permanentemente en la blockchain. Auditable por cualquier persona, en cualquier momento.",
+          "Controle do Usuário": "Control del Usuario",
+          "Suas chaves privadas ficam com você. A Verum nunca tem custódia dos seus ativos.": "Tus llaves privadas se quedan contigo. Verum nunca tiene custodia de tus activos.",
+          "Monitoramento Contínuo": "Monitoreo Continuo",
+          "Rede monitorada 24/7. Alertas em tempo real para qualquer atividade incomum.": "Red monitoreada 24/7. Alertas en tiempo real para cualquier actividad inusual.",
+          // Global
+          "Expansão Global": "Expansión Global",
+          "Construído para a": "Construido para",
+          "Estruturada com base internacional, a Verum foi concebida para operar de forma escalável e conectada aos principais mercados da região.": "Estructurada con base internacional, Verum fue concebida para operar de forma escalable y conectada a los principales mercados de la región.",
+          "Brasil": "Brasil",
+          "Mercado Principal": "Mercado Principal",
+          "Paraguai": "Paraguay",
+          "Hub Cripto": "Hub Cripto",
+          "Panamá": "Panamá",
+          "Sede Corporativa": "Sede Corporativa",
+          "Estrutura Corporativa:": "Estructura Corporativa:",
+          "Foco na América Latina · Compliance multi-jurisdicional": "Enfoque en América Latina · Compliance multi-jurisdiccional",
+          // Disclaimer
+          "Aviso Legal Obrigatório": "Aviso Legal Obligatorio",
+          "A Verum Wallet é uma": "Verum Wallet es una",
+          "interface de software não custodial (self-custody)": "interfaz de software no custodial (self-custody)",
+          ". A Verum não atua como instituição financeira, instituição de pagamento, corretora de valores, exchange, custodiante ou contraparte em operações com ativos digitais. A Verum não provê liquidez própria e não opera câmbio em nome do usuário — apenas facilita o acesso, via software, a protocolos descentralizados e autônomos de terceiros.": ". Verum no actúa como institución financiera, institución de pago, corredora de valores, exchange, custodio o contraparte en operaciones con activos digitales. Verum no provee liquidez propia ni opera cambio de divisas en nombre del usuario — solo facilita el acceso, vía software, a protocolos descentralizados y autónomos de terceros.",
+          "conversão entre moeda fiduciária (BRL/Pix) e ativos digitais é processada exclusivamente por parceiros terceirizados e devidamente licenciados": "conversión entre moneda fiduciaria (BRL/Pix) y activos digitales es procesada exclusivamente por socios terceros debidamente licenciados",
+          "em suas respectivas jurisdições. A Verum atua apenas como interface (frontend) e não processa, custodia ou intermedia pagamentos em moeda fiduciária.": "en sus respectivas jurisdicciones. Verum actúa solo como interfaz (frontend) y no procesa, custodia ni intermedia pagos en moneda fiduciaria.",
+          "Ativos digitais são voláteis e podem apresentar variações significativas de valor. A Verum não oferece garantias de retorno financeiro, rendimento, distribuição de lucros, dividendos ou revenue share. Tokens do ecossistema possuem natureza estritamente de utilidade (utility tokens) e não constituem valores mobiliários, contratos de investimento coletivo ou promessa de remuneração de capital. Este material possui caráter estritamente informativo e não constitui recomendação de investimento, oferta pública de valores mobiliários ou serviço de assessoria financeira regulamentada. A decisão de adquirir ativos digitais é de exclusiva responsabilidade do usuário. Verifique as regulamentações vigentes em sua jurisdição antes de operar.": "Los activos digitales son volátiles y pueden presentar variaciones significativas de valor. Verum no ofrece garantías de retorno financiero, rendimiento, distribución de ganancias, dividendos o revenue share. Los tokens del ecosistema poseen naturaleza estrictamente de utilidad (utility tokens) y no constituyen valores mobiliarios, contratos de inversión colectiva ni promesa de remuneración de capital. Este material posee carácter estrictamente informativo y no constituye recomendación de inversión, oferta pública de valores mobiliarios ni servicio de asesoría financiera regulada. La decisión de adquirir activos digitales es responsabilidad exclusiva del usuario. Verifica las regulaciones vigentes en tu jurisdicción antes de operar.",
+          // CTA final
+          "Próximo Passo": "Próximo Paso",
+          "Entre para a nova geração da": "Únete a la nueva generación de la",
+          "economia digital": "economía digital",
+          "Junte-se à comunidade que está construindo a infraestrutura tecnológica Web3 da América Latina.": "Únete a la comunidad que está construyendo la infraestructura tecnológica Web3 de América Latina.",
+          "Solicitar Acesso Antecipado": "Solicitar Acceso Anticipado",
+          // Footer
+          "A nova infraestrutura tecnológica Web3 para o comércio digital na América Latina. Powered by Solana.": "La nueva infraestructura tecnológica Web3 para el comercio digital en América Latina. Powered by Solana.",
+          "Plataforma": "Plataforma",
+          "Recursos": "Recursos",
+          "Câmbio": "Cambio",
+          "Enviar": "Enviar",
+          "Receber": "Recibir",
+          "© 2025 Verum Crypto. Todos os direitos reservados.": "© 2025 Verum Crypto. Todos los derechos reservados.",
+          "Operação baseada · América Latina": "Operación basada · América Latina",
+          "Terms of Use & Privacy": "Términos de Uso y Privacidad"
+        }
+      };
+
+      const SKIP = { SCRIPT: 1, STYLE: 1, NOSCRIPT: 1 };
+      const collected = [];
+      const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+        acceptNode: function (node) {
+          if (SKIP[node.parentNode && node.parentNode.nodeName]) return NodeFilter.FILTER_REJECT;
+          return node.nodeValue.trim() ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+        }
+      });
+      let tn;
+      while ((tn = walker.nextNode())) {
+        collected.push({ node: tn, original: tn.nodeValue, key: tn.nodeValue.trim().replace(/\s+/g, ' ') });
+      }
+
+      function applyLang(lang) {
+        const map = I18N[lang];
+        collected.forEach(function (item) {
+          if (!map || map[item.key] === undefined) {
+            item.node.nodeValue = item.original;
+            return;
+          }
+          const lead = item.original.match(/^\s*/)[0];
+          const trail = item.original.match(/\s*$/)[0];
+          item.node.nodeValue = lead + map[item.key] + trail;
+        });
+        document.documentElement.lang = lang === 'pt' ? 'pt-BR' : lang;
+        document.querySelectorAll('.lang-btn').forEach(function (b) {
+          b.classList.toggle('active', b.getAttribute('data-lang') === lang);
+        });
+        try { localStorage.setItem('verum-lang', lang); } catch (e) {}
+      }
+
+      document.querySelectorAll('.lang-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () { applyLang(btn.getAttribute('data-lang')); });
+      });
+
+      let saved = 'pt';
+      try { saved = localStorage.getItem('verum-lang') || 'pt'; } catch (e) {}
+      applyLang(saved);
+    })();
+
     // Mobile menu toggle
     const mobileMenu = document.getElementById('mobile-menu');
     const navMenu = document.getElementById('nav-menu');
@@ -2552,10 +2975,12 @@
     window.addEventListener('scroll', () => {
       if (window.scrollY > 80) {
         nav.style.background = 'rgba(8,8,8,0.98)';
-        nav.style.padding = '8.5px 40px';
+        nav.style.paddingTop = '8.5px';
+        nav.style.paddingBottom = '8.5px';
       } else {
         nav.style.background = '';
-        nav.style.padding = '';
+        nav.style.paddingTop = '';
+        nav.style.paddingBottom = '';
       }
     }, { passive: true });
 
