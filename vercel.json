@@ -8,7 +8,6 @@
     { "source": "/verum-landing.html", "destination": "/index.html" },
     { "source": "/bode-coin-landing", "destination": "/index.html" },
     { "source": "/bode-coin-landing.html", "destination": "/index.html" },
-    { "source": "/terms&privacy", "destination": "/terms-privacy.html" },
     { "source": "/terms-privacy", "destination": "/terms-privacy.html" },
     { "source": "/terms-of-service", "destination": "/terms-of-service.html" }
   ]
