@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms of Service — Verum Wallet</title>
+  <link rel="icon" type="image/png" href="/lp-favicon.png">
+  <link rel="shortcut icon" type="image/png" href="/lp-favicon.png">
+  <link rel="apple-touch-icon" href="/lp-favicon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --gold: #C9A84C;
+      --gold-light: #E8C96A;
+      --gold-dim: #8B6914;
+      --black: #080808;
+      --dark: #0F0F0F;
+      --dark2: #141414;
+      --dark3: #1A1A1A;
+      --dark4: #222222;
+      --white: #F0ECE0;
+      --white-dim: #A09880;
+      --border: rgba(201, 168, 76, 0.15);
+      --border-bright: rgba(201, 168, 76, 0.4);
+    }
+
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--black);
+      color: var(--white-dim);
+      font-family: 'Rajdhani', sans-serif;
+      min-height: 100vh;
+      padding: 60px 20px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .terms-content {
+      background: var(--dark2);
+      padding: 48px;
+      border: 1px solid var(--border-bright);
+      width: 100%;
+      max-width: 800px;
+      border-radius: 16px;
+      position: relative;
+      box-shadow: 0 40px 100px rgba(0, 0, 0, 0.8);
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--white-dim);
+      text-decoration: none;
+      font-size: 14px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 32px;
+      transition: color 0.3s;
+    }
+
+    .back-link:hover {
+      color: var(--gold);
+    }
+
+    .terms-title {
+      font-family: 'Cinzel', serif;
+      color: var(--gold);
+      font-size: clamp(20px, 4vw, 26px);
+      margin-bottom: 8px;
+      line-height: 1.2;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .terms-update {
+      font-size: 13px;
+      color: var(--gold-dim);
+      margin-bottom: 32px;
+      font-family: 'Space Mono', monospace;
+      letter-spacing: 1px;
+    }
+
+    .terms-body {
+      color: var(--white-dim);
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    .terms-body h3 {
+      color: var(--white);
+      margin-top: 32px;
+      margin-bottom: 12px;
+      font-family: 'Cinzel', serif;
+      font-size: 16px;
+      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .terms-body h3::after {
+      content: '';
+      height: 1px;
+      flex: 1;
+      background: var(--border);
+    }
+
+    .terms-body p {
+      margin-bottom: 16px;
+    }
+
+    .terms-body ul {
+      margin: 8px 0 16px 22px;
+    }
+
+    .terms-body li {
+      margin-bottom: 8px;
+    }
+
+    .terms-body strong {
+      color: var(--white);
+    }
+
+    .terms-body a {
+      color: var(--gold);
+      text-decoration: none;
+      border-bottom: 1px solid var(--border-bright);
+    }
+
+    .terms-body a:hover {
+      color: var(--gold-light);
+    }
+
+    .terms-footer {
+      margin-top: 48px;
+      text-align: center;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .home-btn {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--black);
+      border: none;
+      padding: 12px 32px;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .home-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(201, 168, 76, 0.3);
+    }
+
+    .ghost-btn {
+      display: inline-block;
+      background: transparent;
+      color: var(--gold);
+      border: 1px solid var(--border-bright);
+      padding: 12px 32px;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .ghost-btn:hover {
+      border-color: var(--gold);
+      color: var(--gold-light);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="terms-content">
+    <a href="/" class="back-link">&larr; Back to home</a>
+    <h1 class="terms-title">Verum Wallet Terms of Service</h1>
+
+    <div class="terms-body">
+      <h3>1. Acceptance of Terms</h3>
+      <p>Welcome to Verum Wallet. These Terms of Service ("Terms") constitute a legally binding agreement between you
+        ("User") and verumcrypto.com, operator of the Verum ecosystem, incorporated under the laws of Brazil. By
+        downloading, installing, accessing, or using the Verum Wallet application, you expressly agree to these Terms. If
+        you do not agree with any part of this document, do not use our services.</p>
+
+      <h3>2. Nature of Service: Self-Custody</h3>
+      <p>Verum Wallet is a self-custody cryptocurrency wallet interface software, operating primarily on the Solana
+        blockchain.</p>
+      <p><strong>Your Absolute Control:</strong> We do not have access to, store, or can retrieve your Seed Phrase,
+        private keys, passwords, or the digital assets allocated to your wallet.</p>
+      <p><strong>Sole Responsibility:</strong> The responsibility for maintaining the security, offline backup, and
+        confidentiality of your Seed Phrase rests entirely with you. The loss of this information will result in the
+        irreversible and permanent loss of your funds. Verumcrypto.com cannot be held responsible for losses resulting
+        from the loss or theft of your keys.</p>
+
+      <h3>3. Third-Party Services and Integrations</h3>
+      <p>Verum Wallet acts exclusively as a technological bridge (software) that allows you to interact directly with the
+        blockchain and decentralized protocols.</p>
+      <p><strong>Liquidity Providers and Swaps:</strong> Token exchange (swaps) functionalities or P2P integrations are
+        executed through third-party smart contracts. You acknowledge that you are interacting directly with these
+        protocols and assume the inherent risks.</p>
+      <p><strong>Fiat Ramps (On-Ramp/Off-Ramp):</strong> Local currency to crypto conversion services (and vice versa)
+        are provided by independent licensed partners. The use of these services is subject to the Terms and KYC/AML
+        Policies of these third parties.</p>
+      <p><strong>Card Services:</strong> Any card services linked to Verum Wallet are strictly digital. There is no
+        issuance of physical cards. These virtual services are provided and managed by issuing partners, and are subject
+        to their established rules of use and limits.</p>
+
+      <h3>4. Risks Assumed by the User</h3>
+      <p>By using Verum Wallet, you acknowledge and accept the risks inherent in the digital asset market, including but
+        not limited to:</p>
+      <ul>
+        <li><strong>Volatility:</strong> The value of digital assets can fluctuate dramatically.</li>
+        <li><strong>Immutability:</strong> Transactions on the Solana blockchain are final and irreversible. There is no
+          possibility of reversing payments via QR Code, transfers, or swaps after confirmation on the network.</li>
+        <li><strong>Technological Risks:</strong> Failures in smart contracts, congestion of the blockchain network, or
+          changes in underlying protocols may affect access to or the value of your funds.</li>
+      </ul>
+
+      <h3>5. Acceptable Use and Conduct</h3>
+      <p>You agree not to use Verum Wallet to:</p>
+      <ul>
+        <li>Violate any applicable international law, regulation, or sanction.</li>
+        <li>Engage in illegal activities, money laundering, terrorist financing, or fraud.</li>
+        <li>Attempting to circumvent the application's security measures or reverse engineering the software.</li>
+      </ul>
+      <p>We reserve the right to restrict access to the application interface if malicious activity is detected.</p>
+
+      <h3>6. Intellectual Property</h3>
+      <p>All source code, design, logos, trademarks, and graphical interfaces of Verum Wallet are the exclusive
+        intellectual property of verumcrypto.com or its licensors. Use of the application does not grant you any
+        ownership rights to the software, only a limited, revocable, and non-exclusive license for personal use.</p>
+
+      <h3>7. Disclaimer of Warranties and Limitation of Liability</h3>
+      <p>The software is provided "as is" and "as available." Verumcrypto.com does not guarantee that the service will be
+        uninterrupted, error-free, or completely secure against cyberattacks on your mobile device.</p>
+      <p>Under no circumstances will verumcrypto.com, its directors, employees, or partners be liable for any indirect,
+        incidental damages, loss of profits, loss of data, or loss of digital assets arising from the use or inability to
+        use the application.</p>
+
+      <h3>8. Applicable Law and Dispute Resolution</h3>
+      <p>These Terms shall be governed by and construed in accordance with the laws of Brazil. Any dispute, controversy,
+        or claim arising out of or relating to these Terms shall be submitted to the exclusive jurisdiction of the
+        competent courts of Brazil.</p>
+
+      <h3>9. Updating the Terms</h3>
+      <p>Verumcrypto.com may modify these Terms at any time. Any changes will take effect immediately upon publication of
+        the new version in the application or on our official website. Continued use of Verum Wallet after the changes
+        constitutes your acceptance of the new Terms.</p>
+    </div>
+
+    <div class="terms-footer">
+      <a href="/terms-privacy" class="ghost-btn">Privacy Policy</a>
+      <a href="/" class="home-btn">Read and Accepted</a>
+    </div>
+  </div>
+</body>
+
+</html>

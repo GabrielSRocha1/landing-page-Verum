@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Terms of Use & Privacy — Verum Crypto</title>
+  <title>Privacy Policy — Verum Wallet</title>
   <link rel="icon" type="image/png" href="/lp-favicon.png">
   <link rel="shortcut icon" type="image/png" href="/lp-favicon.png">
   <link rel="apple-touch-icon" href="/lp-favicon.png">
@@ -80,7 +80,7 @@
     .terms-title {
       font-family: 'Cinzel', serif;
       color: var(--gold);
-      font-size: clamp(20px, 4vw, 24px);
+      font-size: clamp(20px, 4vw, 26px);
       margin-bottom: 8px;
       line-height: 1.2;
       font-weight: 700;
@@ -120,13 +120,40 @@
       background: var(--border);
     }
 
+    .terms-body p {
+      margin-bottom: 16px;
+    }
+
+    .terms-body ul {
+      margin: 8px 0 16px 22px;
+    }
+
+    .terms-body li {
+      margin-bottom: 8px;
+    }
+
     .terms-body strong {
       color: var(--white);
+    }
+
+    .terms-body a {
+      color: var(--gold);
+      text-decoration: none;
+      border-bottom: 1px solid var(--border-bright);
+    }
+
+    .terms-body a:hover {
+      color: var(--gold-light);
     }
 
     .terms-footer {
       margin-top: 48px;
       text-align: center;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+      align-items: center;
     }
 
     .home-btn {
@@ -148,77 +175,116 @@
       transform: translateY(-2px);
       box-shadow: 0 10px 20px rgba(201, 168, 76, 0.3);
     }
+
+    .ghost-btn {
+      display: inline-block;
+      background: transparent;
+      color: var(--gold);
+      border: 1px solid var(--border-bright);
+      padding: 12px 32px;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .ghost-btn:hover {
+      border-color: var(--gold);
+      color: var(--gold-light);
+    }
   </style>
 </head>
 
 <body>
   <div class="terms-content">
     <a href="/" class="back-link">&larr; Back to home</a>
-    <h1 class="terms-title">PRIVACY NOTICE AND GLOBAL COMPLIANCE TERMS – VERUM CRYPTO FREEPORT</h1>
-    <div class="terms-update">Last Updated: March 29, 2026</div>
+    <h1 class="terms-title">Verum Wallet Privacy Policy</h1>
+    <div class="terms-update">Last updated: July 1, 2026</div>
 
     <div class="terms-body">
-      <h3>1. LEGAL STRUCTURE AND JURISDICTION</h3>
-      <p><strong>Verum Crypto Freeport</strong>, established under the laws of the Republic of Panama, acts as the
-        data controller and technological infrastructure provider for the Verum Wallet and the Verum Pay gateway. By
-        using our services, you accept that any dispute will be processed under the exclusive jurisdiction of the
-        courts of Panama City, waiving any other forum regardless of its privileges.</p>
+      <h3>1. Introduction</h3>
+      <p>Verum Crypto and its affiliates ("Verum," "we," "our," or "ours") respect your privacy and are strictly
+        committed to protecting your personal data. This Privacy Policy explains how we collect, store, and use the
+        information generated when you interact with the Verum Wallet application, our website, and related services.</p>
+      <p>As a <strong>self-custody</strong> software native to the Solana blockchain, <strong>we do not have access to,
+          collect, or store your private keys (Seed Phrase), spending passwords, or the assets held in your wallet. You
+          have 100% control over your assets.</strong></p>
+      <p>By using our services, you agree to the practices described in this policy. If you do not agree, please do not
+        use our application.</p>
 
-      <h3>2. THE SELF-CUSTODY PILLAR (NON-CUSTODIAL SHIELD)</h3>
-      <p>Verum Wallet is a self-custody software interface.<br>
-        Verum Crypto Freeport <strong>DOES NOT collect, DOES NOT store, and DOES NOT have access</strong> to your
-        Private Keys, Seed Phrases (Mnemonics), or local passwords.<br><br>
-        <strong>Disclaimer:</strong> The security of digital assets is the sole responsibility of the user. The loss
-        of private keys results in the irreversible loss of funds, with no technical or legal possibility of recovery
-        by Verum Crypto Freeport.
-      </p>
+      <h3>2. Who We Are and Contact Us</h3>
+      <p><strong>Data Controller:</strong> Verum Crypto, headquartered in Brazil.</p>
+      <p><strong>Privacy Contact:</strong> For questions, requests, or to exercise your legal rights regarding your
+        data, please contact us via email: <a href="mailto:contato@verumcrypto.com">contato@verumcrypto.com</a>.</p>
+      <p><strong>Third-Party Links and Integrations:</strong> Our interface includes connectivity with third-party
+        providers for local currency/crypto conversions, and liquidity aggregators for swaps. Clicking on these links or
+        using these widgets means interacting with independent platforms. We do not control these services and are not
+        responsible for their policies. We strongly recommend reading the Privacy Policies of these partners.</p>
 
-      <h3>3. VERUM PAY: TECHNOLOGICAL INTERFACE AND THIRD-PARTY FIAT PROCESSING</h3>
-      <p><strong>Verum Pay is a technological interface (frontend) only.</strong> Verum Crypto Freeport does not
-        operate as a payment institution, money transmitter, exchange, broker-dealer, or financial intermediary.<br><br>
-        <strong>Third-Party Fiat Processing:</strong> All conversion between fiat currency (BRL/Pix and other
-        fiduciary currencies) and digital assets — including all on-ramp (cash-in) and off-ramp (cash-out)
-        operations — is processed <strong>exclusively by duly licensed third-party payment service providers</strong>
-        in their respective jurisdictions. Verum Crypto Freeport does not custody, process, or intermediate
-        fiat funds, KYC for payment processing, or chargeback flows; these are the sole responsibility of the
-        licensed third-party processor.<br><br>
-        <strong>Self-Custody of Generated Assets:</strong> Once the third-party processor delivers the digital
-        asset to the user's wallet, custody is fully self-managed (self-custody) by the user.<br><br>
-        <strong>Transaction Finality:</strong> Once assets are sent to the Blockchain network, the transaction is
-        considered final and irreversible.<br>
-        <strong>Chargeback Prohibition:</strong> Due to the immutable nature of Blockchain technology, there are no
-        refund or chargeback mechanisms within Verum Wallet. The user acknowledges that sending amounts to
-        incorrect addresses or withdrawing after confirmation on the network does not generate a right to a refund
-        from Verum Crypto Freeport.
-      </p>
+      <h3>3. The Data We Collect</h3>
+      <p>Our principle is minimal data collection. However, for the application to function properly, we may process the
+        following categories:</p>
+      <p><strong>Information you provide to us:</strong> When you contact our support team, report a bug, or participate
+        in community surveys, we may collect your name, email address, and the details of your message.</p>
+      <p><strong>Technical and Usage Data:</strong> Whenever you use Verum Wallet, we may automatically collect system
+        information. This includes IP address (anonymized when possible), device type, operating system, and interaction
+        metrics (which screens were accessed, clicks, and errors in the app). This is vital for keeping the application
+        fast and secure.</p>
+      <p><strong>Blockchain Data (Public):</strong> The Solana blockchain is a public and immutable ledger. Your wallet
+        address (public key) and the transactions made on it are visible to anyone in the world. We do not link your
+        public wallet address to your real identity (name, CPF, etc.) unless you send us this information directly in a
+        support request.</p>
+      <p><strong>Financial and KYC Data (Not collected by us):</strong> As we are only the software interface, we do not
+        perform credit card processing, PIX, or KYC (Know Your Customer) processes. When you decide to buy or sell
+        cryptocurrencies, you will provide this data directly to our licensed partners.</p>
 
-      <h3>4. AML COMPLIANCE AND DATA COLLECTION (KYC)</h3>
-      <p>To ensure the protection of the company against financial crimes and comply with FATF/GAFI standards, we
-        collect:<br>
-        <strong>Identification (KYC):</strong> Data provided voluntarily for identity verification.<br>
-        <strong>Technical Data:</strong> IP address, transaction metadata, and device identifiers for fraud prevention
-        and cybersecurity purposes.<br>
-        <strong>Legal Sharing:</strong> We reserve the right to share data with competent authorities only through a
-        valid court order issued by a Panamanian authority or international mutual cooperation treaties recognized by
-        the Republic of Panama.
-      </p>
+      <h3>4. How We Use Your Data</h3>
+      <p>We use the limited data we possess exclusively to:</p>
+      <ul>
+        <li>Ensure the operation, technical security, and stability of Verum Wallet.</li>
+        <li>Analyze usage trends to improve the user experience (UX) and payment flow in partner merchants.</li>
+        <li>Provide efficient technical support.</li>
+        <li>Prevent malicious activities, fraud, and protect the integrity of our software.</li>
+      </ul>
 
-      <h3>5. DATA PROTECTION (LAW 81/2019 AND GDPR)</h3>
-      <p>We adopt the highest security standards to protect the integrity of the Verum System:<br>
-        <strong>User Rights:</strong> You have the right to access, rectify, and delete your personal data (KYC),
-        provided that such data is not required for maintenance due to legal retention obligations (anti-money
-        laundering standards).<br>
-        <strong>Security:</strong> We use end-to-end encryption and layered security protocols to protect our
-        infrastructure against unauthorized access.
-      </p>
+      <h3>5. Data Sharing</h3>
+      <p>Verum will never sell your personal data. We only share strictly necessary information in the following
+        scenarios:</p>
+      <ul>
+        <li><strong>Infrastructure Providers:</strong> Companies that provide us with cloud hosting services, data
+          analytics, and customer support tools, operating under strict confidentiality agreements.</li>
+        <li><strong>Legal Obligations:</strong> We may share limited information we possess if required by law, court
+          order, or applicable legal process in our jurisdiction of operation.</li>
+      </ul>
 
-      <h3>6. LIMITATION OF LIABILITY</h3>
-      <p>Under no circumstances shall Verum Crypto Freeport, its directors, or developers be liable for indirect
-        damages, lost profits, or failures resulting from inherent instabilities of third-party Blockchain networks
-        (such as Bitcoin, Ethereum, Solana, or Verum Chain).</p>
+      <h3>6. User Security and Responsibility</h3>
+      <p>The security of your assets is based on the advanced cryptography of the Solana network and the biometric
+        capabilities of your device (Face ID/Touch ID).</p>
+      <p>As Verum is a <em>non-custodial</em> wallet, the responsibility for storing your <strong>Recovery Phrase (12 to
+          24 words)</strong> in a secure, offline location rests <strong>solely with you</strong>. If you lose your
+        Recovery Phrase or give it to scammers, Verum has no power, authority, or technical means to recover your funds,
+        as your assets are on the blockchain and not on our servers.</p>
+
+      <h3>7. Your Rights and Retention</h3>
+      <p>We will retain your data (such as technical support logs) only for as long as necessary to fulfill the original
+        purpose of collection. Depending on your jurisdiction, you have the right to:</p>
+      <ul>
+        <li>Request access to the personal data we hold about you.</li>
+        <li>Request the correction of inaccurate data.</li>
+        <li>Request the deletion of your communication/support data.</li>
+      </ul>
+
+      <h3>8. Changes to this Policy</h3>
+      <p>We reserve the right to update this Privacy Policy periodically to reflect technological or regulatory changes.
+        We will notify users of significant changes through notices within the Verum Wallet application itself.</p>
+      <p>Last updated: July 1, 2026.</p>
     </div>
 
     <div class="terms-footer">
+      <a href="/terms-of-service" class="ghost-btn">Terms of Service</a>
       <a href="/" class="home-btn">Read and Accepted</a>
     </div>
   </div>
