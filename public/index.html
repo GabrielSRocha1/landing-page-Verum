@@ -5,9 +5,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Verum Crypto — Nova Infraestrutura Tecnológica da América Latina</title>
-  <link rel="icon" type="image/png" href="./lp-favicon.png">
-  <link rel="shortcut icon" type="image/png" href="./lp-favicon.png">
-  <link rel="apple-touch-icon" href="./lp-favicon.png">
+  <link rel="icon" type="image/png" href="./vc-favicon-lp.png">
+  <link rel="shortcut icon" type="image/png" href="./vc-favicon-lp.png">
+  <link rel="apple-touch-icon" href="./vc-favicon-lp.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link
@@ -2344,8 +2344,26 @@
     <div class="global-content reveal">
       <div class="section-tag" style="justify-content:center">Expansão Global</div>
       <h2 class="section-title">Construído para a <span class="gold">América Latina</span></h2>
-      <p class="section-body" style="margin:0 auto 15px;text-align:center">Estruturada, a Verum foi concebida para operar de
-        forma escalável e conectada aos principais mercados.</p>
+      <p class="section-body" style="margin:0 auto;text-align:center">Estruturada com base internacional, a Verum foi
+        concebida para operar de forma escalável e conectada aos principais mercados da região.</p>
+
+      <div class="markets">
+        <div class="market-item">
+          <span class="market-flag">🇧🇷</span>
+          <div class="market-name">Brasil</div>
+          <div class="market-sub">Mercado Principal</div>
+        </div>
+        <div class="market-item">
+          <span class="market-flag">🇵🇾</span>
+          <div class="market-name">Paraguai</div>
+          <div class="market-sub">Hub Cripto</div>
+        </div>
+        <div class="market-item">
+          <span class="market-flag">🇵🇦</span>
+          <div class="market-name">Panamá</div>
+          <div class="market-sub">Sede Corporativa</div>
+        </div>
+      </div>
 
       <div class="global-bar">
         <strong>Estrutura Corporativa:</strong> Foco na América Latina · Compliance multi-jurisdicional
@@ -2430,14 +2448,14 @@
     <div class="footer-bottom">
       <span>© 2025 Verum Crypto. Todos os direitos reservados.</span>
       <span>Operação baseada · América Latina</span>
-      <span><a href="javascript:void(0)" id="open-terms"
+      <span><a href="/terms&amp;privacy" id="open-terms"
           style="color: inherit; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.1);">Terms of Use &
           Privacy</a> · Legal</span>
     </div>
   </footer>
 
-  <!-- MODAL TERMS AND PRIVACY -->
-  <div id="terms-modal">
+  <!-- MODAL TERMS AND PRIVACY (moved to /terms&privacy page) -->
+  <div id="terms-modal" style="display:none" hidden>
     <div class="modal-content">
       <span class="modal-close" id="close-terms-x">&times;</span>
       <h2 class="modal-title">PRIVACY NOTICE AND GLOBAL COMPLIANCE TERMS – VERUM CRYPTO FREEPORT</h2>
@@ -2634,7 +2652,13 @@
           // Global
           "Expansão Global": "Global Expansion",
           "Construído para a": "Built for",
-          "Estruturada, a Verum foi concebida para operar de forma escalável e conectada aos principais mercados.": "Structured, Verum was designed to operate in a scalable way, connected to the main markets.",
+          "Estruturada com base internacional, a Verum foi concebida para operar de forma escalável e conectada aos principais mercados da região.": "Built on an international base, Verum was designed to operate in a scalable way, connected to the region's main markets.",
+          "Brasil": "Brazil",
+          "Mercado Principal": "Main Market",
+          "Paraguai": "Paraguay",
+          "Hub Cripto": "Crypto Hub",
+          "Panamá": "Panama",
+          "Sede Corporativa": "Corporate Headquarters",
           "Estrutura Corporativa:": "Corporate Structure:",
           "Foco na América Latina · Compliance multi-jurisdicional": "Focus on Latin America · Multi-jurisdictional compliance",
           // Disclaimer
@@ -2766,6 +2790,7 @@
           "Países": "Países",
           "Possibilidades": "Posibilidades",
           "Operação": "Operación",
+          
           // Security
           "Infraestrutura": "Infraestructura",
           "imutável": "inmutable",
@@ -2781,7 +2806,13 @@
           // Global
           "Expansão Global": "Expansión Global",
           "Construído para a": "Construido para",
-          "Estruturada, a Verum foi concebida para operar de forma escalável e conectada aos principais mercados.": "Estructurada, Verum fue concebida para operar de forma escalable y conectada a los principales mercados.",
+          "Estruturada com base internacional, a Verum foi concebida para operar de forma escalável e conectada aos principais mercados da região.": "Estructurada con base internacional, Verum fue concebida para operar de forma escalable y conectada a los principales mercados de la región.",
+          "Brasil": "Brasil",
+          "Mercado Principal": "Mercado Principal",
+          "Paraguai": "Paraguay",
+          "Hub Cripto": "Hub Cripto",
+          "Panamá": "Panamá",
+          "Sede Corporativa": "Sede Corporativa",
           "Estrutura Corporativa:": "Estructura Corporativa:",
           "Foco na América Latina · Compliance multi-jurisdicional": "Enfoque en América Latina · Compliance multi-jurisdiccional",
           // Disclaimer
@@ -2940,33 +2971,6 @@
     // Pain items stagger
     document.querySelectorAll('.pain-item').forEach((el, i) => {
       el.style.transitionDelay = `${i * 0.15}s`;
-    });
-
-    // Modal Logic
-    const modal = document.getElementById('terms-modal');
-    const openBtn = document.getElementById('open-terms');
-    const closeBtnX = document.getElementById('close-terms-x');
-    const closeBtnLido = document.getElementById('close-terms-btn');
-
-    if (openBtn) {
-      openBtn.addEventListener('click', () => {
-        modal.style.display = 'flex';
-        document.body.style.overflow = 'hidden'; // Prevent scrolling
-      });
-    }
-
-    const closeModal = () => {
-      modal.style.display = 'none';
-      document.body.style.overflow = '';
-    };
-
-    if (closeBtnX) closeBtnX.addEventListener('click', closeModal);
-    if (closeBtnLido) closeBtnLido.addEventListener('click', closeModal);
-
-    window.addEventListener('click', (event) => {
-      if (event.target == modal) {
-        closeModal();
-      }
     });
 
   </script>
