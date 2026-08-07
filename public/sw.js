@@ -101,6 +101,9 @@ self.addEventListener('fetch', (event) => {
   // Fora da nossa origem (e nao fontes): sem cache.
   if (url.origin !== self.location.origin) return;
 
+  // Vercel Analytics: sempre pela rede, nunca cacheado.
+  if (url.pathname.startsWith('/_vercel/')) return;
+
   // Assets proprios: stale-while-revalidate.
   event.respondWith(
     caches.match(req).then((hit) => {
