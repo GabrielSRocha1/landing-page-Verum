@@ -3020,6 +3020,349 @@
     });
 
   </script>
+
+  <!-- ===== WIDGET DE SUPORTE (Verum Assistant) ===== -->
+  <style>
+    #verum-chat-bubble {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 64px;
+      height: 64px;
+      background: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 9998;
+      filter: drop-shadow(0 6px 18px rgba(201, 168, 76, 0.45));
+      transition: transform 0.2s ease;
+      border: none;
+      padding: 0;
+    }
+
+    #verum-chat-bubble:hover {
+      transform: scale(1.06);
+    }
+
+    #verum-chat-bubble img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      pointer-events: none;
+    }
+
+    #verum-chat-window {
+      position: fixed;
+      bottom: 96px;
+      right: 24px;
+      width: 360px;
+      max-width: calc(100vw - 32px);
+      height: 520px;
+      max-height: calc(100vh - 140px);
+      background: var(--dark);
+      border: 1px solid rgba(201, 168, 76, 0.25);
+      border-radius: 16px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+      z-index: 9999;
+      font-family: 'Rajdhani', sans-serif;
+    }
+
+    #verum-chat-window.open {
+      display: flex;
+    }
+
+    #verum-chat-header {
+      background: var(--black);
+      padding: 16px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+    }
+
+    #verum-chat-header-title {
+      color: var(--white);
+      font-weight: 600;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    #verum-chat-header-title .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent-teal);
+      display: inline-block;
+    }
+
+    #verum-chat-header-sub {
+      color: var(--white-dim);
+      font-size: 12px;
+      margin-top: 2px;
+    }
+
+    #verum-chat-close {
+      background: none;
+      border: none;
+      color: var(--white-dim);
+      font-size: 20px;
+      cursor: pointer;
+      line-height: 1;
+      padding: 4px;
+    }
+
+    #verum-chat-close:hover {
+      color: var(--white);
+    }
+
+    #verum-chat-messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .verum-msg {
+      max-width: 85%;
+      padding: 10px 13px;
+      border-radius: 12px;
+      font-size: 14px;
+      line-height: 1.45;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+
+    .verum-msg.bot {
+      align-self: flex-start;
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--white);
+      border-bottom-left-radius: 4px;
+    }
+
+    .verum-msg.user {
+      align-self: flex-end;
+      background: var(--gold);
+      color: var(--black);
+      border-bottom-right-radius: 4px;
+    }
+
+    .verum-msg.typing {
+      align-self: flex-start;
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--white-dim);
+      font-style: italic;
+    }
+
+    #verum-chat-form {
+      display: flex;
+      gap: 8px;
+      padding: 12px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      background: var(--black);
+    }
+
+    #verum-chat-input {
+      flex: 1;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: 10px 12px;
+      color: var(--white);
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 14px;
+      outline: none;
+      resize: none;
+    }
+
+    #verum-chat-input:focus {
+      border-color: var(--gold);
+    }
+
+    #verum-chat-send {
+      background: var(--gold);
+      border: none;
+      border-radius: 10px;
+      width: 42px;
+      height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    #verum-chat-send:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    #verum-chat-send svg {
+      width: 18px;
+      height: 18px;
+      fill: var(--black);
+    }
+
+    @media (max-width: 480px) {
+      #verum-chat-window {
+        right: 16px;
+        bottom: 88px;
+        width: calc(100vw - 32px);
+      }
+
+      #verum-chat-bubble {
+        right: 16px;
+        bottom: 16px;
+      }
+    }
+  </style>
+
+  <button id="verum-chat-bubble" aria-label="Abrir suporte">
+    <img src="/verum-mascot.gif" alt="">
+  </button>
+
+  <div id="verum-chat-window">
+    <div id="verum-chat-header">
+      <div>
+        <div id="verum-chat-header-title"><span class="dot"></span>Suporte Verum</div>
+        <div id="verum-chat-header-sub">Assistente inteligente 24/7</div>
+      </div>
+      <button id="verum-chat-close" aria-label="Fechar">&times;</button>
+    </div>
+    <div id="verum-chat-messages"></div>
+    <form id="verum-chat-form">
+      <textarea id="verum-chat-input" rows="1" placeholder="Digite sua pergunta..." maxlength="1000"></textarea>
+      <button type="submit" id="verum-chat-send" aria-label="Enviar">
+        <svg viewBox="0 0 24 24"><path d="M2 21l21-9L2 3v7l15 2-15 2z"/></svg>
+      </button>
+    </form>
+  </div>
+
+  <script>
+    (function () {
+      var ENDPOINT = 'https://n8n-vbke.srv1556421.hstgr.cloud/webhook/verum-suporte-chat';
+      var bubble = document.getElementById('verum-chat-bubble');
+      var win = document.getElementById('verum-chat-window');
+      var closeBtn = document.getElementById('verum-chat-close');
+      var messages = document.getElementById('verum-chat-messages');
+      var form = document.getElementById('verum-chat-form');
+      var input = document.getElementById('verum-chat-input');
+      var sendBtn = document.getElementById('verum-chat-send');
+
+      function getSessionId() {
+        try {
+          var id = localStorage.getItem('verum_chat_session');
+          if (!id) {
+            id = 'site-' + Date.now() + '-' + Math.random().toString(36).slice(2, 10);
+            localStorage.setItem('verum_chat_session', id);
+          }
+          return id;
+        } catch (e) {
+          return 'site-' + Date.now();
+        }
+      }
+
+      function escapeHtml(str) {
+        var div = document.createElement('div');
+        div.textContent = str;
+        return div.innerHTML;
+      }
+
+      function formatBotText(text) {
+        return escapeHtml(text)
+          .replace(/^#{1,6}\s*(.+)$/gm, '<strong>$1</strong>')
+          .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+      }
+
+      function addMessage(text, who) {
+        var el = document.createElement('div');
+        el.className = 'verum-msg ' + who;
+        if (who === 'bot') {
+          el.innerHTML = formatBotText(text);
+        } else {
+          el.textContent = text;
+        }
+        messages.appendChild(el);
+        messages.scrollTop = messages.scrollHeight;
+        return el;
+      }
+
+      function openChat() {
+        win.classList.add('open');
+        bubble.style.display = 'none';
+        if (!messages.hasChildNodes()) {
+          addMessage('Olá! 👋 Sou o assistente da Verum Wallet. Posso ajudar com dúvidas sobre a carteira, envio e recebimento de cripto, segurança, redes suportadas e muito mais. Como posso ajudar?', 'bot');
+        }
+        input.focus();
+      }
+
+      function closeChat() {
+        win.classList.remove('open');
+        bubble.style.display = 'flex';
+      }
+
+      bubble.addEventListener('click', openChat);
+      closeBtn.addEventListener('click', closeChat);
+
+      input.addEventListener('input', function () {
+        input.style.height = 'auto';
+        input.style.height = Math.min(input.scrollHeight, 100) + 'px';
+      });
+
+      input.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' && !e.shiftKey) {
+          e.preventDefault();
+          form.requestSubmit();
+        }
+      });
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var texto = input.value.trim();
+        if (!texto) return;
+
+        addMessage(texto, 'user');
+        input.value = '';
+        input.style.height = 'auto';
+        input.disabled = true;
+        sendBtn.disabled = true;
+
+        var typing = addMessage('digitando...', 'typing');
+
+        fetch(ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            mensagem: texto,
+            sessionId: getSessionId()
+          })
+        })
+          .then(function (r) { return r.json(); })
+          .then(function (data) {
+            typing.remove();
+            addMessage(data.resposta || 'Desculpe, não consegui processar sua mensagem agora. Tente novamente ou envie um e-mail para suporte@verumcrypto.com.', 'bot');
+          })
+          .catch(function () {
+            typing.remove();
+            addMessage('Não consegui me conectar ao suporte agora. Tente novamente em instantes ou envie um e-mail para suporte@verumcrypto.com.', 'bot');
+          })
+          .finally(function () {
+            input.disabled = false;
+            sendBtn.disabled = false;
+            input.focus();
+          });
+      });
+    })();
+  </script>
+  <!-- ===== FIM WIDGET DE SUPORTE ===== -->
 </body>
 
 </html>
