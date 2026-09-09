@@ -3,11 +3,23 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Verum Crypto — Nova Infraestrutura Tecnológica da América Latina</title>
+  <meta name="description"
+    content="Uma experiência financeira digital de classe mundial, sem intermediários. A nova infraestrutura tecnológica Web3 para o comércio digital na América Latina. Powered by Solana.">
   <link rel="icon" type="image/png" href="/lp-favicon.png">
   <link rel="shortcut icon" type="image/png" href="/lp-favicon.png">
-  <link rel="apple-touch-icon" href="/lp-favicon.png">
+
+  <!-- PWA -->
+  <link rel="manifest" href="/manifest.webmanifest">
+  <meta name="theme-color" content="#080808">
+  <meta name="color-scheme" content="dark">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Verum Crypto">
+  <meta name="application-name" content="Verum Crypto">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link
@@ -77,6 +89,9 @@
       background: linear-gradient(180deg, rgba(8, 8, 8, 0.95) 0%, transparent 100%);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
+      padding-top: calc(16.5px + env(safe-area-inset-top));
+      padding-left: max(40px, env(safe-area-inset-left));
+      padding-right: max(40px, env(safe-area-inset-right));
     }
 
     .nav-logo {
@@ -136,6 +151,81 @@
     .nav-cta:hover {
       background: var(--gold);
       color: var(--black);
+    }
+
+    .nav-install {
+      background: var(--gold);
+      border: 1px solid var(--gold);
+      color: var(--black);
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 10px 20px;
+      cursor: pointer;
+      transition: all 0.3s;
+      white-space: nowrap;
+    }
+
+    .nav-install:hover {
+      background: var(--gold-light);
+      border-color: var(--gold-light);
+    }
+
+    .nav-install[hidden] {
+      display: none;
+    }
+
+    .nav-share {
+      background: transparent;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      width: 38px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s;
+      padding: 0;
+      flex-shrink: 0;
+    }
+
+    .nav-share svg {
+      width: 17px;
+      height: 17px;
+      display: block;
+    }
+
+    .nav-share:hover {
+      background: var(--gold);
+      color: var(--black);
+    }
+
+    .share-toast {
+      position: fixed;
+      top: 84px;
+      right: 40px;
+      z-index: 1200;
+      background: rgba(8, 8, 8, 0.96);
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 10px 18px;
+      opacity: 0;
+      transform: translateY(-8px);
+      transition: opacity 0.3s, transform 0.3s;
+      pointer-events: none;
+    }
+
+    .share-toast.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .lang-switch {
@@ -1357,6 +1447,7 @@
       background: var(--dark);
       border-top: 1px solid var(--border);
       padding: 60px 40px 40px;
+      padding-bottom: calc(40px + env(safe-area-inset-bottom));
     }
 
     .footer-grid {
@@ -1560,6 +1651,9 @@
     @media (max-width: 600px) {
       nav {
         padding: 12.5px 20px;
+        padding-top: calc(12.5px + env(safe-area-inset-top));
+        padding-left: max(20px, env(safe-area-inset-left));
+        padding-right: max(20px, env(safe-area-inset-right));
       }
 
       section {
@@ -1568,6 +1662,7 @@
 
       #hero {
         padding: 100px 24px 60px;
+        padding-top: calc(100px + env(safe-area-inset-top));
       }
 
       .hero-corner {
@@ -1587,6 +1682,21 @@
         gap: 12px;
         text-align: center;
       }
+
+      .share-toast {
+        top: auto;
+        bottom: 24px;
+        right: 20px;
+        left: 20px;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .nav-install {
+        padding: 10px 14px;
+        letter-spacing: 1px;
+      }
     }
 
     @media (max-width: 443px) {
@@ -1602,8 +1712,13 @@
         text-align: center;
       }
 
+      .nav-install {
+        order: 4;
+        flex-basis: 100%;
+      }
+
       #hero {
-        padding-top: 160px;
+        padding-top: calc(160px + env(safe-area-inset-top));
       }
     }
 
@@ -1875,7 +1990,18 @@
         <button class="lang-btn" data-lang="es" type="button">ES</button>
         <button class="lang-btn active" data-lang="pt" type="button">PT</button>
       </div>
-      <a href="https://www.verumcrypto.com/" target="_blank" rel="noopener noreferrer" class="nav-cta">Baixe Agora</a>
+      <button class="nav-install" id="install-btn" type="button" hidden></button>
+      <a href="https://download.verumcrypto.com" target="_blank" rel="noopener noreferrer" class="nav-cta">Baixe Agora</a>
+      <button class="nav-share" id="share-btn" type="button" aria-label="Compartilhar" title="Compartilhar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round" aria-hidden="true" focusable="false">
+          <circle cx="18" cy="5" r="3"></circle>
+          <circle cx="6" cy="12" r="3"></circle>
+          <circle cx="18" cy="19" r="3"></circle>
+          <line x1="8.6" y1="10.5" x2="15.4" y2="6.6"></line>
+          <line x1="8.6" y1="13.5" x2="15.4" y2="17.4"></line>
+        </svg>
+      </button>
       <div class="menu-toggle" id="mobile-menu">
         <span></span>
         <span></span>
@@ -1906,7 +2032,7 @@
       </p>
       <div class="hero-ctas">
         <a href="https://www.verumcrypto.com/" target="_blank" rel="noopener noreferrer" class="btn-primary">Começar Agora</a>
-        <a href="https://www.verumcrypto.com/" target="_blank" rel="noopener noreferrer" class="btn-secondary">Solicitar Acesso</a>
+        <a href="https://vrc.verumcrypto.com" target="_blank" rel="noopener noreferrer" class="btn-secondary">Adquirir Ativo</a>
       </div>
     </div>
 
@@ -2064,7 +2190,7 @@
       </div>
     </div>
     <div style="text-align: center; margin-top: 60px;" class="reveal">
-      <a href="https://www.verumcrypto.com/" target="_blank" rel="noopener noreferrer" class="btn-primary">Baixe Agora</a>
+      <a href="https://download.verumcrypto.com" target="_blank" rel="noopener noreferrer" class="btn-primary">Baixe Agora</a>
     </div>
   </section>
 
@@ -2129,7 +2255,7 @@
       </div>
     </div>
     <div style="text-align: center; margin-top: 60px;" class="reveal">
-      <a href="https://www.verumcrypto.com/" target="_blank" rel="noopener noreferrer" class="btn-primary">Baixe Agora</a>
+      <a href="https://download.verumcrypto.com" target="_blank" rel="noopener noreferrer" class="btn-primary">Baixe Agora</a>
     </div>
   </section>
 
@@ -2300,7 +2426,7 @@
       </div>
 
       <div style="text-align: center; margin-top: 60px;" class="reveal">
-        <a href="https://www.verumcrypto.com/" target="_blank" rel="noopener noreferrer" class="btn-primary">Baixe Agora</a>
+        <a href="https://download.verumcrypto.com" target="_blank" rel="noopener noreferrer" class="btn-primary">Baixe Agora</a>
       </div>
     </div>
   </section>
@@ -2389,8 +2515,7 @@
         Latina.
       </p>
       <div class="cta-final-btns">
-        <a href="https://www.verumcrypto.com/" target="_blank" rel="noopener noreferrer" class="btn-primary">Baixe Agora</a>
-        <a href="https://www.verumcrypto.com/" target="_blank" rel="noopener noreferrer" class="btn-secondary">Solicitar Acesso Antecipado</a>
+        <a href="https://download.verumcrypto.com" target="_blank" rel="noopener noreferrer" class="btn-primary">Baixe Agora</a>
       </div>
     </div>
   </section>
@@ -2531,7 +2656,7 @@
           "Uma experiência financeira digital de classe mundial, sem intermediários.": "A world-class digital financial experience, with no intermediaries.",
           "Assuma o controle absoluto do seu patrimônio com uma interface simples e segura. Acesse o mercado global, troque moedas automaticamente com as melhores taxas do mercado e integre seu saldo diretamente ao comércio digital. Tudo isso com a velocidade que só a tecnologia mais avançada pode oferecer.": "Take absolute control of your wealth with a simple and secure interface. Access the global market, swap currencies automatically at the best market rates and integrate your balance directly into digital commerce. All of this with the speed that only the most advanced technology can offer.",
           "Começar Agora": "Get Started",
-          "Solicitar Acesso": "Request Access",
+          "Adquirir Ativo": "Buy Asset",
           // Stats ticker
           "Rede": "Network",
           "Velocidade": "Speed",
@@ -2658,7 +2783,6 @@
           "Entre para a nova geração da": "Join the new generation of the",
           "economia digital": "digital economy",
           "Junte-se à comunidade que está construindo a infraestrutura tecnológica Web3 da América Latina.": "Join the community that is building Latin America's Web3 technological infrastructure.",
-          "Solicitar Acesso Antecipado": "Request Early Access",
           // Footer
           "A nova infraestrutura tecnológica Web3 para o comércio digital na América Latina. Powered by Solana.": "The new Web3 technological infrastructure for digital commerce in Latin America. Powered by Solana.",
           "Plataforma": "Platform",
@@ -2684,7 +2808,7 @@
           "Uma experiência financeira digital de classe mundial, sem intermediários.": "Una experiencia financiera digital de clase mundial, sin intermediarios.",
           "Assuma o controle absoluto do seu patrimônio com uma interface simples e segura. Acesse o mercado global, troque moedas automaticamente com as melhores taxas do mercado e integre seu saldo diretamente ao comércio digital. Tudo isso com a velocidade que só a tecnologia mais avançada pode oferecer.": "Asume el control absoluto de tu patrimonio con una interfaz simple y segura. Accede al mercado global, cambia monedas automáticamente con las mejores tasas del mercado e integra tu saldo directamente al comercio digital. Todo esto con la velocidad que solo la tecnología más avanzada puede ofrecer.",
           "Começar Agora": "Comenzar Ahora",
-          "Solicitar Acesso": "Solicitar Acceso",
+          "Adquirir Ativo": "Adquirir Activo",
           // Stats ticker
           "Rede": "Red",
           "Velocidade": "Velocidad",
@@ -2812,7 +2936,6 @@
           "Entre para a nova geração da": "Únete a la nueva generación de la",
           "economia digital": "economía digital",
           "Junte-se à comunidade que está construindo a infraestrutura tecnológica Web3 da América Latina.": "Únete a la comunidad que está construyendo la infraestructura tecnológica Web3 de América Latina.",
-          "Solicitar Acesso Antecipado": "Solicitar Acceso Anticipado",
           // Footer
           "A nova infraestrutura tecnológica Web3 para o comércio digital na América Latina. Powered by Solana.": "La nueva infraestructura tecnológica Web3 para el comercio digital en América Latina. Powered by Solana.",
           "Plataforma": "Plataforma",
@@ -2864,6 +2987,83 @@
       let saved = 'pt';
       try { saved = localStorage.getItem('verum-lang') || 'pt'; } catch (e) {}
       applyLang(saved);
+    })();
+
+    // ===== Share page link =====
+    (function () {
+      const shareBtn = document.getElementById('share-btn');
+      if (!shareBtn) return;
+
+      const COPY = {
+        pt: { label: 'Compartilhar', title: 'Verum Crypto', text: 'A Evolução Definitiva do Seu Dinheiro.', ok: 'Link copiado!', fail: 'Não foi possível copiar' },
+        en: { label: 'Share', title: 'Verum Crypto', text: 'The Ultimate Evolution of Your Money.', ok: 'Link copied!', fail: 'Could not copy' },
+        es: { label: 'Compartir', title: 'Verum Crypto', text: 'La Evolución Definitiva de Tu Dinero.', ok: '¡Enlace copiado!', fail: 'No se pudo copiar' }
+      };
+
+      function copy() {
+        let lang = 'pt';
+        try { lang = localStorage.getItem('verum-lang') || 'pt'; } catch (e) {}
+        return COPY[lang] || COPY.pt;
+      }
+
+      const toast = document.createElement('div');
+      toast.className = 'share-toast';
+      toast.setAttribute('role', 'status');
+      document.body.appendChild(toast);
+      let toastTimer;
+
+      function showToast(message) {
+        toast.textContent = message;
+        toast.classList.add('visible');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(function () { toast.classList.remove('visible'); }, 2200);
+      }
+
+      function syncLabel() {
+        const c = copy();
+        shareBtn.setAttribute('aria-label', c.label);
+        shareBtn.setAttribute('title', c.label);
+      }
+
+      syncLabel();
+      document.querySelectorAll('.lang-btn').forEach(function (btn) {
+        btn.addEventListener('click', syncLabel);
+      });
+
+      function fallbackCopy(url, c) {
+        const input = document.createElement('input');
+        input.value = url;
+        input.setAttribute('readonly', '');
+        input.style.position = 'fixed';
+        input.style.opacity = '0';
+        document.body.appendChild(input);
+        input.select();
+        let ok = false;
+        try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+        document.body.removeChild(input);
+        showToast(ok ? c.ok : c.fail);
+      }
+
+      shareBtn.addEventListener('click', function () {
+        const c = copy();
+        const url = window.location.href;
+
+        if (navigator.share) {
+          navigator.share({ title: c.title, text: c.text, url: url }).catch(function () {});
+          return;
+        }
+
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(url).then(function () {
+            showToast(c.ok);
+          }).catch(function () {
+            fallbackCopy(url, c);
+          });
+          return;
+        }
+
+        fallbackCopy(url, c);
+      });
     })();
 
     // Mobile menu toggle
@@ -2943,7 +3143,8 @@
     window.addEventListener('scroll', () => {
       if (window.scrollY > 80) {
         nav.style.background = 'rgba(8,8,8,0.98)';
-        nav.style.paddingTop = '8.5px';
+        // soma a safe area para o nav nao entrar sob a status bar no modo standalone (iOS)
+        nav.style.paddingTop = 'calc(8.5px + env(safe-area-inset-top))';
         nav.style.paddingBottom = '8.5px';
       } else {
         nav.style.background = '';
@@ -2956,6 +3157,85 @@
     document.querySelectorAll('.pain-item').forEach((el, i) => {
       el.style.transitionDelay = `${i * 0.15}s`;
     });
+
+    // ===== PWA: service worker + prompt de instalacao =====
+    (function () {
+      if ('serviceWorker' in navigator) {
+        // Na primeira visita o clients.claim() do SW tambem dispara 'controllerchange'.
+        // So recarregamos se a pagina JA estava sob controle, ou seja, numa atualizacao real.
+        const hadController = !!navigator.serviceWorker.controller;
+
+        window.addEventListener('load', function () {
+          navigator.serviceWorker.register('/sw.js').then(function (reg) {
+            // Se uma versao nova ficar esperando, ativa na proxima navegacao.
+            reg.addEventListener('updatefound', function () {
+              const sw = reg.installing;
+              if (!sw) return;
+              sw.addEventListener('statechange', function () {
+                if (sw.state === 'installed' && navigator.serviceWorker.controller) {
+                  sw.postMessage({ type: 'SKIP_WAITING' });
+                }
+              });
+            });
+          }).catch(function () { /* SW e progressivo: falhar aqui nao quebra a pagina */ });
+
+          let reloading = false;
+          navigator.serviceWorker.addEventListener('controllerchange', function () {
+            if (!hadController || reloading) return;
+            reloading = true;
+            window.location.reload();
+          });
+        });
+      }
+
+      // Botao "Instalar App" no nav, exibido so quando o navegador permite instalar.
+      const INSTALL_COPY = {
+        pt: { label: 'Instalar App', done: 'App instalado!' },
+        en: { label: 'Install App', done: 'App installed!' },
+        es: { label: 'Instalar App', done: '¡App instalada!' }
+      };
+
+      function copy() {
+        let lang = 'pt';
+        try { lang = localStorage.getItem('verum-lang') || 'pt'; } catch (e) {}
+        return INSTALL_COPY[lang] || INSTALL_COPY.pt;
+      }
+
+      let deferredPrompt = null;
+      const btn = document.getElementById('install-btn');
+      if (!btn) return;
+
+      function syncLabel() {
+        const c = copy();
+        btn.textContent = c.label;
+        btn.setAttribute('aria-label', c.label);
+      }
+
+      window.addEventListener('beforeinstallprompt', function (e) {
+        e.preventDefault();
+        deferredPrompt = e;
+        syncLabel();
+        btn.hidden = false;
+      });
+
+      document.querySelectorAll('.lang-btn').forEach(function (b) {
+        b.addEventListener('click', function () { if (!btn.hidden) syncLabel(); });
+      });
+
+      btn.addEventListener('click', function () {
+        if (!deferredPrompt) return;
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then(function () {
+          deferredPrompt = null;
+          btn.hidden = true;
+        });
+      });
+
+      window.addEventListener('appinstalled', function () {
+        deferredPrompt = null;
+        btn.hidden = true;
+      });
+    })();
 
   </script>
 
@@ -3301,6 +3581,12 @@
     })();
   </script>
   <!-- ===== FIM WIDGET DE SUPORTE ===== -->
+
+  <!-- Vercel Web Analytics -->
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
 </body>
 
 </html>
