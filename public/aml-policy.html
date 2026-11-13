@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AML/CTF Policy and Procedures — Verum Wallet</title>
+  <link rel="icon" type="image/png" href="/lp-favicon.png">
+  <link rel="shortcut icon" type="image/png" href="/lp-favicon.png">
+  <link rel="apple-touch-icon" href="/lp-favicon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --gold: #C9A84C;
+      --gold-light: #E8C96A;
+      --gold-dim: #8B6914;
+      --black: #080808;
+      --dark: #0F0F0F;
+      --dark2: #141414;
+      --dark3: #1A1A1A;
+      --dark4: #222222;
+      --white: #F0ECE0;
+      --white-dim: #A09880;
+      --border: rgba(201, 168, 76, 0.15);
+      --border-bright: rgba(201, 168, 76, 0.4);
+    }
+
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--black);
+      color: var(--white-dim);
+      font-family: 'Rajdhani', sans-serif;
+      min-height: 100vh;
+      padding: 60px 20px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .terms-content {
+      background: var(--dark2);
+      padding: 48px;
+      border: 1px solid var(--border-bright);
+      width: 100%;
+      max-width: 800px;
+      border-radius: 16px;
+      position: relative;
+      box-shadow: 0 40px 100px rgba(0, 0, 0, 0.8);
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--white-dim);
+      text-decoration: none;
+      font-size: 14px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 32px;
+      transition: color 0.3s;
+    }
+
+    .back-link:hover {
+      color: var(--gold);
+    }
+
+    .terms-title {
+      font-family: 'Cinzel', serif;
+      color: var(--gold);
+      font-size: clamp(20px, 4vw, 26px);
+      margin-bottom: 8px;
+      line-height: 1.2;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .terms-update {
+      font-size: 13px;
+      color: var(--gold-dim);
+      margin-bottom: 32px;
+      font-family: 'Space Mono', monospace;
+      letter-spacing: 1px;
+    }
+
+    .terms-body {
+      color: var(--white-dim);
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    .terms-body h3 {
+      color: var(--white);
+      margin-top: 32px;
+      margin-bottom: 12px;
+      font-family: 'Cinzel', serif;
+      font-size: 16px;
+      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .terms-body h3::after {
+      content: '';
+      height: 1px;
+      flex: 1;
+      background: var(--border);
+    }
+
+    .terms-body p {
+      margin-bottom: 16px;
+    }
+
+    .terms-body ul {
+      margin: 8px 0 16px 22px;
+    }
+
+    .terms-body li {
+      margin-bottom: 8px;
+    }
+
+    .terms-body strong {
+      color: var(--white);
+    }
+
+    .terms-body a {
+      color: var(--gold);
+      text-decoration: none;
+      border-bottom: 1px solid var(--border-bright);
+    }
+
+    .terms-body a:hover {
+      color: var(--gold-light);
+    }
+
+    .terms-footer {
+      margin-top: 48px;
+      text-align: center;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .home-btn {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--black);
+      border: none;
+      padding: 12px 32px;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .home-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(201, 168, 76, 0.3);
+    }
+
+    .ghost-btn {
+      display: inline-block;
+      background: transparent;
+      color: var(--gold);
+      border: 1px solid var(--border-bright);
+      padding: 12px 32px;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .ghost-btn:hover {
+      border-color: var(--gold);
+      color: var(--gold-light);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="terms-content">
+    <a href="/" class="back-link">&larr; Back to home</a>
+    <h1 class="terms-title">AML/CTF Policy and Procedures</h1>
+    <div class="terms-update">Last updated: November 13, 2026</div>
+
+    <div class="terms-body">
+      <h3>1. Purpose and Scope</h3>
+      <p>This document describes the position of verumcrypto.com ("Verum") in relation to the prevention of money
+        laundering, the financing of terrorism, and the financing of the proliferation of weapons of mass destruction
+        (AML/CTF/CPF), and sets out <strong>who performs which control</strong> in the context of the Verum Wallet
+        application.</p>
+      <p>This policy is deliberately written to describe only what actually exists. <strong>It does not claim controls
+          that Verum does not operate.</strong> Where a control is performed by a third party, this document says so
+        expressly and identifies that third party.</p>
+
+      <h3>2. Nature of the Service</h3>
+      <p>Verum Wallet is <strong>self-custody interface software</strong>. Verum:</p>
+      <ul>
+        <li>does not hold customer accounts and does not maintain balances on behalf of users;</li>
+        <li>does not have access to private keys, seed phrases, or user funds;</li>
+        <li>does not receive, hold, custody, or transmit fiat currency at any moment;</li>
+        <li>does not act as an exchange, brokerage, payment institution, money transmitter, or financial
+          intermediary.</li>
+      </ul>
+      <p>Because Verum never holds user assets or fiat funds, it has no technical ability to block, freeze, seize,
+        return, or reverse any transaction or amount. Any statement to the contrary would be false.</p>
+
+      <h3>3. Guardarian Performs KYC and AML Verification</h3>
+      <p>All purchase and sale of digital assets against fiat currency (on-ramp and off-ramp) made available through
+        Verum Wallet is executed by <strong>Guardarian OÜ</strong> ("Guardarian"), an independent company established
+        in Estonia and authorised as a virtual currency service provider in its jurisdiction of establishment.</p>
+      <p><strong>Guardarian is the entity responsible for the AML/CTF programme applicable to these operations.</strong>
+        Under its own policy, available at
+        <a href="https://guardarian.com/" target="_blank" rel="noopener noreferrer">guardarian.com</a>, Guardarian
+        performs:</p>
+      <ul>
+        <li><strong>Customer identification and verification (KYC)</strong> — collection and analysis of identity
+          documents, selfie/liveness checks, and proof of address, applying its own thresholds and tiers;</li>
+        <li><strong>Customer due diligence (CDD) and enhanced due diligence (EDD)</strong> for higher-risk
+          situations;</li>
+        <li><strong>Screening against sanctions lists</strong> and identification of politically exposed persons
+          (PEPs);</li>
+        <li><strong>Monitoring of fiat transactions</strong> and of the source of funds, including payment-method and
+          card-fraud checks;</li>
+        <li><strong>Analysis and reporting of suspicious activity</strong> to the competent financial intelligence
+          unit, under the law applicable to it;</li>
+        <li><strong>Approval, rejection, limitation, or blocking of orders</strong>, and application of country and
+          transaction limits.</li>
+      </ul>
+      <p>These processes take place <strong>entirely within Guardarian's environment</strong>. Verum does not collect,
+        receive, review, store, or have access to identity documents, verification data, or the files underlying these
+        decisions. Verum has no influence over, and no power to review or overturn, any decision made by Guardarian.</p>
+
+      <h3>4. What Verum Actually Does</h3>
+      <p>The measures below are the full extent of what Verum maintains. They are governance and access measures, not
+        financial-institution controls:</p>
+      <ul>
+        <li><strong>Partner selection:</strong> we only make available, as an on-ramp/off-ramp provider, a company that
+          is authorised to carry out that activity in its jurisdiction, and we check, before and during the
+          integration, that it maintains a published AML/KYC programme.</li>
+        <li><strong>Structural non-custody:</strong> our architecture is designed so that neither fiat funds nor user
+          keys pass through Verum. This is our main risk mitigation measure.</li>
+        <li><strong>Acceptable use policy:</strong> the
+          <a href="/terms-of-service">Terms of Service</a> expressly prohibit the use of the application for money
+          laundering, terrorist financing, fraud, sanctions evasion, and the splitting of operations to avoid
+          verification thresholds.</li>
+        <li><strong>Restricted jurisdictions:</strong> we publish and keep updated the list of restricted jurisdictions
+          in Section 6, and we do not promote the service in those territories.</li>
+        <li><strong>Interface access restriction:</strong> where we become aware — through a report, a communication
+          from Guardarian, or a lawful order — that an address or user is involved in unlawful activity or is subject
+          to sanctions, we may restrict access to our interface and discontinue support. This measure affects only our
+          software; it does not affect assets on the blockchain, which remain under the user's exclusive control.</li>
+        <li><strong>Response to authorities:</strong> we respond to valid, properly founded requests from competent
+          authorities, within the limits of the law, providing only the limited data we actually hold (described in
+          the <a href="/terms-privacy">Privacy Policy</a>).</li>
+        <li><strong>Internal guidance:</strong> our support team is instructed never to request, receive, or store
+          identity documents, seed phrases, or banking data, and to redirect all KYC and fiat-order matters to
+          Guardarian's official channels.</li>
+        <li><strong>Periodic review:</strong> this policy and the partner integration are reviewed at least annually,
+          or whenever there is a material change in the regulatory framework or in the provider.</li>
+      </ul>
+
+      <h3>5. What Verum Does Not Do</h3>
+      <p>For the avoidance of doubt and to prevent any misleading expectation, Verum <strong>does not</strong>:</p>
+      <ul>
+        <li>perform KYC, identity verification, or the collection of identification documents;</li>
+        <li>carry out customer due diligence (CDD/EDD) or source-of-funds and source-of-wealth assessments;</li>
+        <li>screen users against sanctions or PEP lists, nor maintain its own screening tooling;</li>
+        <li>operate blockchain transaction monitoring, wallet-address risk scoring, or on-chain analytics;</li>
+        <li>submit suspicious transaction reports or cash-transaction reports to any financial intelligence unit in
+          relation to on-ramp/off-ramp operations — this duty lies with the regulated provider that executes them;</li>
+        <li>maintain a certified compliance department, an internal AML auditor, or an independent testing programme of
+          the kind required of financial institutions;</li>
+        <li>freeze, block, confiscate, or return funds — which is technically impossible in a self-custody model;</li>
+        <li>hold a payment-institution licence, an exchange registration, or an authorisation as a virtual asset
+          service provider.</li>
+      </ul>
+      <p>Verum does not act as an exchange or payment institution and therefore does not undertake the customer due
+        diligence duties assigned to those entities. Should the applicable law of any jurisdiction in which we operate
+        come to attribute such duties to interface software providers, we will adjust this policy and our operation
+        before continuing to offer the service in that jurisdiction.</p>
+
+      <h3>6. Prohibited Activities and Restricted Jurisdictions</h3>
+      <p>It is expressly prohibited to use Verum Wallet to conceal or disguise the nature, origin, location,
+        disposition, movement, or ownership of assets derived from unlawful activity; to finance terrorism or the
+        proliferation of weapons of mass destruction; to evade sanctions; to carry out fraud, extortion, or ransomware
+        payments; to trade in illicit goods or services; or to act for a third party without disclosure.</p>
+      <p>The service is not offered to persons resident in, located in, or acting on behalf of persons in: Cuba, Iran,
+        North Korea, Syria, and the Crimea, Donetsk, Luhansk, Kherson and Zaporizhzhia regions of Ukraine; any
+        territory subject to comprehensive sanctions imposed by the UN, EU, UK (OFSI), or US (OFAC); and any
+        jurisdiction listed by FATF/GAFI as a "High-Risk Jurisdiction Subject to a Call for Action".</p>
+      <p>Guardarian applies its own, broader list of country and payment-method restrictions, which may change without
+        prior notice. <strong>Guardarian's list is the one that determines whether an order can be completed.</strong>
+      </p>
+
+      <h3>7. Reports and Contact</h3>
+      <p>If you identify any use of Verum Wallet for unlawful purposes, or if you are an authority seeking information,
+        contact us at <a href="mailto:contato@verumcrypto.com">contato@verumcrypto.com</a>. Reports are reviewed within
+        the limits of the data we hold.</p>
+      <p>Matters relating to identity verification, documents, blocked orders, or refunds of fiat transactions must be
+        addressed directly to Guardarian, through the channels published at
+        <a href="https://guardarian.com/" target="_blank" rel="noopener noreferrer">guardarian.com</a>. Verum has no
+        access to those processes and cannot intervene in them.</p>
+
+      <h3>8. Updates</h3>
+      <p>This policy may be updated to reflect changes in the regulatory framework, in the on-ramp/off-ramp provider,
+        or in our operation. The version in force is the one published on this page, with the date indicated at the
+        top.</p>
+    </div>
+
+    <div class="terms-footer">
+      <a href="/terms-of-service" class="ghost-btn">Terms of Service</a>
+      <a href="/terms-privacy" class="ghost-btn">Privacy Policy</a>
+      <a href="/" class="home-btn">Read and Accepted</a>
+    </div>
+  </div>
+
+  <!-- Vercel Web Analytics -->
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+</body>
+
+</html>
