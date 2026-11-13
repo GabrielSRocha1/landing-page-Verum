@@ -892,6 +892,24 @@
       height: 100%;
     }
 
+    .feature-card.feature-wide {
+      grid-column: 1 / -1;
+    }
+
+    .feature-flag {
+      display: inline-block;
+      margin-left: 12px;
+      padding: 4px 10px;
+      border: 1px solid var(--border-bright);
+      color: var(--gold);
+      font-family: 'Space Mono', monospace;
+      font-weight: 400;
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      vertical-align: middle;
+    }
+
     .feature-icon {
       font-size: 36px;
       margin-bottom: 20px;
@@ -2056,8 +2074,8 @@
       </div>
       <div class="stat-item stat-divider">◆</div>
       <div class="stat-item">
-        <span class="stat-label">Custo por tx</span>
-        <span class="stat-value">2%</span>
+        <span class="stat-label">Multi-Chain</span>
+        <span class="stat-value">Cross-Chain Nativo</span>
       </div>
       <div class="stat-item stat-divider">◆</div>
       <div class="stat-item">
@@ -2087,8 +2105,8 @@
       </div>
       <div class="stat-item stat-divider">◆</div>
       <div class="stat-item">
-        <span class="stat-label">Custo por tx</span>
-        <span class="stat-value">2%</span>
+        <span class="stat-label">Multi-Chain</span>
+        <span class="stat-value">Cross-Chain Nativo</span>
       </div>
       <div class="stat-item stat-divider">◆</div>
       <div class="stat-item">
@@ -2188,6 +2206,13 @@
         <p class="feature-desc">Suas chaves, seus ativos. Controle total sobre seu patrimônio digital sem
           intermediários.</p>
       </div>
+      <div class="feature-card feature-wide reveal">
+        <span class="feature-icon">🔗</span>
+        <div class="feature-title">Multi-Chain e Cross-Chain<span class="feature-flag">Disponível</span></div>
+        <p class="feature-desc">A Verum Wallet já opera em múltiplas redes. Gerencie ativos de diferentes blockchains em
+          uma única carteira e mova valor entre elas com transferências cross-chain, sem precisar de corretoras,
+          múltiplos aplicativos ou pontes externas. Uma única experiência, vários ecossistemas conectados.</p>
+      </div>
     </div>
     <div style="text-align: center; margin-top: 60px;" class="reveal">
       <a href="https://download.verumcrypto.com" target="_blank" rel="noopener noreferrer" class="btn-primary">Baixe Agora</a>
@@ -2285,8 +2310,8 @@
           <li class="diff-item reveal">
             <div class="diff-check">✓</div>
             <div>
-              <div class="diff-title">Em Breve Multi-Rede</div>
-              <div class="diff-desc">Estamos criando uma Estrutura técnica para expansão multi-chain quando necessário.</div>
+              <div class="diff-title">Multi-Chain e Cross-Chain</div>
+              <div class="diff-desc">Disponível na Verum Wallet: múltiplas redes em uma só carteira e transferências cross-chain entre elas.</div>
             </div>
           </li>
           <li class="diff-item reveal">
@@ -2318,6 +2343,13 @@
                 <div class="tech-badge-detail">Chaves privadas sob controle do usuário</div>
               </div>
               <div class="tech-badge-tag">SEGURO</div>
+            </div>
+            <div class="tech-badge">
+              <div>
+                <div class="tech-badge-name">Multi-Chain e Cross-Chain</div>
+                <div class="tech-badge-detail">Várias redes em uma carteira · transferências entre blockchains</div>
+              </div>
+              <div class="tech-badge-tag">MULTI-REDE</div>
             </div>
             <div class="tech-badge">
               <div>
@@ -2609,7 +2641,8 @@
           // Stats ticker
           "Rede": "Network",
           "Velocidade": "Speed",
-          "Custo por tx": "Cost per tx",
+          "Multi-Chain": "Multi-Chain",
+          "Cross-Chain Nativo": "Native Cross-Chain",
           "Mercado": "Market",
           "América Latina": "Latin America",
           "Apoiamos Comunidades com": "We support Communities with",
@@ -2642,6 +2675,9 @@
           "Visualize movimentações, conversões e evolução dos seus ativos com interface clara e profissional.": "View transactions, conversions and the evolution of your assets with a clear and professional interface.",
           "Self-Custody Total": "Full Self-Custody",
           "Suas chaves, seus ativos. Controle total sobre seu patrimônio digital sem intermediários.": "Your keys, your assets. Full control over your digital wealth with no intermediaries.",
+          "Multi-Chain e Cross-Chain": "Multi-Chain and Cross-Chain",
+          "Disponível": "Available",
+          "A Verum Wallet já opera em múltiplas redes. Gerencie ativos de diferentes blockchains em uma única carteira e mova valor entre elas com transferências cross-chain, sem precisar de corretoras, múltiplos aplicativos ou pontes externas. Uma única experiência, vários ecossistemas conectados.": "Verum Wallet already runs on multiple networks. Manage assets from different blockchains in a single wallet and move value between them with cross-chain transfers, without exchanges, multiple apps or external bridges. One experience, several connected ecosystems.",
           // How it works
           "01 — ACESSAR": "01 — ACCESS",
           "Acessar Ativos Digitais": "Access Digital Assets",
@@ -2664,14 +2700,15 @@
           "Conectando à redes de comércios físicos e digitais.": "Connecting to networks of physical and digital merchants.",
           "Acesso Descentralizado": "Decentralized Access",
           "Conecte-se a protocolos DeFi de terceiros diretamente da sua carteira não custodial.": "Connect to third-party DeFi protocols directly from your non-custodial wallet.",
-          "Em Breve Multi-Rede": "Multi-Network Coming Soon",
-          "Estamos criando uma Estrutura técnica para expansão multi-chain quando necessário.": "We are building a technical structure for multi-chain expansion when needed.",
+          "Disponível na Verum Wallet: múltiplas redes em uma só carteira e transferências cross-chain entre elas.": "Available in Verum Wallet: multiple networks in a single wallet and cross-chain transfers between them.",
           "Experiência Para Todos": "Experience For Everyone",
           "Interface simplificada mesmo para quem está entrando agora no mundo digital.": "Simplified interface even for those just entering the digital world.",
           "Comunidade Ativa": "Active Community",
           "Organizações fraternais e comunidades educacionais engajadas.": "Engaged fraternal organizations and educational communities.",
           "Chaves privadas sob controle do usuário": "Private keys under the user's control",
           "SEGURO": "SECURE",
+          "Várias redes em uma carteira · transferências entre blockchains": "Several networks in one wallet · transfers between blockchains",
+          "MULTI-REDE": "MULTI-CHAIN",
           "Acesso DeFi": "DeFi Access",
           "Interaja com Smart Contracts e protocolos compatíveis": "Interact with Smart Contracts and compatible protocols",
           "Pagamentos QR": "QR Payments",
@@ -2761,7 +2798,8 @@
           // Stats ticker
           "Rede": "Red",
           "Velocidade": "Velocidad",
-          "Custo por tx": "Costo por tx",
+          "Multi-Chain": "Multi-Chain",
+          "Cross-Chain Nativo": "Cross-Chain Nativo",
           "Mercado": "Mercado",
           "América Latina": "América Latina",
           "Apoiamos Comunidades com": "Apoyamos Comunidades con",
@@ -2794,6 +2832,9 @@
           "Visualize movimentações, conversões e evolução dos seus ativos com interface clara e profissional.": "Visualiza movimientos, conversiones y la evolución de tus activos con una interfaz clara y profesional.",
           "Self-Custody Total": "Autocustodia Total",
           "Suas chaves, seus ativos. Controle total sobre seu patrimônio digital sem intermediários.": "Tus llaves, tus activos. Control total sobre tu patrimonio digital sin intermediarios.",
+          "Multi-Chain e Cross-Chain": "Multi-Chain y Cross-Chain",
+          "Disponível": "Disponible",
+          "A Verum Wallet já opera em múltiplas redes. Gerencie ativos de diferentes blockchains em uma única carteira e mova valor entre elas com transferências cross-chain, sem precisar de corretoras, múltiplos aplicativos ou pontes externas. Uma única experiência, vários ecossistemas conectados.": "Verum Wallet ya opera en múltiples redes. Gestiona activos de diferentes blockchains en una sola billetera y mueve valor entre ellas con transferencias cross-chain, sin necesidad de exchanges, múltiples aplicaciones ni puentes externos. Una sola experiencia, varios ecosistemas conectados.",
           // How it works
           "01 — ACESSAR": "01 — ACCEDER",
           "Acessar Ativos Digitais": "Acceder a Activos Digitales",
@@ -2816,14 +2857,15 @@
           "Conectando à redes de comércios físicos e digitais.": "Conectando a redes de comercios físicos y digitales.",
           "Acesso Descentralizado": "Acceso Descentralizado",
           "Conecte-se a protocolos DeFi de terceiros diretamente da sua carteira não custodial.": "Conéctate a protocolos DeFi de terceros directamente desde tu billetera no custodial.",
-          "Em Breve Multi-Rede": "Próximamente Multi-Red",
-          "Estamos criando uma Estrutura técnica para expansão multi-chain quando necessário.": "Estamos creando una estructura técnica para expansión multi-chain cuando sea necesario.",
+          "Disponível na Verum Wallet: múltiplas redes em uma só carteira e transferências cross-chain entre elas.": "Disponible en Verum Wallet: múltiples redes en una sola billetera y transferencias cross-chain entre ellas.",
           "Experiência Para Todos": "Experiencia Para Todos",
           "Interface simplificada mesmo para quem está entrando agora no mundo digital.": "Interfaz simplificada incluso para quienes recién entran al mundo digital.",
           "Comunidade Ativa": "Comunidad Activa",
           "Organizações fraternais e comunidades educacionais engajadas.": "Organizaciones fraternales y comunidades educativas comprometidas.",
           "Chaves privadas sob controle do usuário": "Llaves privadas bajo control del usuario",
           "SEGURO": "SEGURO",
+          "Várias redes em uma carteira · transferências entre blockchains": "Varias redes en una billetera · transferencias entre blockchains",
+          "MULTI-REDE": "MULTI-RED",
           "Acesso DeFi": "Acceso DeFi",
           "Interaja com Smart Contracts e protocolos compatíveis": "Interactúa con Smart Contracts y protocolos compatibles",
           "Pagamentos QR": "Pagos QR",
