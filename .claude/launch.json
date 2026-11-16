@@ -4,8 +4,25 @@
     {
       "name": "static-public",
       "runtimeExecutable": "python",
-      "runtimeArgs": ["-m", "http.server", "8787", "--directory", "public"],
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "8787",
+        "--directory",
+        "public"
+      ],
       "port": 8787
+    },
+    {
+      "name": "admin-verum-dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "dev:local:worker",
+        "--prefix",
+        "C:/Users/danie/OneDrive/Documentos/CURSOR-PROJETOS/admin-verum"
+      ],
+      "port": 3000
     }
   ]
 }
